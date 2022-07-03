@@ -231,7 +231,7 @@ in {
         };
       };
       startup = [
-        { command = "waybar"; }
+        # { command = "waybar"; }
         { command = "mako"; }
         { command = "dbus-sway-environment"; }
         { command = "configure-gtk"; }
