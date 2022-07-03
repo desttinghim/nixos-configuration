@@ -96,22 +96,73 @@
     enable = true;
     systemd.enable = true;
     systemd.target = "sway-session.target";
+    style = ./waybar/style.css;
     settings = {
       mainBar = {
         layer = "top";
         position = "bottom";
         height = 30;
         output = [ "Virtual-1" ];
-        modules-left = [ "sway-workspaces" "sway/mode" "wlr/taskbar" ];
+        modules-left = [ "sway/workspaces" ];
         modules-center = [ "sway/window" ];
-        # modules-right = [ "temperature" ];
+        modules-right = [ "pulseaudio" "network" "battery" "clock" "tray" ];
 
-        # "sway/workspaces" = {
-        #   disable-scroll = true;
-        #   all-outputs = true;
-        #   format = "{name}: {icon}";
-        #   format-icons = [ { "1" = "1"; } ];
-        # };
+        "sway/workspaces" = {
+          "disable-scroll" = true;
+          "all-outputs" = false;
+          "format" = "{index}: {icon}";
+          "format-icons" = {
+              "1:web"   = "";
+              "2:docs"  = "";
+              "7:code"  = "";
+              "*:term"  = "";
+              "*:work"  = "";
+              "*:music" = "";
+              "urgent"  = "";
+              "focused" = "";
+              "default" = "";
+          };
+        };
+
+        "battery" = {
+          "format" = "{capacity}% {icon}";
+          "format-icons" = [ "" "" "" "" "" ];
+        };
+
+        "clock" = {
+          "tooltip-format" = "<big>{:%Y %B}</big>\n<tt><small>{calander}</small></tt>";
+          "format-alt" = "{:%Y-%m-%d %H:%M}";
+        };
+
+        "network" = {
+          "format-wifi"         =  "";
+          "format-ethernet"     =  "{ipaddr}/{cidr} ";
+          "tooltip-format"      =  "{ifname} via {gwaddr} ";
+          "format-linked"       =  "{ifname} (No IP) ";
+          "format-disconnected" =  "⚠";
+          "format-alt"          = "{ifname}: {ipaddr}/{cidr}";
+        };
+
+        "pulseaudio" = {
+          "format" = "{icon} {volume}% {format_source}";
+          "format-bluetooth" = "{icon} {volume}%  {format_source}";
+          "format-bluetooth-muted" = " {icon} {format_source}";
+          "format-muted" = " {format_source}";
+          "format-source" = " {volume}%";
+          "format-source-muted" = "";
+          "format-icons" =  {
+              "headphones"  = "";
+              "handsfree"   = "";
+              "headset"     = "";
+              "phone"       = "";
+              "portable"    = "";
+              "car"         = "";
+              "default"     = [ "" "" ];
+          };
+          "on-click" = "pavucontrol";
+        };
+
+        "tray"."spacing" = 10;
       };
     };
   };
