@@ -3,7 +3,9 @@
 let 
   # background = null;
 
-  modifier = "Mod4";
+  # Mod4 for Super
+  # Mod1 for Alt
+  modifier = "Mod1";
   left = "h";
   down = "j";
   up = "k";
