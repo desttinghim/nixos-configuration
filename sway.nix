@@ -242,7 +242,6 @@ in {
       ];
       terminal = pkgs.foot;
       window.titlebar = false;
-      workspaceAutoBackAndForth = true;
       output = {
         # "*" = { bg = "${background} fit #1d2021"; };
         # Put displays here
