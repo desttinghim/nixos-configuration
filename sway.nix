@@ -95,7 +95,8 @@ in {
       right = right;
       keybindings = {
         # Exit sway (logs you out of your Wayland session)
-        "${modifier}+Shift+e" = "exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit'";
+        # "${modifier}+Shift+e" = "exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit'";
+        "${modifier}+Shift+e" = "exit";
 
         # Reload the configuration file
         "${modifier}+Shift+c" = "reload";
@@ -243,6 +244,8 @@ in {
       startup = [
         { command = "waybar"; }
         { command = "mako"; }
+        { command = "dbus-sway-environment"; }
+        { command = "configure-gtk"; }
         # { command = "kanshi" }
         { command = "/run/current-system/sw/libexec-polkit-gnome-authentication-agent-1"; }
         { command = "$HOME/.config/sway/idle.sh"; }

@@ -36,6 +36,7 @@
 
     # Dependencies
     libnotify
+    light
 
     # Apps
     chromium
@@ -131,24 +132,24 @@
   #   '';
   # };
 
-  home.pointerCursor = {
-    name = "Dracula-cursors";
-    package = pkgs.dracula-theme;
-    size = 16;
-  };
+  # home.pointerCursor = {
+  #   name = "Dracula-cursors";
+  #   package = pkgs.dracula-theme;
+  #   size = 16;
+  # };
 
-  gtk = {
-    enable = true;
-    theme = {
-      name = "Dracula";
-      package = pkgs.dracula-theme;
-    };
-    iconTheme = {
-      name = "Papirus-Dark";
-      package = pkgs.papirus-icon-theme;
-    };
-    font = {
-      name = "FiraCode Nerd Font Mono Medium";
-    };
-  };
+  # gtk = {
+  #   enable = true;
+  #   theme = {
+  #     name = "Dracula";
+  #     package = pkgs.dracula-theme;
+  #   };
+  #   iconTheme = {
+  #     name = "Papirus-Dark";
+  #     package = pkgs.papirus-icon-theme;
+  #   };
+  #   font = {
+  #     name = "FiraCode Nerd Font Mono Medium";
+  #   };
+  # };
 }

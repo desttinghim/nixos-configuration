@@ -70,7 +70,7 @@ in
   users.users.desttinghim = {
     isNormalUser = true;
     description = "Louis Pearson";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "input" "video" "audio" ];
     packages = with pkgs; [];
   };
 
