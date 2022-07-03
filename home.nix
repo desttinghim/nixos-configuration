@@ -86,6 +86,12 @@
     ];
   };
 
+  programs.gh = {
+    enable = true;
+    enableGitCredentialHelper = true;
+    settings.git_protocol = "https";
+  };
+
   services.kanshi = {
     enable = true;
     systemdTarget = "sway-session.target";
