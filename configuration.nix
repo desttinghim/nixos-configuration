@@ -81,7 +81,7 @@ in
   # $ nix search wget
   environment = {
     variables = {
-      TERMINAL = "alacritty";
+      TERMINAL = "foot";
       EDITOR = "nvim";
       VISUAL = "nvim";
     };
@@ -96,7 +96,7 @@ in
 
       # sway packages
       sway
-      alacritty
+      foot
       dbus-sway-environment
       configure-gtk
       wayland

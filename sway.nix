@@ -104,7 +104,7 @@ in {
         # Kill focused window
         "${modifier}+Shift+q" = "kill";
 
-        # Launch the default terminal $TERM is defined in ../alacritty.nix:11
+        # Launch the default terminal $TERM
         "${modifier}+Return" = "exec $TERM";
         "${modifier}+d" = "exec ${menu}";
 
@@ -251,7 +251,7 @@ in {
         { command = "systemctl --user import-environment; systemctl --user start sway-session.target"; }
         # { command = "$HOME/.config/sway/idle.sh"; }
       ];
-      terminal = pkgs.alacritty;
+      terminal = pkgs.foot;
       window.titlebar = false;
       workspaceAutoBackAndForth = true;
       output = {
