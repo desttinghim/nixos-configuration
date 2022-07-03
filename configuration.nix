@@ -86,4 +86,15 @@
     package = pkgs.nixFlakes;
     extraOptions = "experimental-features = nix-command flakes";
   };
+
+  fonts.fonts = with pkgs; [
+    source-code-pro
+    font-awesome
+    corefonts
+    (nerdfonts.override {
+      fonts = [
+        "FiraCode"
+      ];
+    })
+  ];
 }
