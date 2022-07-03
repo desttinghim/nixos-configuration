@@ -27,7 +27,7 @@
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
               home-manager.users.desttinghim = {
-                imports = [ ./home.nix ];
+                imports = [ ./home.nix ./sway.nix ];
               };
             }
           ];
