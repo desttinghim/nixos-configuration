@@ -28,10 +28,10 @@
     # Video/Audio
     feh
     mpv
-    # obs-studio
     pavucontrol
-    # plex-media-player
     vlc
+    # obs-studio
+    # plex-media-player
     # stremio
 
     # Dependencies
@@ -41,7 +41,7 @@
     # Apps
     chromium
     firefox
-    alacritty
+    foot
 
     # File Management
     unzip
@@ -106,12 +106,6 @@
   wayland.windowManager.sway = {
     enable = true;
   };
-
-  # home.file = {
-  #   ".config/alacritty/alacritty.yml".text = ''
-  #     {"font":{"bold":{"style":"Bold"}}}
-  #   '';
-  # };
 
   # home.pointerCursor = {
   #   name = "Dracula-cursors";

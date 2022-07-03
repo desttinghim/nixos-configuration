@@ -12,6 +12,7 @@ let
   right = "l";
   resizeAmount = "10px";
   menu = "wofi --show=drun --lines=5 --prompt=''";
+  terminal = "foot";
   # filebrowser = "thunar";
   # webbrowser = "qutebrowser";
   # webbrowserPersistent = "firefox";
@@ -35,19 +36,7 @@ in {
     config = {
       floating.border = 1;
       window.border = 1;
-      # colors = {
-      #   focused = {
-      #     background = colorScheme.green;
-      #     border = colorScheme.greenBright;
-      #     childBorder = colorScheme.green;
-      #     indicator = colorScheme.green;
-      #     text = colorScheme.black;
-      #   };
-      #   focusedInactive = {};
-      #   unfocused = {};
-      #   urgent = {};
-      #   background = colorScheme.black;
-      # };
+      colors.background = "#000000";
       fonts = {
         names = [ "Roboto" ];
         style = "Regular Bold";
@@ -105,7 +94,7 @@ in {
         "${modifier}+Shift+q" = "kill";
 
         # Launch the default terminal $TERM
-        "${modifier}+Return" = "exec $TERM";
+        "${modifier}+Return" = "exec ${terminal}";
         "${modifier}+d" = "exec ${menu}";
 
         # Take a screenshot by selecting an area
@@ -246,9 +235,9 @@ in {
         { command = "mako"; }
         { command = "dbus-sway-environment"; }
         { command = "configure-gtk"; }
-        # { command = "kanshi" }
         { command = "/run/current-system/sw/libexec-polkit-gnome-authentication-agent-1"; }
-        { command = "systemctl --user import-environment; systemctl --user start sway-session.target"; }
+        # { command = "systemctl --user start kanshi"; }
+        # { command = "systemctl --user import-environment; systemctl --user start sway-session.target"; }
         # { command = "$HOME/.config/sway/idle.sh"; }
       ];
       terminal = pkgs.foot;
