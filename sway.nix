@@ -42,40 +42,7 @@ in {
         style = "Regular Bold";
         size = 12.0;
       };
-      bars = [ {
-        fonts = {
-          names = [ "DejaVu Sans Mono" "FontAwesome5Free" ];
-          style = "Bold Semi-Condensed";
-          size = 11.0;
-        };
-        position = "bottom";
-        command = "\${pkgs.waybar}/bin/waybar";
-        colors = {
-          separator = "#666666";
-          background = "#222222";
-          statusline = "#dddddd";
-          focusedWorkspace = {
-            background = "#0088CC";
-            border = "#0088CC";
-            text = "#ffffff";
-          };
-          activeWorkspace = {
-            background = "#333333";
-            border = "#333333";
-            text = "#ffffff";
-          };
-          inactiveWorkspace = {
-            background = "#333333";
-            border = "#333333";
-            text = "#888888";
-          };
-          urgentWorkspace = {
-            background = "#2f343a";
-            border = "#900000";
-            text = "#ffffff";
-          };
-        };
-      } ];
+      bars = [];
       menu = menu;
       modifier = modifier;
       up = up;

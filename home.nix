@@ -133,10 +133,6 @@
 
   services.swayidle.enable = true;
 
-  wayland.windowManager.sway = {
-    enable = true;
-  };
-
   # home.pointerCursor = {
   #   name = "Dracula-cursors";
   #   package = pkgs.dracula-theme;
