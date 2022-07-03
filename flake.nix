@@ -19,7 +19,7 @@
       lib = nixpkgs.lib;
     in {
       nixosConfigurations = {
-        desttinghim = lib.nixosSystem {
+        desttop = lib.nixosSystem {
           inherit system;
           modules = [ 
             ./configuration.nix 
@@ -32,12 +32,17 @@
             }
           ];
         };
-      };
-      hmConfig = {
-        desttinghim = home-manager.lib.homeManagerConfiguration {
-          inherit pkgs;
+        destbook = lib.nixosSystem {
+          inherit system;
           modules = [
-            ./home.nix
+            ./configuration.nix
+            home-manager.nixosModules.home-manager {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.users.desttinghim = {
+                imports = [ ./home.nix ];
+              };
+            }
           ];
         };
       };
