@@ -20,10 +20,34 @@
   programs.home-manager.enable = true;
 
   home.packages = with pkgs; [ 
+    # Terminal
     htop 
     zellij
-    git
+    ranger
+
+    # Video/Audio
+    feh
+    mpv
+    # obs-studio
+    pavucontrol
+    # plex-media-player
+    vlc
+    # stremio
+
+    # Dependencies
+    libnotify
+
+    # Apps
+    chromium
+    firefox
+    alacritty
+
+    # File Management
+    unzip
+    unrar
   ];
+
+  nixpkgs.config.allowUnfree = true;
 
   home.sessionPath = [ "$HOME/.local/bin" ];
 
@@ -106,4 +130,25 @@
   #     {"font":{"bold":{"style":"Bold"}}}
   #   '';
   # };
+
+  home.pointerCursor = {
+    name = "Dracula-cursors";
+    package = pkgs.dracula-theme;
+    size = 16;
+  };
+
+  gtk = {
+    enable = true;
+    theme = {
+      name = "Dracula";
+      package = pkgs.dracula-theme;
+    };
+    iconTheme = {
+      name = "Papirus-Dark";
+      package = pkgs.papirus-icon-theme;
+    };
+    font = {
+      name = "FiraCode Nerd Font Mono Medium";
+    };
+  };
 }
