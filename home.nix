@@ -86,45 +86,26 @@
     ];
   };
 
-  # programs.waybar = {
-  #   enable = true;
-  #   systemd.enable = true;
-  #   systemd.target = "sway-session.target";
-  #   settings = {
-  #     mainBar = {};
-  #   };
-  # };
+  services.kanshi = {
+    enable = true;
+    systemdTarget = "sway-session.target";
+    profiles = {
+      virtual = {
+        outputs = [
+          {
+            criteria = "Virtual-1";
+            mode = "1440x900";
+          }
+        ];
+      };
+    };
+  };
 
-  # services.kanshi = {
-  #   enable = true;
-  #   systemdTarget = "sway-session.target";
-  #   profiles = {
-  #     undocked = {
-  #       outputs = [
-  #         {
-  #           criteria = "eDP-1";
-  #         }
-  #       ];
-  #     };
-  #     docked = {
-  #       outputs = [
-  #         {
-  #           criteria = "eDP-1";
-  #         }
-  #         {
-  #           criteria = "Some company ASDF 4242";
-  #           transform = "90";
-  #         }
-  #       ];
-  #     };
-  #   };
-  # };
+  services.swayidle.enable = true;
 
-  # services.swayidle.enable = true;
-
-  # wayland.windowManager.sway = {
-  #   enable = true;
-  # };
+  wayland.windowManager.sway = {
+    enable = true;
+  };
 
   # home.file = {
   #   ".config/alacritty/alacritty.yml".text = ''

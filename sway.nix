@@ -27,7 +27,7 @@ in {
       # "./config/sway/lock.sh".source = ./lock.sh;
     };
     packages = with pkgs; [
-      waybar wofi wofi-emoji slurp grim swappy swaylock-effects notify-desktop mako libappindicator gnome.zenity
+      waybar wofi wofi-emoji slurp grim swappy swaylock-effects notify-desktop mako libappindicator gnome.zenity kanshi
     ];
   };
   wayland.windowManager.sway = {
@@ -248,7 +248,8 @@ in {
         { command = "configure-gtk"; }
         # { command = "kanshi" }
         { command = "/run/current-system/sw/libexec-polkit-gnome-authentication-agent-1"; }
-        { command = "$HOME/.config/sway/idle.sh"; }
+        { command = "systemctl --user import-environment; systemctl --user start sway-session.target"; }
+        # { command = "$HOME/.config/sway/idle.sh"; }
       ];
       terminal = pkgs.alacritty;
       window.titlebar = false;
