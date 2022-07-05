@@ -38,7 +38,7 @@ in {
       window.border = 1;
       colors.background = "#000000";
       fonts = {
-        names = [ "Roboto" ];
+        names = [ "Source Code Pro" "Roboto" ];
         style = "Regular Bold";
         size = 12.0;
       };

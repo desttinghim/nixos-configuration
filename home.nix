@@ -41,6 +41,7 @@
     # Apps
     # chromium
     firefox
+    qutebrowser
     foot
     element-desktop
     syncthing
