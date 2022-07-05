@@ -44,6 +44,7 @@
     foot
     element-desktop
     syncthing
+    bitwarden
 
     # File Management
     unzip
