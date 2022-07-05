@@ -28,7 +28,7 @@ in {
       # "./config/sway/lock.sh".source = ./lock.sh;
     };
     packages = with pkgs; [
-      waybar wofi wofi-emoji slurp grim swappy swaylock-effects notify-desktop mako libappindicator gnome.zenity kanshi clipman
+      waybar wofi wofi-emoji slurp grim swappy swaylock-effects notify-desktop mako libappindicator gnome.zenity kanshi clipman polkit_gnome
     ];
   };
   wayland.windowManager.sway = {

@@ -39,12 +39,13 @@
     light
 
     # Apps
-    chromium
+    # chromium
     firefox
     foot
     element-desktop
     syncthing
     bitwarden
+    reaper
 
     # File Management
     unzip
