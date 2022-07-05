@@ -42,6 +42,8 @@
     chromium
     firefox
     foot
+    element-desktop
+    syncthing
 
     # File Management
     unzip
@@ -223,24 +225,29 @@
 
   services.swayidle.enable = true;
 
-  # home.pointerCursor = {
-  #   name = "Dracula-cursors";
-  #   package = pkgs.dracula-theme;
-  #   size = 16;
-  # };
+  services.syncthing = {
+    enable = true;
+    tray.enable = true;
+  };
 
-  # gtk = {
-  #   enable = true;
-  #   theme = {
-  #     name = "Dracula";
-  #     package = pkgs.dracula-theme;
-  #   };
-  #   iconTheme = {
-  #     name = "Papirus-Dark";
-  #     package = pkgs.papirus-icon-theme;
-  #   };
-  #   font = {
-  #     name = "FiraCode Nerd Font Mono Medium";
-  #   };
-  # };
+  home.pointerCursor = {
+    name = "Dracula-cursors";
+    package = pkgs.dracula-theme;
+    size = 15;
+  };
+
+  gtk = {
+    enable = true;
+    theme = {
+      name = "Dracula";
+      package = pkgs.dracula-theme;
+    };
+    iconTheme = {
+      name = "Papirus-Dark";
+      package = pkgs.papirus-icon-theme;
+    };
+    font = {
+      name = "FiraCode Nerd Font Mono Medium";
+    };
+  };
 }
