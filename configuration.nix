@@ -164,7 +164,7 @@ in
     source-code-pro
     font-awesome
     corefonts
-    robot
+    roboto
     (nerdfonts.override {
       fonts = [
         "FiraCode"
