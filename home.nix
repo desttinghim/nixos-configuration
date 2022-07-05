@@ -48,7 +48,9 @@
     unrar
   ];
 
-  nixpkgs.config.allowUnfree = true;
+  nixpkgs.config = {
+    allowUnfree = true;
+  };
 
   home.sessionPath = [ "$HOME/.local/bin" ];
 
@@ -197,6 +199,11 @@
         urls = "8be9fd";
       };
     };
+  };
+
+  programs.firefox = {
+    enable = true;
+    # TODO: Add nur so addons can be managed by nix
   };
 
   services.kanshi = {

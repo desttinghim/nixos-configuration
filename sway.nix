@@ -49,6 +49,11 @@ in {
       left = left;
       down = down;
       right = right;
+      assigns = {
+        "1:web" = [{ class = "^Firefox$"; }];
+        "2:docs" = [{ class = "^qutebrowser$"; }];
+        "7:code" = [{ class = "^emacs$"; }];
+      };
       keybindings = {
         # Exit sway (logs you out of your Wayland session)
         # "${modifier}+Shift+e" = "exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit'";
