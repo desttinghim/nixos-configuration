@@ -41,11 +41,11 @@
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
               home-manager.users.desttinghim = {
-                imports = [ nix-doom-emacs.hmModule ./home.nix ./sway.nix ];
-                programs.doom-emacs = {
-                  enable = true;
-                  doomPrivateDir = ./doom.d;
-                };
+                imports = [ ./home.nix ./sway.nix ];
+                # programs.doom-emacs = {
+                #   enable = true;
+                #   doomPrivateDir = ./doom.d;
+                # };
               };
             }
           ];
