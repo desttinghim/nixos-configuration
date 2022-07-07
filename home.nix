@@ -97,7 +97,7 @@
       mainBar = {
         layer = "top";
         position = "bottom";
-        height = 30;
+        height = 24;
         output = [ "eDP-1" ];
         modules-left = [ "sway/workspaces" ];
         modules-center = [ "sway/window" ];
@@ -140,9 +140,9 @@
         };
 
         "pulseaudio" = {
-          "format" = "{icon} {volume}% {format_source}";
-          "format-bluetooth" = "{icon} {volume}%  {format_source}";
-          "format-bluetooth-muted" = " {icon} {format_source}";
+          "format" = "{volume}% {icon} {format_source}";
+          "format-bluetooth" = "{volume}% {icon} {format_source}";
+          "format-bluetooth-muted" = "{icon} {format_source}";
           "format-muted" = " {format_source}";
           "format-source" = "";
           "format-source-muted" = "";

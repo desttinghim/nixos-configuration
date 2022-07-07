@@ -1,17 +1,17 @@
 * {
     border: none;
     border-radius: 0;
-    font-family: FontAwesome5, Roboto, Helvetica, Arial, sans-serif;
+    font-family: "Font Awesome 5 Free", Roboto, Helvetica, Arial, sans-serif;
     font-size: 9pt;
     min-height: 0;
 }
 
 .eDP-1 * {
-    font-size: 15pt;
+    font-size: 9pt;
 }
 
 .Virtual-1 * {
-    font-size: 12pt;
+    font-size: 9pt;
 }
 
 window#waybar {
