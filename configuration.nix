@@ -77,6 +77,8 @@ in
     packages = with pkgs; [];
   };
 
+  programs.light.enable = true;
+
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
