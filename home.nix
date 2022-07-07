@@ -40,7 +40,7 @@
 
     # Apps
     # chromium
-    firefox
+    firefox-wayland
     qutebrowser
     foot
     element-desktop
