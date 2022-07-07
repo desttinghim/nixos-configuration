@@ -98,7 +98,7 @@
         layer = "top";
         position = "bottom";
         height = 30;
-        output = [ "Virtual-1" ];
+        output = [ "eDP-1" ];
         modules-left = [ "sway/workspaces" ];
         modules-center = [ "sway/window" ];
         modules-right = [ "pulseaudio" "network" "battery" "clock" "tray" ];
