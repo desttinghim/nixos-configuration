@@ -59,12 +59,6 @@
 
   home.sessionPath = [ "$HOME/.local/bin" ];
 
-  accounts.email.accounts.fastmail = {
-    primary = true;
-    address = "lep@fastmail.com";
-    aliases = [ "contact@louispearson.work" "opensource@louispearson.work" ];
-  };
-
   programs.git = {
     enable = true;
     lfs.enable = true;
@@ -552,7 +546,7 @@ config.set("colors.webpage.preferred_color_scheme", "dark")
   home.pointerCursor = {
     name = "Dracula-cursors";
     package = pkgs.dracula-theme;
-    size = 15;
+    size = 12;
   };
 
   gtk = {

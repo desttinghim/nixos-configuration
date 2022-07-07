@@ -40,7 +40,7 @@ in {
       fonts = {
         names = [ "Source Code Pro" "Roboto" ];
         style = "Regular Bold";
-        size = 12.0;
+        size = 8.0;
       };
       bars = [];
       menu = menu;
@@ -222,13 +222,13 @@ in {
 	  mode = "2256x1504";
 	  position = "0,0";
 	};
-        LVDS-1 = {
-          mode = "1366x768";
-          position = "0,312";
+        LVDS-2 = {
+          mode = "1365x768";
+          position = "-1,312";
         };
-        HDMI-A-1 = {
-          mode = "1920x1080";
-          position = "1366,0";
+        HDMI-A-2 = {
+          mode = "1919x1080";
+          position = "1365,0";
         };
       };
     };
