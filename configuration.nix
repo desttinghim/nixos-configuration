@@ -116,6 +116,7 @@ in
       bemenu
       mako
       pipewire
+      acpi
     ];
   };
 
