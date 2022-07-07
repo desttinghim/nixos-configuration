@@ -531,6 +531,14 @@ config.set("colors.webpage.preferred_color_scheme", "dark")
           }
         ];
       };
+      framework = {
+        outputs = [
+	  {
+	    criteria = "eDP-1";
+	    mode = "2256x1504";
+	  }
+	];
+      };
     };
   };
 

@@ -5,7 +5,7 @@ let
 
   # Mod4 for Super
   # Mod1 for Alt
-  modifier = "Mod1";
+  modifier = "Mod4";
   left = "h";
   down = "j";
   up = "k";
@@ -218,6 +218,10 @@ in {
       output = {
         # "*" = { bg = "${background} fit #1d2021"; };
         # Put displays here
+	eDP-1 = {
+	  mode = "2256x1504";
+	  position = "0,0";
+	};
         LVDS-1 = {
           mode = "1366x768";
           position = "0,312";
