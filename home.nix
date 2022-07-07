@@ -22,7 +22,7 @@
   # Apps I don't care to configure
   home.packages = with pkgs; [ 
     # Terminal
-    htop 
+    btop 
     zellij
     ranger
     helix
@@ -46,6 +46,7 @@
     reaper
     solaar
     emacs
+    dia
 
     # File Management
     unzip
