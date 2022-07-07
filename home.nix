@@ -563,6 +563,7 @@ config.set("colors.webpage.preferred_color_scheme", "dark")
     };
   };
 
+  services.mpris-proxy.enable = true;
   services.swayidle.enable = true;
 
   services.syncthing = {
