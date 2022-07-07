@@ -7,9 +7,10 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nix-doom-emacs.url = "github:vlaci/nix-doom-emacs";
   };
 
-  outputs = { self, nixpkgs, home-manager }: 
+  outputs = { self, nixpkgs, home-manager, nix-doom-emacs }: 
     let
       system = "x86_64-linux";
       pkgs = import nixpkgs {
@@ -40,7 +41,11 @@
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
               home-manager.users.desttinghim = {
-                imports = [ ./home.nix ./sway.nix ];
+                imports = [ nix-doom-emacs.hmModule ./home.nix ./sway.nix ];
+                programs.doom-emacs = {
+                  enable = true;
+                  doomPrivateDir = ./doom.d;
+                };
               };
             }
           ];
