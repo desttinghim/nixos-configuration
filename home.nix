@@ -19,6 +19,7 @@
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 
+  # Apps I don't care to configure
   home.packages = with pkgs; [ 
     # Terminal
     htop 
@@ -30,9 +31,6 @@
     mpv
     pavucontrol
     vlc
-    # obs-studio
-    # plex-media-player
-    # stremio
 
     # Dependencies
     libnotify
@@ -40,9 +38,6 @@
 
     # Apps
     # chromium
-    firefox-wayland
-    qutebrowser
-    foot
     element-desktop
     syncthing
     bitwarden
@@ -203,6 +198,12 @@
   programs.firefox = {
     enable = true;
     # TODO: Add nur so addons can be managed by nix
+    package = pkgs.wrapFirefox pkgs.firefox-unwrapped {
+      forceWayland = true;
+      extraPolicies = {
+        ExtensionSettings = {};
+      };
+    };
   };
 
   programs.qutebrowser = {
