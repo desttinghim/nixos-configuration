@@ -530,8 +530,32 @@ config.set("colors.webpage.preferred_color_scheme", "dark")
 	  {
 	    criteria = "eDP-1";
 	    mode = "2256x1504";
+            scale = 1.5;
 	  }
 	];
+      };
+      thinkpad = {
+        outputs = [
+          {
+            criteria = "LVDS-2";
+            mode = "1365x768";
+            position = "-1,312";
+          }
+        ];
+      };
+      thinkpad-docked = {
+        outputs = [
+          {
+            criteria = "LVDS-2";
+            mode = "1365x768";
+            position = "-1,312";
+          }
+          {
+            criteria = "HDMI-A-2";
+            mode = "1919x1080";
+            position = "1365,0";
+          }
+        ];
       };
     };
   };

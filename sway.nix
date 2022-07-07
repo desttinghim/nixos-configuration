@@ -215,22 +215,10 @@ in {
       ];
       terminal = pkgs.foot;
       window.titlebar = false;
-      output = {
+      # output = {
         # "*" = { bg = "${background} fit #1d2021"; };
         # Put displays here
-	eDP-1 = {
-	  mode = "2256x1504";
-	  position = "0,0";
-	};
-        LVDS-2 = {
-          mode = "1365x768";
-          position = "-1,312";
-        };
-        HDMI-A-2 = {
-          mode = "1919x1080";
-          position = "1365,0";
-        };
-      };
+      # };
     };
   };
 } 
