@@ -127,7 +127,27 @@ in
       jack.enable = true;
     };
     dbus.enable = true;
+    tlp = {
+      enable = true;
+      settings = {
+        CPU_BOOST_ON_BAT = 0;
+        CPU_SCALING_GOVERNOR_ON_BATTERY = "powersave";
+        START_CHARGE_THRESH_BAT0 = 90;
+        STOP_CHARGE_THRESH_BAT0 = 97;
+        RUNTIME_PM_ON_BAT = "auto";
+      };
+    };
+    logind = {
+      lidSwitch = "suspend-then-hibernate";
+      extraConfig = ''
+        HandlePowerKey=suspend-then-hibernate
+        IdleAction=suspend-then-hibernate
+        IdleActionSec=10m
+      '';
+    };
   };
+
+  systemd.sleep.extraConfig = "HibernateDelaySec=2h";
 
   xdg.portal = {
     enable = true;
