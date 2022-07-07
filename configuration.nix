@@ -167,6 +167,8 @@ in
   fonts.fonts = with pkgs; [
     source-code-pro
     font-awesome
+    font-awesome_5
+    font-awesome_4
     corefonts
     roboto
     (nerdfonts.override {
