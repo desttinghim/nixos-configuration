@@ -25,6 +25,7 @@
     htop 
     zellij
     ranger
+    helix
 
     # Video/Audio
     feh
