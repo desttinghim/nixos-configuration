@@ -35,6 +35,7 @@
 
     # Dependencies
     libnotify
+    libappindicator-gtk3
     light
 
     # Apps
