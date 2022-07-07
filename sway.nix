@@ -13,10 +13,6 @@ let
   resizeAmount = "10px";
   menu = "wofi --show=drun --lines=5 --prompt=''";
   terminal = "foot";
-  # filebrowser = "thunar";
-  # webbrowser = "qutebrowser";
-  # webbrowserPersistent = "firefox";
-  # musicplayer = "";
 in {
   home = {
     file = {
@@ -28,7 +24,7 @@ in {
       # "./config/sway/lock.sh".source = ./lock.sh;
     };
     packages = with pkgs; [
-      waybar wofi wofi-emoji slurp grim swappy swaylock-effects notify-desktop mako libappindicator gnome.zenity kanshi clipman polkit_gnome
+      waybar wofi wofi-emoji slurp grim swappy swaylock-effects notify-desktop mako libappindicator gnome.zenity kanshi clipman polkit_gnome playerctl pulseaudio
     ];
   };
   wayland.windowManager.sway = {
@@ -86,8 +82,8 @@ in {
         "XF86AudioNext" = "exec playerctl next";
 
         # Brightness control
-        "XF86MonBrightnessUp" = "exec light -S $(light -G | awk 'print int(($1 + 0.72) * 1.4) }')";
-        "XF86MonBrightnessDown" = "exec light -S $(light -G | awk 'print int($1 / 1.4) }')";
+        "XF86MonBrightnessUp" = "exec light -A 10";
+        "XF86MonBrightnessDown" = "exec light -U 10";
         "${modifier}+F12" = "exec ddcutil setcvp 10 + 10";
         "${modifier}+F11" = "exec ddcutil setcvp 10 - 10";
         "${modifier}+Control+F12" = "exec ddcutil setcvp 10 15";
@@ -209,7 +205,7 @@ in {
         { command = "configure-gtk"; }
         { command = "wl-paste -t text --watch ${pkgs.clipman}/bin/clipman store --no-persist"; }
         { command = "/run/current-system/sw/libexec-polkit-gnome-authentication-agent-1"; }
-        # { command = "systemctl --user start kanshi"; }
+        # { command = "systemctl --user restart kanshi"; }
         # { command = "systemctl --user import-environment; systemctl --user start sway-session.target"; }
         # { command = "$HOME/.config/sway/idle.sh"; }
       ];
