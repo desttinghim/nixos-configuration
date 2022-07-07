@@ -44,6 +44,7 @@
     syncthing
     bitwarden
     reaper
+    solaar
 
     # File Management
     unzip
