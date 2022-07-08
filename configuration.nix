@@ -37,6 +37,7 @@ in
   imports =
     [ # Include the results of the hardware scan.
       ./framework/hardware-configuration.nix
+      ./cachix.nix
     ];
 
   # Bootloader.
@@ -195,6 +196,7 @@ in
         IdleActionSec=10m
       '';
     };
+    flatpak.enable = true;
   };
 
   systemd.sleep.extraConfig = "HibernateDelaySec=2h";

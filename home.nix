@@ -45,13 +45,21 @@
     bitwarden
     reaper
     solaar
-    emacs
     dia
+    zathura
+    okular
+    libreoffice
+    kicad-small
+    emacs
 
     # File Management
     unzip
     unrar
   ];
+
+  services.emacs = {
+    enable = true;
+  };
 
   nixpkgs.config = {
     allowUnfree = true;
