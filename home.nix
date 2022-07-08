@@ -50,6 +50,7 @@
     okular
     libreoffice
     kicad-small
+    ripgrep
     emacs
 
     # File Management
@@ -244,7 +245,10 @@
   programs.foot = {
     enable = true;
     settings = {
-      colors = { 
+      main = {
+        dpi-aware = "yes";
+      };
+      colors = {
         # Normal/regular colors (color palette 0-7
         regular0 = "21222c"; 
         regular1 = "ff5555";
