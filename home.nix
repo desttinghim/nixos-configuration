@@ -39,7 +39,7 @@
     light
 
     # Apps
-    # chromium
+    chromium
     element-desktop
     syncthing
     bitwarden
