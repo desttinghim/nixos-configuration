@@ -628,7 +628,7 @@ config.set("colors.webpage.preferred_color_scheme", "dark")
           {
             criteria = "DP-7";
             mode = "1920x1080";
-            scale = 1.5;
+            scale = 1.0;
             position = "0,0";
           }
         ];
