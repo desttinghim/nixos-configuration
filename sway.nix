@@ -46,9 +46,9 @@ in {
       down = down;
       right = right;
       assigns = {
-        "1:web" = [{ class = "^Firefox$"; }];
-        "2:docs" = [{ class = "^qutebrowser$"; }];
-        "7:code" = [{ class = "^emacs$"; }];
+        "web" = [{ class = "^Firefox"; }];
+        "docs" = [{ class = "^qutebrowser"; }];
+        "code" = [{ class = "^emacs"; }];
       };
       keybindings = {
         # Exit sway (logs you out of your Wayland session)
@@ -115,28 +115,28 @@ in {
 
         # Workspaces
         ## Switch to workspace
-        "${modifier}+1" = "workspace '1:web'";
+        "${modifier}+1" = "workspace '1:music'";
         "${modifier}+2" = "workspace '2:docs'";
-        "${modifier}+3" = "workspace number 3";
+        "${modifier}+3" = "workspace '3:term'";
         "${modifier}+4" = "workspace number 4";
         "${modifier}+5" = "workspace number 5";
         "${modifier}+6" = "workspace number 6";
-        "${modifier}+7" = "workspace '7:code";
+        "${modifier}+7" = "workspace '7:code'";
         "${modifier}+8" = "workspace number 8";
         "${modifier}+9" = "workspace number 9";
-        "${modifier}+0" = "workspace number 10";
+        "${modifier}+0" = "workspace '10:web'";
 
         ## Move focused container to workspace
-        "${modifier}+Shift+1" = "move container to workspace '1:web'";
+        "${modifier}+Shift+1" = "move container to workspace '1:music'";
         "${modifier}+Shift+2" = "move container to workspace '2:docs'";
-        "${modifier}+Shift+3" = "move container to workspace number 3";
+        "${modifier}+Shift+3" = "move container to workspace '3:term'";
         "${modifier}+Shift+4" = "move container to workspace number 4";
         "${modifier}+Shift+5" = "move container to workspace number 5";
         "${modifier}+Shift+6" = "move container to workspace number 6";
-        "${modifier}+Shift+7" = "move container to workspace '7:code";
+        "${modifier}+Shift+7" = "move container to workspace '7:code'";
         "${modifier}+Shift+8" = "move container to workspace number 8";
         "${modifier}+Shift+9" = "move container to workspace number 9";
-        "${modifier}+Shift+0" = "move container to workspace number 10";
+        "${modifier}+Shift+0" = "move container to workspace '10:web'";
 
         ## Move workspaces between outputs
         "${modifier}+Control+Shift+${up}" = "move workspace to output up";
@@ -211,10 +211,6 @@ in {
       ];
       terminal = pkgs.foot;
       window.titlebar = false;
-      # output = {
-        # "*" = { bg = "${background} fit #1d2021"; };
-        # Put displays here
-      # };
     };
   };
 } 

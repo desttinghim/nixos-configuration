@@ -112,7 +112,7 @@
         layer = "top";
         position = "bottom";
         height = 24;
-        output = [ "eDP-1" ];
+        output = [ "eDP-1" "DP-7" ];
         modules-left = [ "sway/workspaces" ];
         modules-center = [ "sway/window" ];
         modules-right = [ "pulseaudio" "network" "battery" "clock" "tray" ];
@@ -122,12 +122,12 @@
           "all-outputs" = false;
           "format" = "{index}: {icon}";
           "format-icons" = {
-              "1:web"   = "";
+              "10:web"   = "";
               "2:docs"  = "";
               "7:code"  = "";
-              "*:term"  = "";
-              "*:work"  = "";
-              "*:music" = "";
+              "3:term"  = "";
+              "work"  = "";
+              "1:music" = "";
               "urgent"  = "";
               "focused" = "";
               "default" = "";
@@ -618,6 +618,18 @@ config.set("colors.webpage.preferred_color_scheme", "dark")
         ];
       };
       framework-docked-wasatch = {
+        exec = [
+          "${pkgs.sway}/bin/swaymsg workspace '1:music', move workspace to eDP-1"
+          "${pkgs.sway}/bin/swaymsg workspace '2:docs', move workspace to eDP-1"
+          "${pkgs.sway}/bin/swaymsg workspace '3:term', move workspace to eDP-1"
+          "${pkgs.sway}/bin/swaymsg workspace 4, move workspace to eDP-1"
+          "${pkgs.sway}/bin/swaymsg workspace 5, move workspace to eDP-1"
+          "${pkgs.sway}/bin/swaymsg workspace 6, move workspace to eDP-1"
+          "${pkgs.sway}/bin/swaymsg workspace '7:code', move workspace to DP-7"
+          "${pkgs.sway}/bin/swaymsg workspace 8, move workspace to DP-7"
+          "${pkgs.sway}/bin/swaymsg workspace 9, move workspace to DP-7"
+          "${pkgs.sway}/bin/swaymsg workspace '10:web', move workspace to DP-7"
+        ];
         outputs = [
           {
             criteria = "eDP-1";
