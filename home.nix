@@ -606,12 +606,28 @@ config.set("colors.webpage.preferred_color_scheme", "dark")
       };
       framework = {
         outputs = [
-	  {
-	    criteria = "eDP-1";
-	    mode = "2256x1504";
+          {
+            criteria = "eDP-1";
+            mode = "2256x1504";
             scale = 1.5;
-	  }
-	];
+          }
+        ];
+      };
+      framework-docked-wasatch = {
+        outputs = [
+          {
+            criteria = "eDP-1";
+            mode = "2256x1504";
+            scale = 1.5;
+            position = "1920,0";
+          }
+          {
+            criteria = "DP-7";
+            mode = "1920x1080";
+            scale = 1.5;
+            position = "0,0";
+          }
+        ];
       };
       thinkpad = {
         outputs = [
