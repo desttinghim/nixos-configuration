@@ -661,7 +661,7 @@ config.set("colors.webpage.preferred_color_scheme", "dark")
           }
           {
             criteria = vs-n.criteria; mode = vs-n.mode; scale = vs-n.scale;
-            position = "4176,0";
+            position = "5304,0";
           }
         ];
       };
