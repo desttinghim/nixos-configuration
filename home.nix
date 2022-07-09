@@ -600,48 +600,65 @@ config.set("colors.webpage.preferred_color_scheme", "dark")
   services.kanshi = {
     enable = true;
     systemdTarget = "sway-session.target";
-    profiles = {
-      virtual = {
-        outputs = [
-          {
-            criteria = "Virtual-1";
-            mode = "1440x900";
-          }
-        ];
-      };
+    profiles =
+      let
+        fd = {
+          criteria = "Unknown 0x095F 0x00000000";
+          mode = "2256x1504";
+          scale = 1.5;
+        };
+        # My ViewSonic Gaming Monitor
+        vs-g = {
+          criteria = "ViewSonic Corporation XG2401 SERIES UG2193120319";
+          mode = "1920x1080";
+          scale = 1.0;
+        };
+        # My ViewSonic Normal Monitor
+        vs-n = {
+          criteria = "ViewSonic Corporation VA2746 Series V1Y203820007";
+          mode = "1920x1080";
+          scale = 1.0;
+        };
+        wasatch-display = {
+          criteria = "'Hewlett Packard HP 2210 CNT023F556'";
+          mode = "1920x1080";
+          scale = 1.0;
+        };
+        virtual-display = {
+          criteria = "'Virtual-1'";
+          mode = "1440x900";
+        };
+      in
+      {
       framework = {
         outputs = [
+          { criteria = fd.criteria; mode = fd.mode; scale = fd.scale; }
+        ];
+      };
+      framework-docked-home = {
+        outputs = [
           {
-            criteria = "eDP-1";
-            mode = "2256x1504";
-            scale = 1.5;
+            criteria = vs-g.criteria; mode = vs-g.mode; scale = vs-g.scale;
+            position = "0,0";
+          }
+          {
+            criteria = fd.criteria; mode = fd.mode; scale = fd.scale;
+            position = "1920,0";
+          }
+          {
+            criteria = vs-n.criteria; mode = vs-n.mode; scale = vs-n.scale;
+            position = "4176,0";
           }
         ];
       };
       framework-docked-wasatch = {
-        exec = [
-          "${pkgs.sway}/bin/swaymsg workspace '1:music', move workspace to eDP-1"
-          "${pkgs.sway}/bin/swaymsg workspace '2:docs', move workspace to eDP-1"
-          "${pkgs.sway}/bin/swaymsg workspace '3:term', move workspace to eDP-1"
-          "${pkgs.sway}/bin/swaymsg workspace 4, move workspace to eDP-1"
-          "${pkgs.sway}/bin/swaymsg workspace 5, move workspace to eDP-1"
-          "${pkgs.sway}/bin/swaymsg workspace 6, move workspace to eDP-1"
-          "${pkgs.sway}/bin/swaymsg workspace '7:code', move workspace to DP-7"
-          "${pkgs.sway}/bin/swaymsg workspace 8, move workspace to DP-7"
-          "${pkgs.sway}/bin/swaymsg workspace 9, move workspace to DP-7"
-          "${pkgs.sway}/bin/swaymsg workspace '10:web', move workspace to DP-7"
-        ];
         outputs = [
           {
-            criteria = "eDP-1";
-            mode = "2256x1504";
-            scale = 1.5;
+            criteria = fd.criteria; mode = fd.mode; scale = fd.scale;
             position = "1920,0";
           }
           {
-            criteria = "DP-7";
-            mode = "1920x1080";
-            scale = 1.0;
+            criteria = wasatch-display.criteria; mode = wasatch-display.mode; scale = wasatch-display.scale;
             position = "0,0";
           }
         ];
