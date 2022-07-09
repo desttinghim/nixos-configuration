@@ -119,11 +119,13 @@ in
       pipewire
       acpi
       arduino
+      ly
     ];
   };
 
   hardware.bluetooth.enable = true;
   services.blueman.enable = true;
+  services.xserver.displayManager.job.execCmd = "${pkgs.ly}/bin/ly";
 
   # services.udev.extraRules = ''
   #   #the unshielded FTDI cables have difficulty running at full speed
