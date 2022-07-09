@@ -61,6 +61,7 @@
 
   services.emacs = {
     enable = true;
+    startWithUserSession = true;
   };
 
   nixpkgs.config = {

@@ -121,6 +121,7 @@ in
       arduino
 
       greetd.tuigreet
+      home-manager
     ];
   };
 
