@@ -628,6 +628,8 @@ config.set("colors.webpage.preferred_color_scheme", "dark")
           criteria = "'Virtual-1'";
           mode = "1440x900";
         };
+        mvWorkspace = ws: criteria:
+          "${pkgs.sway}/bin/swaymsg workspace ${ws}, move workspace to output '\"${criteria}\"'";
       in
       {
       framework = {
@@ -637,16 +639,16 @@ config.set("colors.webpage.preferred_color_scheme", "dark")
       };
       framework-docked-home = {
         exec = [
-          "${pkgs.sway}/bin/swaymsg workspace '1:music', move workspace to output '\"${fd.criteria}\"'"
-          "${pkgs.sway}/bin/swaymsg workspace '2:docs', move workspace to output '\"${vs-g.criteria}\"'"
-          "${pkgs.sway}/bin/swaymsg workspace '3:term', move workspace to output '\"${vs-g.criteria}\"'"
-          "${pkgs.sway}/bin/swaymsg workspace 4, move workspace to output '\"${vs-g.criteria}\"'"
-          "${pkgs.sway}/bin/swaymsg workspace 5, move workspace to output '\"${vs-g.criteria}\"'"
-          "${pkgs.sway}/bin/swaymsg workspace 6, move workspace to output '\"${vs-g.criteria}\"'"
-          "${pkgs.sway}/bin/swaymsg workspace '7:code', move workspace to output '\"${vs-n.criteria}\"'"
-          "${pkgs.sway}/bin/swaymsg workspace 8, move workspace to output '\"${vs-n.criteria}\"'"
-          "${pkgs.sway}/bin/swaymsg workspace 9, move workspace to output '\"${vs-n.criteria}\"'"
-          "${pkgs.sway}/bin/swaymsg workspace '10:web', move workspace to output '\"${vs-n.criteria}\"'"
+          (mvWorkspace "'1:music'" fd.criteria)
+          (mvWorkspace "'2:docs'" vs-g.criteria)
+          (mvWorkspace "'3:term'" vs-g.criteria)
+          (mvWorkspace "4" vs-g.criteria)
+          (mvWorkspace "5" vs-g.criteria)
+          (mvWorkspace "6" vs-g.criteria)
+          (mvWorkspace "'7:code'" vs-n.criteria)
+          (mvWorkspace "8" vs-n.criteria)
+          (mvWorkspace "9" vs-n.criteria)
+          (mvWorkspace "'10:web'" vs-n.criteria)
         ];
         outputs = [
           {
