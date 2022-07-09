@@ -636,6 +636,18 @@ config.set("colors.webpage.preferred_color_scheme", "dark")
         ];
       };
       framework-docked-home = {
+        exec = [
+          "${pkgs.sway}/bin/swaymsg workspace '1:music', move workspace to output '\"${fd.criteria}\"'"
+          "${pkgs.sway}/bin/swaymsg workspace '2:docs', move workspace to output '\"${vs-g.criteria}\"'"
+          "${pkgs.sway}/bin/swaymsg workspace '3:term', move workspace to output '\"${vs-g.criteria}\"'"
+          "${pkgs.sway}/bin/swaymsg workspace 4, move workspace to output '\"${vs-g.criteria}\"'"
+          "${pkgs.sway}/bin/swaymsg workspace 5, move workspace to output '\"${vs-g.criteria}\"'"
+          "${pkgs.sway}/bin/swaymsg workspace 6, move workspace to output '\"${vs-g.criteria}\"'"
+          "${pkgs.sway}/bin/swaymsg workspace '7:code', move workspace to output '\"${vs-n.criteria}\"'"
+          "${pkgs.sway}/bin/swaymsg workspace 8, move workspace to output '\"${vs-n.criteria}\"'"
+          "${pkgs.sway}/bin/swaymsg workspace 9, move workspace to output '\"${vs-n.criteria}\"'"
+          "${pkgs.sway}/bin/swaymsg workspace '10:web', move workspace to output '\"${vs-n.criteria}\"'"
+        ];
         outputs = [
           {
             criteria = vs-g.criteria; mode = vs-g.mode; scale = vs-g.scale;
