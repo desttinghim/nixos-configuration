@@ -119,33 +119,23 @@ in
       pipewire
       acpi
       arduino
-      ly
+
+      greetd.tuigreet
     ];
   };
 
   hardware.bluetooth.enable = true;
   services.blueman.enable = true;
-  services.xserver.displayManager.job.execCmd = "${pkgs.ly}/bin/ly";
 
-  # services.udev.extraRules = ''
-  #   #the unshielded FTDI cables have difficulty running at full speed
-  #   SUBSYSTEM=="tty", ATTRS{idVendor}=="0403", ATTRS{product}=="TTL232R-3V3", ATTRS{idProduct}=="6001", PROGRAM="/usr/bin/arduino-udev-name -w 2 %k", SYMLINK+="%c", GROUP="plugdev"
-
-  #   #this is a cheap nano where the lazy people didn't program the serial
-  #   SUBSYSTEM=="tty", ATTRS{idVendor}=="0403", ATTRS{product}=="FT232R USB UART", ATTRS{idProduct}=="6001", PROGRAM="/usr/bin/arduino-udev-name -w 2 %k", SYMLINK+="%c", GROUP="plugdev"
-
-  #   #this is a decent nano
-  #   SUBSYSTEM=="tty", ATTRS{idVendor}=="0403", ATTRS{product}=="ARDUINO NANO", ATTRS{idProduct}=="6001", PROGRAM="/usr/bin/arduino-udev-name -w 2 %k", SYMLINK+="%c", GROUP="plugdev"
-
-  #   # Arduino Uno
-  #   SUBSYSTEM=="tty", ATTRS{idVendor}=="2341", ATTRS{idProduct}=="0043", PROGRAM="/usr/bin/arduino-udev-name -w 2 %k", SYMLINK+="%c", GROUP="plugdev"
-
-  #   # dog hunter AG Arduino Uno Rev3
-  #   SUBSYSTEM=="tty", ATTRS{idVendor}=="2a03", ATTRS{idProduct}=="0043", PROGRAM="/usr/bin/arduino-udev-name -w 2 %k", SYMLINK+="%c", GROUP="plugdev"
-
-  #   # Latest 2018 Arduino Nano's from arduino.cc
-  #   SUBSYSTEM=="tty", ATTRS{idVendor}=="0403", ATTRS{idProduct}=="6001 Future Technology Devices International, Ltd FT232 USB-Serial (UART) IC", PROGRAM="/usr/bin/arduino-udev-name -w 2 %k", SYMLINK+="%c", GROUP="plugdev"
-  # '';
+  services.greetd = {
+    enable = true;
+    settings = {
+      default_session = {
+        command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --cmd sway";
+        user = "greeter";
+      };
+    };
+  };
 
   # Optional but recommended for pipewire
   security.rtkit.enable = true;
