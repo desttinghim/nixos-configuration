@@ -113,7 +113,6 @@
         layer = "top";
         position = "bottom";
         height = 24;
-        output = [ "eDP-1" "DP-7" ];
         modules-left = [ "sway/workspaces" ];
         modules-center = [ "sway/window" ];
         modules-right = [ "pulseaudio" "network" "battery" "clock" "tray" ];
