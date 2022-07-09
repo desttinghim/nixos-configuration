@@ -52,6 +52,7 @@
     kicad-small
     ripgrep
     emacs
+    sqlite
 
     # File Management
     unzip
