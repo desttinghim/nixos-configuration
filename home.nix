@@ -19,12 +19,42 @@
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 
+  # Add ~/.local/bin to my PATH
+  home.sessionPath = [ "$HOME/.local/bin" ];
+
+  nixpkgs.config.allowUnfree = true;
+
+  home.pointerCursor = {
+    name = "Dracula-cursors";
+    package = pkgs.dracula-theme;
+    size = 12;
+  };
+
+  # gtk theming
+  gtk = {
+    enable = true;
+    theme = {
+      name = "Dracula";
+      package = pkgs.dracula-theme;
+    };
+    iconTheme = {
+      name = "Papirus-Dark";
+      package = pkgs.papirus-icon-theme;
+    };
+    font = {
+      name = "FiraCode Nerd Font Mono Medium";
+    };
+  };
+
   # Apps I don't care to configure
   home.packages = with pkgs; [ 
     # Terminal
-    btop 
-    zellij
+    btop
     ranger
+    zellij
+
+    # Editors
+    emacs
     helix
 
     # Video/Audio
@@ -37,38 +67,65 @@
     libnotify
     libappindicator-gtk3
     light
+    ripgrep
+    sqlite
 
     # Apps
-    chromium
-    element-desktop
-    syncthing
     bitwarden
+    element-desktop
+    okular
     reaper
     solaar
-    dia
     zathura
-    okular
-    libreoffice
-    kicad-small
-    ripgrep
-    emacs
-    sqlite
 
     # File Management
     unzip
     unrar
   ];
 
+  # Services, sorted alphabetically
   services.emacs = {
     enable = true;
     startWithUserSession = true;
   };
 
-  nixpkgs.config = {
-    allowUnfree = true;
+  services.kanshi = {
+    enable = true;
+    systemdTarget = "sway-session.target";
+    profiles = (import ./kanshi/profiles.nix pkgs);
   };
 
-  home.sessionPath = [ "$HOME/.local/bin" ];
+  services.mpris-proxy.enable = true;
+  services.swayidle.enable = true;
+  services.syncthing.enable = true;
+
+  # Programs, sorted alphabetically
+  programs.alacritty = {
+    enable = true;
+    settings = import ./alacritty.nix;
+  };
+
+  programs.firefox = {
+    enable = true;
+    # TODO: Add nur so addons can be managed by nix
+    package = pkgs.wrapFirefox pkgs.firefox-unwrapped {
+      forceWayland = true;
+      extraPolicies = {
+        ExtensionSettings = {};
+      };
+    };
+  };
+
+  programs.foot = {
+    enable = true;
+    settings = import ./foot.nix;
+  };
+
+  programs.gh = {
+    enable = true;
+    enableGitCredentialHelper = true;
+    settings.git_protocol = "https";
+  };
 
   programs.git = {
     enable = true;
@@ -98,41 +155,6 @@
     ];
   };
 
-  programs.gh = {
-    enable = true;
-    enableGitCredentialHelper = true;
-    settings.git_protocol = "https";
-  };
-
-  programs.waybar = {
-    enable = true;
-    systemd.enable = true;
-    systemd.target = "sway-session.target";
-    style = ./waybar/style.css;
-    settings = import ./waybar;
-  };
-
-  programs.alacritty = {
-    enable = true;
-    settings = import ./alacritty.nix;
-  };
-
-  programs.foot = {
-    enable = true;
-    settings = import ./foot.nix;
-  };
-
-  programs.firefox = {
-    enable = true;
-    # TODO: Add nur so addons can be managed by nix
-    package = pkgs.wrapFirefox pkgs.firefox-unwrapped {
-      forceWayland = true;
-      extraPolicies = {
-        ExtensionSettings = {};
-      };
-    };
-  };
-
   programs.qutebrowser = {
     enable = true;
     settings = {
@@ -141,38 +163,11 @@
     extraConfig = builtins.readFile ./qutebrowser/extraConfig.py;
   };
 
-  services.kanshi = {
+  programs.waybar = {
     enable = true;
-    systemdTarget = "sway-session.target";
-    profiles = (import ./kanshi/profiles.nix pkgs);
-  };
-
-  services.mpris-proxy.enable = true;
-  services.swayidle.enable = true;
-
-  services.syncthing = {
-    enable = true;
-    tray.enable = true;
-  };
-
-  home.pointerCursor = {
-    name = "Dracula-cursors";
-    package = pkgs.dracula-theme;
-    size = 12;
-  };
-
-  gtk = {
-    enable = true;
-    theme = {
-      name = "Dracula";
-      package = pkgs.dracula-theme;
-    };
-    iconTheme = {
-      name = "Papirus-Dark";
-      package = pkgs.papirus-icon-theme;
-    };
-    font = {
-      name = "FiraCode Nerd Font Mono Medium";
-    };
+    systemd.enable = true;
+    systemd.target = "sway-session.target";
+    style = ./waybar/style.css;
+    settings = import ./waybar;
   };
 }
