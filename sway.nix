@@ -1,3 +1,4 @@
+options:
 { config, pkgs, fetchurl, ... }:
 
 let 
@@ -5,26 +6,33 @@ let
 
   # Mod4 for Super
   # Mod1 for Alt
-  modifier = "Mod4";
+  modifier = options.modifier or "Mod4";
   left = "h";
   down = "j";
   up = "k";
   right = "l";
   resizeAmount = "10px";
-  menu = "wofi --show=drun --lines=5 --prompt=''";
-  terminal = "foot";
+  menu = options.menu or "wofi --show=drun --lines=5 --prompt=''";
+  terminal = options.terminal or "foot";
 in {
   home = {
-    file = {
-      # "./config/sway/background.png".source = background;
-      # "./config/sway/idle.sh".source = ./idle.sh;
-      # "./config/sway/drive-mount.sh".source = ./drive-mount.sh;
-      # "./config/sway/drive-unmount.sh".source = ./drive-unmount.sh;
-      # "./config/sway/screenshot.sh".source = ./screenshot.sh;
-      # "./config/sway/lock.sh".source = ./lock.sh;
-    };
     packages = with pkgs; [
-      waybar wofi wofi-emoji slurp grim swappy swaylock-effects notify-desktop mako libappindicator gnome.zenity kanshi clipman polkit_gnome playerctl pulseaudio
+      waybar
+      wofi
+      wofi-emoji
+      slurp
+      grim
+      swappy
+      swaylock-effects
+      notify-desktop
+      mako
+      libappindicator
+      gnome.zenity
+      kanshi
+      wl-clipboard
+      polkit_gnome
+      playerctl
+      pulseaudio
     ];
   };
   wayland.windowManager.sway = {

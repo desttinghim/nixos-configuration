@@ -20,7 +20,14 @@
   programs.home-manager.enable = true;
 
   # Add ~/.local/bin to my PATH
-  home.sessionPath = [ "$HOME/.local/bin" ];
+  home.sessionPath = [ "$HOME/.local/bin" "$HOME/.config/emacs/bin" ];
+
+  home.file = {
+    ".config/doom/config.el".source = ./doom.d/config.el;
+    ".config/doom/dialog.el".source = ./doom.d/dialog.el;
+    ".config/doom/init.el".source = ./doom.d/init.el;
+    ".config/doom/packages.el".source = ./doom.d/packages.el;
+  };
 
   nixpkgs.config.allowUnfree = true;
 

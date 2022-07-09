@@ -9,9 +9,9 @@
 (setq doom-font
       (font-spec :name "Source Code Pro"
                  :family "monospace"
-                 :size 13))
+                 :size 14))
 (setq doom-variable-pitch-font
-      (font-spec :name "Overpass" :family "sans" :size 13))
+      (font-spec :name "Overpass" :family "sans" :size 14))
 
 ;; nil -> no line numbers, t -> absolute, or 'relative
 (setq display-line-numbers-type 'relative)

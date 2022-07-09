@@ -37,6 +37,10 @@
           inherit pkgs;
           modules = [
             ({ config, pkgs, ... }: { nixpkgs.overlays = [ overlay-unstable ]; })
+            (import ./sway.nix {
+              terminal = "alacritty";
+              modifier = "Mod4";
+            })
             ./home.nix
           ];
         };
