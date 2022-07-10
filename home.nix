@@ -29,8 +29,6 @@
     ".config/doom/packages.el".source = ./doom.d/packages.el;
   };
 
-  nixpkgs.config.allowUnfree = true;
-
   home.pointerCursor = {
     name = "Dracula-cursors";
     package = pkgs.dracula-theme;
@@ -77,6 +75,7 @@
     mpris-scrobbler
     ripgrep
     sqlite
+    xdg-utils
 
     # Apps
     bitwarden
@@ -118,6 +117,10 @@
   programs.alacritty = {
     enable = true;
     settings = import ./alacritty.nix;
+  };
+
+  programs.chromium = {
+    enable = true;
   };
 
   programs.firefox = {
