@@ -102,6 +102,13 @@
     profiles = (import ./kanshi/profiles.nix pkgs);
   };
 
+  services.wlsunset = {
+    enable = true;
+    latitude = "42";
+    longitude = "-112";
+    systemdTarget = "sway-session.target";
+  };
+
   services.mpris-proxy.enable = true;
   services.swayidle.enable = true;
   services.syncthing.enable = true;
