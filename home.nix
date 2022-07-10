@@ -74,6 +74,7 @@
     libnotify
     libappindicator-gtk3
     light
+    mpris-scrobbler
     ripgrep
     sqlite
 
