@@ -125,6 +125,9 @@
       # TODO: learn how to manage secrets with nix
       # The username/password need to be added manually for now
       scrobbler.enabled = true;
+      local = {
+        media_dir = "/home/desttinghim/Music";
+      };
     };
   };
 
