@@ -66,7 +66,6 @@
     feh
     mpv
     pavucontrol
-    snapcast
     vlc
 
     # Dependencies
@@ -118,10 +117,14 @@
       mopidy-iris
       mopidy-local
       mopidy-podcast
+      mopidy-scrobbler
     ];
     settings = {
       mpd.hostname = "::";
       ytmusic.auth_json = "/home/desttinghim/.config/mopidy/ytmusic/auth.json";
+      # TODO: learn how to manage secrets with nix
+      # The username/password need to be added manually for now
+      scrobbler.enabled = true;
     };
   };
 
