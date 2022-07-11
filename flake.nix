@@ -58,12 +58,23 @@
           ];
         });
       };
+
+      overlay-mopidy-ytmusic = final: prev: {
+        mopidy-ytmusic = prev.mopidy-ytmusic.overrideAttrs (old: rec {
+          src = prev.fetchFromGitHub {
+            owner = "kmac";
+            repo = "mopidy-ytmusic";
+            rev = "ytmusicapi-0.22.0";
+            sha256 = "sha256-cxLum/QS8bV7s5zUoBkP8I05PO7F1xi8IKtSr5dwHH4=";
+          };
+        });
+      };
     in {
       homeConfigurations = {
         desttinghim = home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
           modules = [
-            ({ config, pkgs, ... }: { nixpkgs.overlays = [ overlay-unstable overlay-mpris-scrobbler ]; })
+            ({ config, pkgs, ... }: { nixpkgs.overlays = [ overlay-unstable overlay-mpris-scrobbler overlay-mopidy-ytmusic ]; })
             (import ./sway.nix {
               terminal = "alacritty";
               modifier = "Mod4";

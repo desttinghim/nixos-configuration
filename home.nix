@@ -66,6 +66,7 @@
     feh
     mpv
     pavucontrol
+    snapcast
     vlc
 
     # Dependencies
@@ -107,6 +108,21 @@
     latitude = "42";
     longitude = "-112";
     systemdTarget = "sway-session.target";
+  };
+
+  services.mopidy = {
+    enable = true;
+    extensionPackages = with pkgs; [
+      mopidy-mpris
+      mopidy-ytmusic
+      mopidy-iris
+      mopidy-local
+      mopidy-podcast
+    ];
+    settings = {
+      mpd.hostname = "::";
+      ytmusic.auth_json = "/home/desttinghim/.config/mopidy/ytmusic/auth.json";
+    };
   };
 
   services.mpris-proxy.enable = true;
