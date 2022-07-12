@@ -75,6 +75,7 @@
     mpris-scrobbler
     ripgrep
     sqlite
+    texlive.combined.scheme-basic
     xdg-utils
 
     # Apps
