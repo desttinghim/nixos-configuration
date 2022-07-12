@@ -20,13 +20,14 @@ let
     scale = 1.0;
   };
   wasatch-display = {
-    criteria = "'Hewlett Packard HP 2210 CNT023F556'";
+    criteria = "Hewlett Packard HP 2210 CNT023F556";
     mode = "1920x1080";
     scale = 1.0;
   };
   virtual-display = {
-    criteria = "'Virtual-1'";
+    criteria = "Virtual-1";
     mode = "1440x900";
+    scale = 1.0;
   };
   mvWorkspace = ws: criteria:
     "${pkgs.sway}/bin/swaymsg workspace ${ws}, move workspace to output '\"${criteria}\"'";
@@ -51,30 +52,25 @@ in
       (mvWorkspace "'10:web'" vs-n.criteria)
     ];
     outputs = [
-      {
-        criteria = vs-g.criteria; mode = vs-g.mode; scale = vs-g.scale;
+      (vs-g // {
         position = "0,0";
-      }
-      {
-        criteria = fd.criteria; mode = fd.mode; scale = fd.scale;
+      })
+      (fd // {
         position = "1920,0";
-      }
-      {
-        criteria = vs-n.criteria; mode = vs-n.mode; scale = vs-n.scale;
+      })
+      (vs-n // {
         position = "3484,0";
-      }
+      })
     ];
   };
   framework-docked-wasatch = {
     outputs = [
-      {
-        criteria = fd.criteria; mode = fd.mode; scale = fd.scale;
+      (fd // {
         position = "1920,0";
-      }
-      {
-        criteria = wasatch-display.criteria; mode = wasatch-display.mode; scale = wasatch-display.scale;
+      })
+      (wasatch-display // {
         position = "0,0";
-      }
+      })
     ];
   };
   thinkpad = {
