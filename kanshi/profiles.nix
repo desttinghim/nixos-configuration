@@ -35,7 +35,7 @@ in
 {
   framework = {
     outputs = [
-      { criteria = fd.criteria; mode = fd.mode; scale = fd.scale; }
+      (fd // {})
     ];
   };
   framework-docked-home = {
