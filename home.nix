@@ -1,5 +1,14 @@
 { config, pkgs, ... }:
 
+let
+  tex = (pkgs.texlive.combine {
+    inherit (pkgs.texlive) scheme-basic
+      dvisvgm dvipng # for preview and export as html
+      wrapfig amsmath ulem hyperref capt-of;
+      #(setq org-latex-compiler "lualatex")
+      #(setq org-preview-latex-default-process 'dvisvgm)
+  });
+in
 {
   # Home Manager needs a bit of information about you and the
   # paths it should manage.
@@ -75,7 +84,7 @@
     mpris-scrobbler
     ripgrep
     sqlite
-    texlive.combined.scheme-basic
+    tex # defined at top of file
     xdg-utils
 
     # Apps
