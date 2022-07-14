@@ -4,7 +4,9 @@ let
   tex = (pkgs.texlive.combine {
     inherit (pkgs.texlive) scheme-basic
       dvisvgm dvipng # for preview and export as html
-      wrapfig amsmath ulem hyperref capt-of metafont;
+      wrapfig amsmath ulem hyperref capt-of metafont
+      pdflscape pdfpages # for including pdfs in latex
+    ;
   });
 in
 {
