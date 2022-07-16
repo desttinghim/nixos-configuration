@@ -67,15 +67,21 @@ in
     ranger
     zellij
 
+    # Editor LSP support
+    clang-tools
+
     # Editors
     emacs
     helix
+    hicolor-icon-theme
+    unstable.lapce
 
     # Video/Audio
     feh
     mpv
     pavucontrol
     vlc
+    mopidy
 
     # Dependencies
     libnotify
@@ -103,6 +109,7 @@ in
     # File Management
     unzip
     unrar
+    unar
   ];
 
   # Services, sorted alphabetically
@@ -136,12 +143,21 @@ in
     ];
     settings = {
       mpd.hostname = "::";
-      ytmusic.auth_json = "/home/desttinghim/.config/mopidy/ytmusic/auth.json";
+      ytmusic = {
+        enabled = true;
+        enable_history = true;
+        enable_scrobbling = true;
+        auth_json = "/home/desttinghim/.config/mopidy/ytmusic/auth.json";
+      };
       # TODO: learn how to manage secrets with nix
       # The username/password need to be added manually for now
-      scrobbler.enabled = true;
+      scrobbler.enabled = false;
+      # NOTE: Local has a mopidy-scan.service file that needs to be run to
+      # update. The local scan button in Iris can't be used. Rerun with the following command:
+      # systemctl --user start mopidy-scan
+      # TODO: automate this
       local = {
-        media_dir = "/home/desttinghim/Music";
+        media_dir = "~/Music";
       };
     };
   };
