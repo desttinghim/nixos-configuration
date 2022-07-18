@@ -167,6 +167,12 @@ in
     ];
     settings = {
       mpd.hostname = "::";
+      # See here for process to get ytmusic auth info:
+      # https://ytmusicapi.readthedocs.io/en/latest/setup.html
+      # See here for info on brand accounts (apparently I use one?):
+      # https://ytmusicapi.readthedocs.io/en/latest/faq.html
+      # Finally, add "X-Goog-PageId" from the request header. This is
+      # the same as the brand id.
       ytmusic = {
         enabled = true;
         enable_history = true;
