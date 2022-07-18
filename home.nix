@@ -8,6 +8,26 @@ let
       pdflscape pdfpages # for including pdfs in latex
     ;
   });
+  mopidy-bandcamp = pkgs.python3Packages.buildPythonApplication rec {
+    name = "mopidy-bandcamp";
+    version = "1.1.5";
+    src = pkgs.fetchFromGitHub {
+      owner = "impliedchaos";
+      repo = "mopidy-bandcamp";
+      rev = "v${version}";
+      sha256 = "sha256-Dl/ge3B2/tHKAY1DhD4XVbZWTrVfcQyo8lXmYQzUm9s=";
+    };
+
+    propagatedBuildInputs = with pkgs.python3Packages; [ pkgs.mopidy pykka ];
+
+    doCheck = false;
+
+    meta = with pkgs.lib; {
+      description = "Mopidy extension for playing music from bandcamp";
+      license = licenses.mit;
+      maintainers = [ ];
+    };
+  };
 in
 {
   # Home Manager needs a bit of information about you and the
@@ -134,6 +154,7 @@ in
   services.mopidy = {
     enable = true;
     extensionPackages = with pkgs; [
+      mopidy-bandcamp
       mopidy-mpris
       mopidy-ytmusic
       mopidy-iris
@@ -141,25 +162,6 @@ in
       mopidy-podcast
       mopidy-scrobbler
     ];
-    settings = {
-      mpd.hostname = "::";
-      ytmusic = {
-        enabled = true;
-        enable_history = true;
-        enable_scrobbling = true;
-        auth_json = "/home/desttinghim/.config/mopidy/ytmusic/auth.json";
-      };
-      # TODO: learn how to manage secrets with nix
-      # The username/password need to be added manually for now
-      scrobbler.enabled = false;
-      # NOTE: Local has a mopidy-scan.service file that needs to be run to
-      # update. The local scan button in Iris can't be used. Rerun with the following command:
-      # systemctl --user start mopidy-scan
-      # TODO: automate this
-      local = {
-        media_dir = "~/Music";
-      };
-    };
   };
 
   services.mpris-proxy.enable = true;
