@@ -153,6 +153,9 @@ in
 
   services.mopidy = {
     enable = true;
+    # This adds the file mopidy-secrets.conf to the config search path.
+    # The files are combined, with later files overriding earlier ones
+    extraConfigFiles = [ "${config.xdg.configHome}/mopidy/mopidy-secrets.conf" ];
     extensionPackages = with pkgs; [
       mopidy-bandcamp
       mopidy-mpris
@@ -162,6 +165,23 @@ in
       mopidy-podcast
       mopidy-scrobbler
     ];
+    settings = {
+      mpd.hostname = "::";
+      ytmusic = {
+        enabled = true;
+        enable_history = true;
+        enable_scrobbling = true;
+        auth_json = "/home/desttinghim/.config/mopidy/ytmusic/auth.json";
+      };
+      scrobbler.enabled = false;
+      # NOTE: Local has a mopidy-scan.service file that needs to be run to
+      # update. The local scan button in Iris can't be used. Rerun with the following command:
+      # systemctl --user start mopidy-scan
+      # TODO: automate this
+      local = {
+        media_dir = "~/Music";
+      };
+    };
   };
 
   services.mpris-proxy.enable = true;
