@@ -19,10 +19,10 @@
 ;; Org configuration
 (setq org-directory "~/Documents/org/")
 (setq org-journal-file-type 'weekly)
-(add-to-list 'org-capture-templates
-             ("w" "Web site" entry
-              (file "")
-              "* %a :website:\n\n%U %?\n\n%:initial"))
+;; (add-to-list 'org-capture-templates
+;;              ("w" "Web site" entry
+;;               (file "")
+;;               "* %a :website:\n\n%U %?\n\n%:initial"))
 
 ;; Here are some additional functions/macros that could help you configure Doom:
 ;;
