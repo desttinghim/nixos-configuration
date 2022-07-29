@@ -125,6 +125,7 @@ in
     xfce.thunar-media-tags-plugin
     xfce.tumbler
     zathura
+    libreoffice
 
     # File Management
     zip
