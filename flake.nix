@@ -1,5 +1,5 @@
 {
-  description = "A very basic flake";
+  description = "Desttinghim's NixOS Configuration";
 
   inputs = {
     # Use both 22.05 and unstable nixpkgs

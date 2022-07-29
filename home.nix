@@ -127,6 +127,7 @@ in
     zathura
 
     # File Management
+    zip
     unzip
     unrar
     unar
@@ -166,7 +167,10 @@ in
       mopidy-scrobbler
     ];
     settings = {
-      mpd.hostname = "::";
+      iris = {
+        country = "us";
+        locale = "en_US";
+      };
       # See here for process to get ytmusic auth info:
       # https://ytmusicapi.readthedocs.io/en/latest/setup.html
       # See here for info on brand accounts (apparently I use one?):
@@ -260,6 +264,15 @@ in
       colors.webpage.preferred_color_scheme = "dark";
     };
     extraConfig = builtins.readFile ./qutebrowser/extraConfig.py;
+  };
+
+  programs.vscode = {
+    enable = true;
+    extensions = with pkgs.vscode-extensions; [
+      dracula-theme.theme-dracula
+      vscodevim.vim
+      yzhang.markdown-all-in-one
+    ];
   };
 
   programs.waybar = {
