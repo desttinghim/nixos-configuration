@@ -133,6 +133,7 @@ in
     unrar
     unar
     soundconverter
+    picard
   ];
 
   # Services, sorted alphabetically
