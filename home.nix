@@ -132,6 +132,7 @@ in
     unzip
     unrar
     unar
+    soundconverter
   ];
 
   # Services, sorted alphabetically
