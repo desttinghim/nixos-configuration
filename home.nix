@@ -75,9 +75,9 @@ in
       name = "Papirus-Dark";
       package = pkgs.papirus-icon-theme;
     };
-    font = {
-      name = "FiraCode Nerd Font Mono Medium";
-    };
+    # font = {
+    #   name = "FiraCode Nerd Font Mono Medium";
+    # };
   };
 
   # Apps I don't care to configure
@@ -108,6 +108,8 @@ in
     libappindicator-gtk3
     light
     mpris-scrobbler
+    nodejs
+    nodePackages.npm
     ripgrep
     sqlite
     tex # defined at top of file
