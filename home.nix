@@ -121,6 +121,7 @@ in
     okular
     reaper
     solaar
+    torrential
     xfce.thunar
     xfce.thunar-volman
     xfce.thunar-archive-plugin
