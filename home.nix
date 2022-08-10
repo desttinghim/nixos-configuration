@@ -111,6 +111,8 @@ in
     # Apps
     bitwarden
     element-desktop
+    godot
+    godot-export-templates
     okular
     reaper
     solaar
