@@ -49,7 +49,7 @@ in
   programs.home-manager.enable = true;
 
   # Add ~/.local/bin to my PATH
-  home.sessionPath = [ "$HOME/.local/bin" "$HOME/.config/emacs/bin" ];
+  home.sessionPath = [ "$HOME/.local/bin" "$HOME/.config/emacs/bin" "$HOME/.cargo/bin" ];
 
   home.pointerCursor = {
     name = "Dracula-cursors";
@@ -97,23 +97,29 @@ in
     mopidy
 
     # Dependencies
+    dotnet-sdk
     libnotify
     libappindicator-gtk3
     light
     mpris-scrobbler
     nodejs
     nodePackages.npm
-    ripgrep
-    sqlite
     tex # defined at top of file
     xdg-utils
+
+    # Doom emacs
+    ripgrep
+    sqlite
+    wordnet
 
     # Apps
     bitwarden
     element-desktop
+    flameshot
     godot
     godot-export-templates
     okular
+    pixelorama
     reaper
     solaar
     torrential
