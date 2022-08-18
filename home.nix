@@ -111,6 +111,8 @@ in
     ripgrep
     sqlite
     wordnet
+    mu
+    isync
 
     # Apps
     bitwarden
