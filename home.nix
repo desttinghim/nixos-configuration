@@ -113,6 +113,8 @@ in
     wordnet
     mu
     isync
+    gnupg
+    pinentry-curses
 
     # Apps
     bitwarden
@@ -132,6 +134,7 @@ in
     xfce.tumbler
     zathura
     libreoffice
+    libresprite
 
     # File Management
     zip
