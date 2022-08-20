@@ -135,6 +135,8 @@ in
     zathura
     libreoffice
     libresprite
+    zrythm
+    lmms
 
     # File Management
     zip
