@@ -79,6 +79,7 @@ in
     btop
     ranger
     zellij
+    entr # re run commands when files change
 
     # Editor LSP support
     clang-tools
@@ -135,8 +136,8 @@ in
     zathura
     libreoffice
     libresprite
-    zrythm
     lmms
+    inkscape
 
     # File Management
     zip
