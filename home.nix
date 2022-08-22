@@ -80,6 +80,8 @@ in
     ranger
     zellij
     entr # re run commands when files change
+    tldr
+    silver-searcher
 
     # Editor LSP support
     clang-tools
