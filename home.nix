@@ -109,6 +109,8 @@ in
     nodePackages.npm
     tex # defined at top of file
     xdg-utils
+    wine
+    winetricks
 
     # Doom emacs
     ripgrep
