@@ -49,7 +49,7 @@ in
   programs.home-manager.enable = true;
 
   # Add ~/.local/bin to my PATH
-  home.sessionPath = [ "$HOME/.local/bin" "$HOME/.config/emacs/bin" "$HOME/.cargo/bin" ];
+  home.sessionPath = [ "$HOME/.local/bin" "$HOME/.config/emacs/bin" "$HOME/.cargo/bin" "$HOME/.bun/bin" ];
 
   home.pointerCursor = {
     name = "Dracula-cursors";
@@ -109,8 +109,7 @@ in
     nodePackages.npm
     tex # defined at top of file
     xdg-utils
-    wine
-    winetricks
+    bottles
 
     # Doom emacs
     ripgrep
@@ -142,6 +141,7 @@ in
     libresprite
     lmms
     inkscape
+    zeal
 
     # File Management
     zip
@@ -255,7 +255,7 @@ in
     userEmail = "opensource@louispearson.work";
     userName = "Louis Pearson";
     extraConfig = {
-      core.defaultBranch = "main";
+      init.defaultBranch = "main";
     };
   };
 
