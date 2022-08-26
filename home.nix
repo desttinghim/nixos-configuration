@@ -139,7 +139,7 @@ in
     zathura
     libreoffice
     libresprite
-    lmms
+    ardour
     inkscape
     zeal
 
