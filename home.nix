@@ -98,6 +98,7 @@ in
     pavucontrol
     vlc
     mopidy
+    qjackctl
 
     # Dependencies
     dotnet-sdk
