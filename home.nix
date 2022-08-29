@@ -128,6 +128,7 @@ in
     godot
     godot-export-templates
     okular
+    obs-studio
     pixelorama
     reaper
     solaar
