@@ -16,15 +16,11 @@
     nc-emacs.url = "github:nix-community/emacs-overlay/master";
     nix-doom-emacs.url = "github:vlaci/nix-doom-emacs";
 
-    zig.url = "github:arqv/zig-overlay";
+    zig.url = "github:mitchellh/zig-overlay";
     zig.inputs.nixpkgs.follows = "nixpkgs";
-
-    zls.url = "github:zigtools/zls";
-    zls.inputs.nixpkgs.follows = "nixpkgs";
-    zls.inputs.zig-overlay.follows = "zig";
   };
 
-  outputs = { self, nixpkgs, home-manager, nix-doom-emacs, nixpkgs-unstable, nc-emacs, zig, zls }:
+  outputs = { self, nixpkgs, home-manager, nix-doom-emacs, nixpkgs-unstable, nc-emacs, zig }:
     let
       system = "x86_64-linux";
 
@@ -90,8 +86,7 @@
             # ZIG
             ({ ... }: {
               home.packages = [
-                zig.packages.${system}.master.latest
-                zls.packages.${system}.zls
+                zig.packages.${system}.master
               ];
             })
           ];
