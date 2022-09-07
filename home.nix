@@ -111,6 +111,9 @@ in
     tex # defined at top of file
     xdg-utils
     bottles
+    soundfont-fluid
+    soundfont-generaluser
+    x42-gmsynth
 
     # Doom emacs
     ripgrep
