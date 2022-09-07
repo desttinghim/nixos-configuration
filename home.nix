@@ -114,6 +114,7 @@ in
     soundfont-fluid
     soundfont-generaluser
     x42-gmsynth
+    geonkick
 
     # Doom emacs
     ripgrep
