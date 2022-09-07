@@ -144,6 +144,8 @@ in
     ardour
     inkscape
     zeal
+    sunvox
+    polyphone
 
     # File Management
     zip
