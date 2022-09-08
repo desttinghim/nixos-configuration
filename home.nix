@@ -288,6 +288,8 @@ in
   programs.qutebrowser = {
     enable = true;
     settings = {
+      colors.webpage.darkmode.enabled = true;
+      colors.webpage.darkmode.policy.page = "always";
       colors.webpage.preferred_color_scheme = "dark";
     };
     extraConfig = builtins.readFile ./qutebrowser/extraConfig.py;
