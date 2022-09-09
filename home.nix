@@ -150,6 +150,7 @@ in
     zeal
     sunvox
     polyphone
+    sonic-visualiser
 
     # File Management
     zip
