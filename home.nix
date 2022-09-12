@@ -124,6 +124,12 @@ in
     isync
     gnupg
     pinentry-curses
+    cmake # vterm, c/c++
+    editorconfig-core-c
+    irony-server
+    glslang
+    rtags
+
 
     # Apps
     bitwarden
