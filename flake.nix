@@ -8,7 +8,7 @@
 
     # Setup home manager as a module
     home-manager = {
-      url = "github:nix-community/home-manager";
+      url = "github:nix-community/home-manager/release-22.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -18,9 +18,13 @@
 
     zig.url = "github:mitchellh/zig-overlay";
     zig.inputs.nixpkgs.follows = "nixpkgs";
+
+    zls.url = "github:zigtools/zls";
+    zls.inputs.nixpkgs.follows = "nixpkgs";
+    zls.inputs.zig-overlay.follows = "zig";
   };
 
-  outputs = { self, nixpkgs, home-manager, nix-doom-emacs, nixpkgs-unstable, nc-emacs, zig }:
+  outputs = { self, nixpkgs, home-manager, nix-doom-emacs, nixpkgs-unstable, nc-emacs, zig, zls }:
     let
       system = "x86_64-linux";
 
@@ -76,17 +80,22 @@
       homeConfigurations = {
         desttinghim = home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
-          modules = [
+          inherit system;
+          configuration = import ./home.nix;
+          username = "desttinghim";
+          homeDirectory = "/home/desttinghim";
+          stateVersion = "22.05";
+          extraModules = [
             ({ config, pkgs, ... }: { nixpkgs.overlays = [ overlay-unstable overlay-mpris-scrobbler overlay-mopidy-ytmusic ]; })
             (import ./sway.nix {
               terminal = "alacritty";
               modifier = "Mod4";
             })
-            ./home.nix
             # ZIG
             ({ ... }: {
               home.packages = [
                 zig.packages.${system}.master
+                zls.packages.${system}.zls
               ];
             })
           ];
