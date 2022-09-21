@@ -115,6 +115,9 @@ in
     soundfont-generaluser
     x42-gmsynth
     geonkick
+    qt5.full
+    qtcreator
+    unstable.cargo-tauri
 
     # Doom emacs
     ripgrep
