@@ -66,6 +66,8 @@ in
     extraGroups = [ "networkmanager" "wheel" "input" "video" "audio" "dialout" ];
   };
 
+  users.extraGroups.vboxusers.members = [ "desttinghim" ];
+
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 

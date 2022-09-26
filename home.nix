@@ -83,8 +83,10 @@ in
     tldr
     silver-searcher
 
-    # Editor LSP support
+    # Programming
     clang-tools
+    cargo
+    clang
 
     # Editors
     emacs
@@ -92,13 +94,15 @@ in
     hicolor-icon-theme
     unstable.lapce
 
-    # Video/Audio
+    # Media
     feh
+    flameshot
     mpv
     pavucontrol
     vlc
     mopidy
     qjackctl
+    obs-studio
 
     # Dependencies
     dotnet-sdk
@@ -111,13 +115,6 @@ in
     tex # defined at top of file
     xdg-utils
     bottles
-    soundfont-fluid
-    soundfont-generaluser
-    x42-gmsynth
-    geonkick
-    qt5.full
-    qtcreator
-    unstable.cargo-tauri
 
     # Doom emacs
     ripgrep
@@ -133,16 +130,34 @@ in
     glslang
     rtags
 
-    # Apps
-    bitwarden
+    # Chat
+    unstable.armcord
+    discord
     element-desktop
-    flameshot
+    zoom-us
+    zulip
+
+    # Graphics
+    libresprite
+    inkscape
+
+    # Audio
+    ardour
+    polyphone
+    reaper
+    sonic-visualiser
+    sunvox
+    soundfont-fluid
+    soundfont-generaluser
+    x42-gmsynth
+    geonkick
+
+    # Misc.
+    bitwarden
     godot
     godot-export-templates
     okular
-    obs-studio
     pixelorama
-    reaper
     solaar
     torrential
     xfce.thunar
@@ -152,13 +167,7 @@ in
     xfce.tumbler
     zathura
     libreoffice
-    libresprite
-    ardour
-    inkscape
     zeal
-    sunvox
-    polyphone
-    sonic-visualiser
 
     # File Management
     zip
@@ -292,6 +301,16 @@ in
       { plugin = vim-startify;
         config = "let g:startify_change_to_vcs_root = 0";
       }
+    ];
+  };
+
+  programs.vscode = {
+    enable = true;
+    # package = pkgs.vscodium.fhs;
+    extensions = with pkgs.vscode-extensions; [
+      dracula-theme.theme-dracula
+      vscodevim.vim
+      yzhang.markdown-all-in-one
     ];
   };
 
