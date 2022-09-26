@@ -197,47 +197,47 @@ in
     systemdTarget = "sway-session.target";
   };
 
-  # services.mopidy = {
-  #   enable = true;
-  #   # This adds the file mopidy-secrets.conf to the config search path.
-  #   # The files are combined, with later files overriding earlier ones
-  #   extraConfigFiles = [ "${config.xdg.configHome}/mopidy/mopidy-secrets.conf" ];
-  #   extensionPackages = with pkgs; [
-  #     mopidy-bandcamp
-  #     mopidy-mpris
-  #     mopidy-ytmusic
-  #     mopidy-iris
-  #     mopidy-local
-  #     mopidy-podcast
-  #     mopidy-scrobbler
-  #   ];
-  #   settings = {
-  #     iris = {
-  #       country = "us";
-  #       locale = "en_US";
-  #     };
-  #     # See here for process to get ytmusic auth info:
-  #     # https://ytmusicapi.readthedocs.io/en/latest/setup.html
-  #     # See here for info on brand accounts (apparently I use one?):
-  #     # https://ytmusicapi.readthedocs.io/en/latest/faq.html
-  #     # Finally, add "X-Goog-PageId" from the request header. This is
-  #     # the same as the brand id.
-  #     ytmusic = {
-  #       enabled = true;
-  #       enable_history = true;
-  #       enable_scrobbling = true;
-  #       auth_json = "/home/desttinghim/.config/mopidy/ytmusic/auth.json";
-  #     };
-  #     scrobbler.enabled = false;
-  #     # NOTE: Local has a mopidy-scan.service file that needs to be run to
-  #     # update. The local scan button in Iris can't be used. Rerun with the following command:
-  #     # systemctl --user start mopidy-scan
-  #     # TODO: automate this
-  #     local = {
-  #       media_dir = "~/Music";
-  #     };
-  #   };
-  # };
+  services.mopidy = {
+    enable = true;
+    # This adds the file mopidy-secrets.conf to the config search path.
+    # The files are combined, with later files overriding earlier ones
+    # extraConfigFiles = [ "${config.xdg.configHome}/mopidy/mopidy-secrets.conf" ];
+    extensionPackages = with pkgs; [
+      mopidy-bandcamp
+      mopidy-mpris
+      mopidy-ytmusic
+      mopidy-iris
+      mopidy-local
+      mopidy-podcast
+      mopidy-scrobbler
+    ];
+    settings = {
+      iris = {
+        country = "us";
+        locale = "en_US";
+      };
+      # See here for process to get ytmusic auth info:
+      # https://ytmusicapi.readthedocs.io/en/latest/setup.html
+      # See here for info on brand accounts (apparently I use one?):
+      # https://ytmusicapi.readthedocs.io/en/latest/faq.html
+      # Finally, add "X-Goog-PageId" from the request header. This is
+      # the same as the brand id.
+      ytmusic = {
+        enabled = true;
+        enable_history = true;
+        enable_scrobbling = true;
+        auth_json = "/home/desttinghim/.config/mopidy/ytmusic/auth.json";
+      };
+      scrobbler.enabled = false;
+      # NOTE: Local has a mopidy-scan.service file that needs to be run to
+      # update. The local scan button in Iris can't be used. Rerun with the following command:
+      # systemctl --user start mopidy-scan
+      # TODO: automate this
+      local = {
+        media_dir = "~/Music";
+      };
+    };
+  };
 
   services.mpris-proxy.enable = true;
   services.swayidle.enable = true;
