@@ -87,6 +87,8 @@ in
     clang-tools
     cargo
     clang
+    lua53Packages.luacheck
+    sumneko-lua-language-server
 
     # Editors
     emacs
