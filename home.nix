@@ -294,14 +294,14 @@ in
     viAlias = true;
     vimAlias = true;
     vimdiffAlias = true;
-    plugins = with pkgs.vimPlugins; [
-      yankring
-      vim-nix
-      zig-vim
-      { plugin = vim-startify;
-        config = "let g:startify_change_to_vcs_root = 0";
-      }
-    ];
+    # plugins = with pkgs.vimPlugins; [
+    #   yankring
+    #   vim-nix
+    #   zig-vim
+    #   { plugin = vim-startify;
+    #     config = "let g:startify_change_to_vcs_root = 0";
+    #   }
+    # ];
   };
 
   programs.vscode = {
