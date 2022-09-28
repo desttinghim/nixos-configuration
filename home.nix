@@ -170,6 +170,7 @@ in
     zathura
     libreoffice
     zeal
+    qalculate-gtk
 
     # File Management
     zip
