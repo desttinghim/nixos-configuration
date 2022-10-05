@@ -63,10 +63,8 @@ in
   users.users.desttinghim = {
     isNormalUser = true;
     description = "Louis Pearson";
-    extraGroups = [ "networkmanager" "wheel" "input" "video" "audio" "dialout" ];
+    extraGroups = [ "networkmanager" "wheel" "input" "video" "audio" "dialout" "vboxusers" ];
   };
-
-  users.extraGroups.vboxusers.members = [ "desttinghim" ];
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
@@ -113,6 +111,8 @@ in
     enable = true;
     wrapperFeatures.gtk = true;
   };
+
+  programs.dconf.enable = true;
 
   # Services
   services.blueman.enable = true;

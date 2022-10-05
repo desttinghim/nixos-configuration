@@ -85,13 +85,15 @@ in
 
     # Programming
     clang-tools
-    cargo
+    unstable.cargo
     clang
     lua53Packages.luacheck
     sumneko-lua-language-server
 
     # Editors
     emacs
+    vim
+    neovim
     helix
     hicolor-icon-theme
     unstable.lapce
@@ -117,6 +119,8 @@ in
     tex # defined at top of file
     xdg-utils
     bottles
+    bluez
+    unstable.bluetuith
 
     # Doom emacs
     ripgrep
@@ -290,21 +294,6 @@ in
 
   programs.gitui = {
     enable = true;
-  };
-
-  programs.neovim = {
-    enable = true;
-    viAlias = true;
-    vimAlias = true;
-    vimdiffAlias = true;
-    # plugins = with pkgs.vimPlugins; [
-    #   yankring
-    #   vim-nix
-    #   zig-vim
-    #   { plugin = vim-startify;
-    #     config = "let g:startify_change_to_vcs_root = 0";
-    #   }
-    # ];
   };
 
   programs.vscode = {
