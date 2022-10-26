@@ -86,6 +86,7 @@ in
     # Programming
     clang-tools
     unstable.cargo
+    unstable.rustfmt
     clang
     lua53Packages.luacheck
     sumneko-lua-language-server

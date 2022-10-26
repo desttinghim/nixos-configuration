@@ -63,7 +63,7 @@ in
   users.users.desttinghim = {
     isNormalUser = true;
     description = "Louis Pearson";
-    extraGroups = [ "networkmanager" "wheel" "input" "video" "audio" "dialout" "vboxusers" ];
+    extraGroups = [ "networkmanager" "wheel" "input" "video" "audio" "dialout" "vboxusers" "plugdev" ];
   };
 
   # Allow unfree packages
