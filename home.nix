@@ -82,6 +82,7 @@ in
     entr # re run commands when files change
     tldr
     silver-searcher
+    bashmount
 
     # Programming
     clang-tools
