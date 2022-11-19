@@ -185,6 +185,8 @@ in
     unar
     soundconverter
     picard
+    uget
+    uget-integrator
   ];
 
   # Services, sorted alphabetically
