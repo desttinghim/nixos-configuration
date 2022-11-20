@@ -165,6 +165,7 @@ in
     godot
     godot-export-templates
     okular
+    pdftk
     pixelorama
     solaar
     torrential
