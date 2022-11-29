@@ -177,6 +177,7 @@ in
     zathura
     libreoffice
     zeal
+    imv
     qalculate-gtk
 
     # File Management
