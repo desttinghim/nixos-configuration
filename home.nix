@@ -179,6 +179,7 @@ in
     zeal
     imv
     qalculate-gtk
+    okteta
 
     # File Management
     zip
