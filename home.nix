@@ -81,6 +81,20 @@ in
     silver-searcher
     bashmount
 
+    # Doom emacs
+    ripgrep
+    sqlite
+    wordnet
+    mu
+    isync
+    gnupg
+    pinentry-curses
+    cmake # vterm, c/c++
+    editorconfig-core-c
+    irony-server
+    glslang
+    rtags
+
     # Programming
     clang-tools
     cargo
@@ -88,6 +102,7 @@ in
     clang
     lua53Packages.luacheck
     sumneko-lua-language-server
+    openjdk
 
     # Editors
     emacs
@@ -117,20 +132,6 @@ in
     xdg-utils
     bluez
     unstable.bluetuith
-
-    # Doom emacs
-    ripgrep
-    sqlite
-    wordnet
-    mu
-    isync
-    gnupg
-    pinentry-curses
-    cmake # vterm, c/c++
-    editorconfig-core-c
-    irony-server
-    glslang
-    rtags
 
     # Chat
     unstable.armcord
@@ -168,6 +169,7 @@ in
     imv
     qalculate-gtk
     okteta
+    sqlite-viewer
 
     # File Management
     zip
