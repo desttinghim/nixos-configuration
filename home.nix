@@ -169,8 +169,9 @@ in
     imv
     qalculate-gtk
     okteta
-    sqlite-viewer
-
+    dbeaver
+    sqlitebrowser
+      
     # File Management
     zip
     unzip
