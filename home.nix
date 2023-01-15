@@ -283,4 +283,12 @@ in
     };
     extraConfig = builtins.readFile ./qutebrowser/extraConfig.py;
   };
+
+  programs.waybar = {
+    enable = true;
+    systemd.enable = true;
+    systemd.target = "sway-session.target";
+    style = ./waybar/style.css;
+    settings = import ./waybar;
+  };
 }
