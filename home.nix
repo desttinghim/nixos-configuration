@@ -188,19 +188,6 @@ in
     xfce.tumbler
   ];
 
-  # Services, sorted alphabetically
-  services.emacs = {
-    enable = true;
-    # startWithUserSession = true;
-  };
-
-  services.wlsunset = {
-    enable = true;
-    latitude = "42";
-    longitude = "-112";
-    systemdTarget = "sway-session.target";
-  };
-
   services.mopidy = {
     enable = true;
     # This adds the file mopidy-secrets.conf to the config search path.
@@ -295,13 +282,5 @@ in
       colors.webpage.preferred_color_scheme = "dark";
     };
     extraConfig = builtins.readFile ./qutebrowser/extraConfig.py;
-  };
-
-  programs.waybar = {
-    enable = true;
-    systemd.enable = true;
-    systemd.target = "sway-session.target";
-    style = ./waybar/style.css;
-    settings = import ./waybar;
   };
 }

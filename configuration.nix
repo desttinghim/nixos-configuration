@@ -84,17 +84,13 @@ in
       wget
 
       # sway packages
-      dbus-sway-environment
-      configure-gtk
       wayland
-      glib # gsettings
       dracula-theme
       gnome3.adwaita-icon-theme
       pipewire
       acpi
       arduino
 
-      greetd.tuigreet
       home-manager
     ];
   };
@@ -128,17 +124,6 @@ ACTION=="add", ATTR{idVendor}=="03c3", RUN+="${set-mem}"
 # All ASI Cameras and filter wheels
 SUBSYSTEMS=="usb", ATTR{idVendor}=="03c3", MODE="0666", GROUP="video"
 '';
-
-  services.greetd = {
-    enable = true;
-    settings = {
-      terminal.vt = 2;
-      default_session = {
-        command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --cmd sway";
-        user = "greeter";
-      };
-    };
-  };
 
   services.logind = {
     lidSwitch = "suspend-then-hibernate";
@@ -253,5 +238,5 @@ SUBSYSTEMS=="usb", ATTR{idVendor}=="03c3", MODE="0666", GROUP="video"
   # this value at the release version of the first install of this system.
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  system.stateVersion = "22.05"; # Did you read the comment?
+  system.stateVersion = "22.11"; # Did you read the comment?
 }
