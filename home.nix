@@ -43,7 +43,7 @@ in
   # You can update Home Manager without changing this value. See
   # the Home Manager release notes for a list of state version
   # changes in each release.
-  home.stateVersion = "22.05";
+  home.stateVersion = "22.11";
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
@@ -68,9 +68,6 @@ in
       name = "Papirus-Dark";
       package = pkgs.papirus-icon-theme;
     };
-    # font = {
-    #   name = "FiraCode Nerd Font Mono Medium";
-    # };
   };
 
   # Apps I don't care to configure
@@ -83,46 +80,6 @@ in
     tldr
     silver-searcher
     bashmount
-
-    # Programming
-    clang-tools
-    unstable.cargo
-    unstable.rustfmt
-    clang
-    lua53Packages.luacheck
-    sumneko-lua-language-server
-
-    # Editors
-    emacs
-    vim
-    neovim
-    helix
-    hicolor-icon-theme
-    unstable.lapce
-
-    # Media
-    feh
-    flameshot
-    mpv
-    pavucontrol
-    vlc
-    mopidy
-    qjackctl
-    obs-studio
-
-    # Dependencies
-    dotnet-sdk
-    libnotify
-    libappindicator-gtk3
-    light
-    mpris-scrobbler
-    nodejs
-    nodePackages.npm
-    tex # defined at top of file
-    xdg-utils
-    bottles
-    bluez
-    unstable.bluetuith
 
     # Doom emacs
     ripgrep
@@ -137,6 +94,44 @@ in
     irony-server
     glslang
     rtags
+
+    # Programming
+    clang-tools
+    cargo
+    rustfmt
+    clang
+    lua53Packages.luacheck
+    sumneko-lua-language-server
+    openjdk
+
+    # Editors
+    emacs
+    vim
+    neovim
+    helix
+    hicolor-icon-theme
+
+    # Media
+    feh
+    flameshot
+    mpv
+    pavucontrol
+    vlc
+    mopidy
+    qjackctl
+    obs-studio
+
+    # Dependencies
+    libnotify
+    libappindicator-gtk3
+    light
+    mpris-scrobbler
+    nodejs
+    nodePackages.npm
+    tex # defined at top of file
+    xdg-utils
+    bluez
+    unstable.bluetuith
 
     # Chat
     unstable.armcord
@@ -166,20 +161,15 @@ in
     godot-export-templates
     okular
     pdftk
-    pixelorama
     solaar
     torrential
-    xfce.thunar
-    xfce.thunar-volman
-    xfce.thunar-archive-plugin
-    xfce.thunar-media-tags-plugin
-    xfce.tumbler
     zathura
     libreoffice
     zeal
     imv
     qalculate-gtk
     okteta
+    sqlite-viewer
 
     # File Management
     zip
@@ -190,18 +180,17 @@ in
     picard
     uget
     uget-integrator
+    xfce.thunar
+    xfce.thunar-volman
+    xfce.thunar-archive-plugin
+    xfce.thunar-media-tags-plugin
+    xfce.tumbler
   ];
 
   # Services, sorted alphabetically
   services.emacs = {
     enable = true;
     # startWithUserSession = true;
-  };
-
-  services.kanshi = {
-    enable = true;
-    systemdTarget = "sway-session.target";
-    profiles = (import ./kanshi/profiles.nix pkgs);
   };
 
   services.wlsunset = {
@@ -258,11 +247,6 @@ in
   services.syncthing.enable = true;
 
   # Programs, sorted alphabetically
-  programs.alacritty = {
-    enable = true;
-    settings = import ./alacritty.nix;
-  };
-
   programs.chromium = {
     enable = true;
   };
@@ -271,7 +255,6 @@ in
     enable = true;
     # TODO: Add nur so addons can be managed by nix
     package = pkgs.wrapFirefox pkgs.firefox-unwrapped {
-      forceWayland = true;
       extraPolicies = {
         ExtensionSettings = {};
       };
@@ -301,16 +284,6 @@ in
 
   programs.gitui = {
     enable = true;
-  };
-
-  programs.vscode = {
-    enable = true;
-    # package = pkgs.vscodium.fhs;
-    extensions = with pkgs.vscode-extensions; [
-      dracula-theme.theme-dracula
-      vscodevim.vim
-      yzhang.markdown-all-in-one
-    ];
   };
 
   programs.qutebrowser = {
