@@ -87,12 +87,12 @@
               modifier = "Mod4";
             })
             # ZIG
-            ({ ... }: {
-              home.packages = [
-                zig.packages.${system}.master
-                zls.packages.${system}.zls
-              ];
-            })
+            # ({ ... }: {
+            #   home.packages = [
+            #     zig.packages.${system}.master
+            #     zls.packages.${system}.zls
+            #   ];
+            # })
           ];
         };
       };
