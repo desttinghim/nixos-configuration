@@ -82,10 +82,10 @@
           modules = [
             ./home.nix
             ({ config, pkgs, ... }: { nixpkgs.overlays = [ overlay-unstable overlay-mpris-scrobbler overlay-mopidy-ytmusic ]; })
-            # (import ./sway.nix {
-            #   terminal = "foot";
-            #   modifier = "Mod4";
-            # })
+            (import ./sway.nix {
+              terminal = "foot";
+              modifier = "Mod4";
+            })
             # ZIG
             # ({ ... }: {
             #   home.packages = [
