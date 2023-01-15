@@ -2,19 +2,18 @@
   description = "Desttinghim's NixOS Configuration";
 
   inputs = {
-    # Use both 22.05 and unstable nixpkgs
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-22.05";
+    # Use both 22.11 and unstable nixpkgs
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-22.11";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
 
     # Setup home manager as a module
     home-manager = {
-      url = "github:nix-community/home-manager/release-22.05";
+      url = "github:nix-community/home-manager/release-22.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
     # Emacs
     nc-emacs.url = "github:nix-community/emacs-overlay/master";
-    nix-doom-emacs.url = "github:vlaci/nix-doom-emacs";
 
     zig.url = "github:mitchellh/zig-overlay";
     zig.inputs.nixpkgs.follows = "nixpkgs";
@@ -24,7 +23,7 @@
     zls.inputs.zig-overlay.follows = "zig";
   };
 
-  outputs = { self, nixpkgs, home-manager, nix-doom-emacs, nixpkgs-unstable, nc-emacs, zig, zls }:
+  outputs = { self, nixpkgs, home-manager, nixpkgs-unstable, nc-emacs, zig, zls }:
     let
       system = "x86_64-linux";
 
@@ -80,15 +79,11 @@
       homeConfigurations = {
         desttinghim = home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
-          inherit system;
-          configuration = import ./home.nix;
-          username = "desttinghim";
-          homeDirectory = "/home/desttinghim";
-          stateVersion = "22.05";
-          extraModules = [
+          modules = [
+            ./home.nix
             ({ config, pkgs, ... }: { nixpkgs.overlays = [ overlay-unstable overlay-mpris-scrobbler overlay-mopidy-ytmusic ]; })
             (import ./sway.nix {
-              terminal = "alacritty";
+              terminal = "foot";
               modifier = "Mod4";
             })
             # ZIG

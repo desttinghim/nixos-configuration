@@ -28,7 +28,6 @@ in {
       mako
       libappindicator
       gnome.zenity
-      kanshi
       wl-clipboard
       polkit_gnome
       playerctl
@@ -213,7 +212,6 @@ in {
         { command = "configure-gtk"; }
         { command = "wl-paste -t text --watch ${pkgs.clipman}/bin/clipman store --no-persist"; }
         { command = "/run/current-system/sw/libexec-polkit-gnome-authentication-agent-1"; }
-        # { command = "systemctl --user restart kanshi"; }
         # { command = "systemctl --user import-environment; systemctl --user start sway-session.target"; }
         # { command = "$HOME/.config/sway/idle.sh"; }
       ];
