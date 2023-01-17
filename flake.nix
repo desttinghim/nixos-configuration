@@ -36,52 +36,17 @@
 
       overlay-unstable = final: prev: {
         unstable = nixpkgs-unstable.legacyPackages.${prev.system};
+        zig-overlay = zig.packages.${system}.master;
+        zls-overlay = zls.packages.${system}.zls;
       };
 
-      overlay-mpris-scrobbler = final: prev: {
-        mpris-scrobbler = prev.mpris-scrobbler.overrideAttrs (old: rec {
-          version = "0.5.0";
-          src = prev.fetchFromGitHub {
-            owner = "mariusor";
-            repo = "mpris-scrobbler";
-            rev = "v${version}";
-            sha256 = "sha256-HUEUkVL5d6FD698k8iSCJMNeSo8vGJCsExJW/E0EWpQ=";
-          };
-          hardeningDisable = [ "all" ];
-          nativeBuildInputs = [
-            prev.git
-            prev.m4
-            prev.meson
-            prev.ninja
-            prev.pkg-config
-            prev.scdoc
-          ];
-          mesonFlags = [
-            "-Dversion=${version}" # Makes mpris-scrobbler show correct version in --help
-            # "-Dlibeventdebug=true"
-            # "-Dlibcurldebug=true"
-            # "-Ddebug=true"
-          ];
-        });
-      };
-
-      overlay-mopidy-ytmusic = final: prev: {
-        mopidy-ytmusic = prev.mopidy-ytmusic.overrideAttrs (old: rec {
-          src = prev.fetchFromGitHub {
-            owner = "kmac";
-            repo = "mopidy-ytmusic";
-            rev = "ytmusicapi-0.22.0";
-            sha256 = "sha256-cxLum/QS8bV7s5zUoBkP8I05PO7F1xi8IKtSr5dwHH4=";
-          };
-        });
-      };
     in {
       homeConfigurations = {
         desttinghim = home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
           modules = [
             ./home.nix
-            ({ config, pkgs, ... }: { nixpkgs.overlays = [ overlay-unstable overlay-mpris-scrobbler overlay-mopidy-ytmusic ]; })
+            ({ config, pkgs, ... }: { nixpkgs.overlays = [ overlay-unstable ]; })
           ];
         };
       };

@@ -115,6 +115,8 @@ in
     lua53Packages.luacheck
     sumneko-lua-language-server
     openjdk
+    zig-overlay
+    zls-overlay
 
     # Editors
     emacs
@@ -234,7 +236,7 @@ in
         enable_scrobbling = true;
         auth_json = "/home/desttinghim/.config/mopidy/ytmusic/auth.json";
       };
-      scrobbler.enabled = false;
+      scrobbler.enabled = true;
       # NOTE: Local has a mopidy-scan.service file that needs to be run to
       # update. The local scan button in Iris can't be used. Rerun with the following command:
       # systemctl --user start mopidy-scan
