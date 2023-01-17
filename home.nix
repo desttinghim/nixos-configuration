@@ -198,6 +198,9 @@ in
     xfce.thunar-archive-plugin
     xfce.thunar-media-tags-plugin
     xfce.tumbler
+
+    # sway
+    wofi
   ];
 
   services.mopidy = {
@@ -298,8 +301,8 @@ in
 
   programs.waybar = {
     enable = true;
-    systemd.enable = true;
-    systemd.target = "sway-session.target";
+    # systemd.enable = true;
+    # systemd.target = "sway-session.target";
     style = ./waybar/style.css;
     settings = import ./waybar;
   };
@@ -344,7 +347,7 @@ in
         "${modifier}+Shift+q" = "kill";
 
         # Launch the default terminal $TERM
-        "${modifier}+Return" = "exec ${terminal}";
+        "${modifier}+Return" = "exec foot";
         "${modifier}+d" = "exec ${menu}";
 
         # Take a screenshot by selecting an area
@@ -484,7 +487,8 @@ in
         { command = "mako"; }
         { command = "wl-paste -t text --watch ${pkgs.clipman}/bin/clipman store --no-persist"; }
         { command = "/run/current-system/sw/libexec-polkit-gnome-authentication-agent-1"; }
-        { command = "systemctl --user restart kanshi"; }
+        { command = "kanshi"; }
+        { command = "waybar"; }
       ];
       terminal = terminal;
       window.titlebar = false;
