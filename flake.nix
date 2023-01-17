@@ -27,10 +27,8 @@
     let
       system = "x86_64-linux";
 
-      # Replace emacs with emacsPgtk
       pkgs = import nixpkgs {
         inherit system;
-        emacs = nc-emacs.emacsPgtk;
         config.allowUnfree = true;
       };
 
@@ -46,7 +44,7 @@
           inherit pkgs;
           modules = [
             ./home.nix
-            ({ config, pkgs, ... }: { nixpkgs.overlays = [ overlay-unstable ]; })
+            ({ config, pkgs, ... }: { nixpkgs.overlays = [ overlay-unstable (import nc-emacs) ]; })
           ];
         };
       };

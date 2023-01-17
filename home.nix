@@ -119,7 +119,7 @@ in
     zls-overlay
 
     # Editors
-    emacs
+    emacsPgtk
     vim
     neovim
     helix
