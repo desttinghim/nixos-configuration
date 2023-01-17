@@ -4,35 +4,6 @@
 
 { config, pkgs, ... }:
 
-let 
-  # see https://nixos.wiki/wiki/Sway
-  dbus-sway-environment = pkgs.writeTextFile {
-    name = "dbus-sway-environment";
-    destination = "/bin/dbus-sway-environment";
-    executable = true;
-
-    text = ''
-  dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
-  systemctl --user stop pipewire xdg-desktop-portal xdg-desktop-portal-wlr
-  systemctl --user start pipewire xdg-desktop-portal xdg-desktop-portal-wlr
-    '';
-  };
-
-  configure-gtk = pkgs.writeTextFile {
-    name = "configure-gtk";
-    destination = "/bin/configure-gtk";
-    executable = true;
-    text = let
-      schema = pkgs.gsettings-desktop-schemas;
-      datadir = "${schema}/share/gsettings-schemas/${schema.name}";
-    in ''
-      export XDG_DATA_DIRS=${datadir}:$XDG_DATA_DIRS
-      gnome_schema=org.gnome.desktop.interface
-      gsettings set $gnome_schema gtk-theme 'Dracula'
-    '';
-  };
-
-in
 {
   imports =
     [ # Include the results of the hardware scan.
@@ -116,14 +87,14 @@ in
   services.flatpak.enable = true;
 
   services.udev.extraRules = let set-mem = pkgs.writeShellScript "set-mem" ''
-echo 200 >/sys/module/usbcore/parameters/usbfs_memory_mb
-'';
-                             in
-''
-ACTION=="add", ATTR{idVendor}=="03c3", RUN+="${set-mem}"
-# All ASI Cameras and filter wheels
-SUBSYSTEMS=="usb", ATTR{idVendor}=="03c3", MODE="0666", GROUP="video"
-'';
+    echo 200 >/sys/module/usbcore/parameters/usbfs_memory_mb
+    '';
+    in
+    ''
+    ACTION=="add", ATTR{idVendor}=="03c3", RUN+="${set-mem}"
+    # All ASI Cameras and filter wheels
+    SUBSYSTEMS=="usb", ATTR{idVendor}=="03c3", MODE="0666", GROUP="video"
+    '';
 
   services.logind = {
     lidSwitch = "suspend-then-hibernate";
