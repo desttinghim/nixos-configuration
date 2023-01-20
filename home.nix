@@ -117,6 +117,7 @@ in
     openjdk
     zig-overlay
     zls-overlay
+    git-bug
 
     # Editors
     emacsPgtk
