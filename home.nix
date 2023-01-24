@@ -186,6 +186,8 @@ in
     okteta
     dbeaver
     sqlitebrowser
+    samba
+    qbittorrent
       
     # File Management
     zip
