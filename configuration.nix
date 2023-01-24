@@ -63,6 +63,7 @@
       arduino
 
       home-manager
+      lxqt.lxqt-policykit
     ];
   };
 
