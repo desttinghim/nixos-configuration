@@ -64,9 +64,13 @@ in
   home.sessionPath = [ "$HOME/.local/bin" "$HOME/.config/emacs/bin" "$HOME/.cargo/bin" "$HOME/.bun/bin" ];
 
   home.pointerCursor = {
-    name = "Dracula-cursors";
-    package = pkgs.dracula-theme;
+    name = "Adwaita";
+    package = pkgs.gnome.adwaita-icon-theme;
     size = 12;
+    x11 = {
+      enable = true;
+      defaultCursor = "Adwaita";
+    };
   };
 
   # gtk theming
@@ -251,10 +255,6 @@ in
   };
 
   services.mpris-proxy.enable = true;
-  services.gvfs = {
-    enable = true;
-    package = lib.mkForce pkgs.gnome3.gvfs;
-  };
   services.swayidle.enable = true;
   services.syncthing.enable = true;
 

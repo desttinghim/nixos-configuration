@@ -57,7 +57,7 @@
       # sway packages
       wayland
       dracula-theme
-      gnome3.adwaita-icon-theme
+      gnome3.adwaita-icon-theme # Default gnome cursors
       pipewire
       acpi
       arduino
@@ -65,6 +65,11 @@
       home-manager
       lxqt.lxqt-policykit
     ];
+  };
+
+  services.gvfs = {
+    enable = true;
+    package = pkgs.lib.mkForce pkgs.gnome3.gvfs;
   };
 
   hardware.bluetooth.enable = true;
