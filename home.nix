@@ -63,6 +63,14 @@ in
   # Add ~/.local/bin to my PATH
   home.sessionPath = [ "$HOME/.local/bin" "$HOME/.config/emacs/bin" "$HOME/.cargo/bin" "$HOME/.bun/bin" ];
 
+  # Required to allow Home Manager to manage shell configuration
+  programs.bash = {
+    enable = true;
+    sessionVariables = {
+      NIXOS_OZONE_WL = 1;
+    };
+  };
+
   home.pointerCursor = {
     name = "Adwaita";
     package = pkgs.gnome.adwaita-icon-theme;
