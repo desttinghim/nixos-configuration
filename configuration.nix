@@ -92,15 +92,18 @@
   services.dbus.enable = true;
   services.flatpak.enable = true;
 
-  services.udev.extraRules = let set-mem = pkgs.writeShellScript "set-mem" ''
-    echo 200 >/sys/module/usbcore/parameters/usbfs_memory_mb
-    '';
-    in
-    ''
-    ACTION=="add", ATTR{idVendor}=="03c3", RUN+="${set-mem}"
-    # All ASI Cameras and filter wheels
-    SUBSYSTEMS=="usb", ATTR{idVendor}=="03c3", MODE="0666", GROUP="video"
-    '';
+  services.udev = {
+    packages = [ pkgs.android-udev-rules ];
+    extraRules = let set-mem = pkgs.writeShellScript "set-mem" ''
+      echo 200 >/sys/module/usbcore/parameters/usbfs_memory_mb
+      '';
+      in
+      ''
+      ACTION=="add", ATTR{idVendor}=="03c3", RUN+="${set-mem}"
+      # All ASI Cameras and filter wheels
+      SUBSYSTEMS=="usb", ATTR{idVendor}=="03c3", MODE="0666", GROUP="video"
+      '';
+  };
 
   services.logind = {
     lidSwitch = "suspend-then-hibernate";
