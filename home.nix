@@ -130,6 +130,8 @@ in
     zig-overlay
     zls-overlay
     git-bug
+    nodePackages.prettier
+    nodejs
 
     # Editors
     emacsPgtk
