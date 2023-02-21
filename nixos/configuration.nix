@@ -114,7 +114,6 @@
   programs.dconf.enable = true;
 
   # Services
-  services.blueman.enable = true;
   services.dbus.enable = true;
   services.flatpak.enable = true;
 
