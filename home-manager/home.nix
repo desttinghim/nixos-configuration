@@ -6,13 +6,18 @@
 
   nixpkgs = {
     # Add overlays here
-    overlays = [  ];
+    overlays = [
+      # ({ config, pkgs, ... }: { nixpkgs.overlays = [ (import inputs.nc-emacs) ]; })
+      # inputs.nc-emacs
+      # inputs.zig.overlays
+      # inputs.zls
+    ];
     # Configure nixpkgs instance
     config = {
       allowUnfree = true;
       # Workaround for https://github.com/nix-community/home-manager/issues/2942
       allowUnfreePredicate = (_: true);
-    }
+    };
   };
 
   home = {
@@ -20,7 +25,7 @@
     homeDirectory = "/home/desttinghim";
   };
 
-  colorScheme = nix-colors.colorSchemes.dracula;
+  colorScheme = inputs.nix-colors.colorSchemes.dracula;
 
   # This value determines the Home Manager release that your
   # configuration is compatible with. This helps avoid breakage
@@ -34,6 +39,7 @@
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
+  systemd.user.startServices = "sd-switch";
 
   # Add ~/.local/bin to my PATH
   home.sessionPath = [ "$HOME/.local/bin" "$HOME/.config/emacs/bin" "$HOME/.cargo/bin" "$HOME/.bun/bin" ];
@@ -79,14 +85,14 @@
     lua53Packages.luacheck
     sumneko-lua-language-server
     openjdk
-    zig-overlay
-    zls-overlay
+    # zig-overlay
+    # zls-overlay
     git-bug
     nodePackages.prettier
     nodejs
 
     # Editors
-    emacsPgtk
+    # emacsPgtk
     vim
     neovim
     helix
@@ -109,13 +115,11 @@
     mpris-scrobbler
     nodejs
     nodePackages.npm
-    tex # defined at top of file
     xdg-utils
     bluez
-    unstable.bluetuith
 
     # Chat
-    unstable.armcord
+    armcord
     discord
     element-desktop
     zoom-us

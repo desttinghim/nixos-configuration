@@ -29,9 +29,10 @@
     # Available through `home-manager --flake .#your-username@your-hostname`
     homeConfigurations = {
       "desttinghim@framework" = home-manager.lib.homeManagerConfiguration {
+        pkgs = nixpkgs.legacyPackages.x86_64-linux;
+        extraSpecialArgs = { inherit inputs; }; # Pass flake inputs to our config
         modules = [
-          ./home.nix
-          ({ config, pkgs, ... }: { nixpkgs.overlays = [ overlay-unstable (import nc-emacs) ]; })
+          ./home-manager/home.nix
         ];
       };
     };
