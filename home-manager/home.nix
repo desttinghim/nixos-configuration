@@ -7,10 +7,8 @@
   nixpkgs = {
     # Add overlays here
     overlays = [
-      # ({ config, pkgs, ... }: { nixpkgs.overlays = [ (import inputs.nc-emacs) ]; })
-      # inputs.nc-emacs
-      # inputs.zig.overlays
-      # inputs.zls
+      inputs.zig.overlays.default
+      inputs.nc-emacs.overlays.default
     ];
     # Configure nixpkgs instance
     config = {
@@ -87,14 +85,14 @@
     lua53Packages.luacheck
     sumneko-lua-language-server
     openjdk
-    # zig-overlay
-    # zls-overlay
+    inputs.zig.packages.${system}.master
+    inputs.zls.packages.${system}.default
     git-bug
     nodePackages.prettier
     nodejs
 
     # Editors
-    # emacsPgtk
+    emacsPgtk
     vim
     neovim
     helix
