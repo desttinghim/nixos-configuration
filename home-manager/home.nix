@@ -70,12 +70,13 @@
     mu
     isync
     gnupg
-    pinentry-curses
+    gnumake
     cmake # vterm, c/c++
     editorconfig-core-c
     irony-server
     glslang
     rtags
+    fd
 
     # Programming
     clang-tools
@@ -90,6 +91,7 @@
     git-bug
     nodePackages.prettier
     nodejs
+    python
 
     # Editors
     emacsPgtk
