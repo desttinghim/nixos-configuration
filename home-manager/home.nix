@@ -8,7 +8,6 @@
     # Add overlays here
     overlays = [
       inputs.zig.overlays.default
-      inputs.nc-emacs.overlays.default
     ];
     # Configure nixpkgs instance
     config = {
@@ -94,7 +93,7 @@
     python
 
     # Editors
-    emacsPgtk
+    emacs
     vim
     neovim
     helix
