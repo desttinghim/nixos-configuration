@@ -5,11 +5,45 @@
 { config, pkgs, ... }:
 
 {
+  # Other NixOS modules to import
   imports =
     [ # Include the results of the hardware scan.
       ./framework/hardware-configuration.nix
       ./cachix.nix
     ];
+
+  nixpkgs = {
+    # Add overlays here
+    overlays = [ ];
+    config = {
+      allowUnfree = true;
+    };
+  };
+
+  nix = {
+    # This will add each flake input as a registry
+    # To make nix3 commands consistent with your flake
+    registry = lib.mapAttrs (_: value: { flake = value; }) inputs;
+
+    # This will additionally add your inputs to the system's legacy channels
+    # Making legacy nix commands consistent as well, awesome!
+    nixPath = lib.mapAttrs (key: value: "${key}=${value.to.path}") config.nix.registry;
+
+    settings = {
+      # Enable flakes and new `nix` command
+      experimental-features = "nix-command flakes";
+      # Deduplicate and optimize nix store
+      auto-optimise-store = true;
+    };
+
+    # Garbage collect
+    gc = {
+      automatic = true;
+      dates = "monthly";
+      options = "--delete-older-than 30d";
+    };
+    package = pkgs.nixFlakes; # Enable nixFlakes on system
+  };
 
   # Bootloader
   boot.loader = {
@@ -20,7 +54,7 @@
 
   # Configure networking. I'm using network manager
   networking = {
-    hostName = "nixos";
+    hostName = "framework";
     networkmanager.enable = true;
   };
 
@@ -34,11 +68,8 @@
   users.users.desttinghim = {
     isNormalUser = true;
     description = "Louis Pearson";
-    extraGroups = [ "networkmanager" "wheel" "input" "video" "audio" "dialout" "vboxusers" "plugdev" "adbusers" ];
+    extraGroups = [ "networkmanager" "wheel" "input" "video" "audio" "dialout" "vboxusers" "plugdev" "adbusers" "docker" ];
   };
-
-  # Allow unfree packages
-  nixpkgs.config.allowUnfree = true;
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
@@ -54,9 +85,6 @@
       pciutils
       wget
 
-      # sway packages
-      wayland
-      dracula-theme
       gnome3.adwaita-icon-theme # Default gnome cursors
       pipewire
       acpi
@@ -67,6 +95,8 @@
     ];
   };
 
+  # Gnome Virtual File System
+  # Allows browsing network directories in nautilus
   services.gvfs = {
     enable = true;
     package = pkgs.lib.mkForce pkgs.gnome3.gvfs;
@@ -80,11 +110,7 @@
   # Programs
   programs.light.enable = true;
 
-  programs.sway = {
-    enable = true;
-    wrapperFeatures.gtk = true;
-  };
-
+  # Gnome configuration manager
   programs.dconf.enable = true;
 
   # Services
@@ -155,7 +181,7 @@
     };
   };
 
-  systemd.sleep.extraConfig = "HibernateDelaySec=2h";
+  systemd.sleep.extraConfig = "HibernateDelaySec=1h";
 
   xdg.portal = {
     enable = true;
@@ -176,32 +202,6 @@
       ];
     })
   ];
-
-  nix = {
-    settings = {
-      auto-optimise-store = true;
-    };
-    gc = {
-      automatic = true;
-      dates = "monthly";
-      options = "--delete-older-than 30d";
-    };
-    package = pkgs.nixFlakes; # Enable nixFlakes on system
-    # registry.nixpkgs.flake = inputs.nixpkgs;
-    extraOptions = ''
-      experimental-features = nix-command flakes
-      keep-outputs          = true
-      keep-derivations      = true
-    '';
-  };
-
-  # Some programs need SUID wrappers, can be configured further or are
-  # started in user sessions.
-  # programs.mtr.enable = true;
-  # programs.gnupg.agent = {
-  #   enable = true;
-  #   enableSSHSupport = true;
-  # };
 
   # Enable the OpenSSH daemon.
   # services.openssh.enable = true;

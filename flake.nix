@@ -4,7 +4,6 @@
   inputs = {
     # Use both 22.11 and unstable nixpkgs
     nixpkgs.url = "github:nixos/nixpkgs/nixos-22.11";
-    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
 
     # Setup home manager as a module
     home-manager = {
@@ -21,41 +20,30 @@
     zls.url = "github:zigtools/zls";
     zls.inputs.nixpkgs.follows = "nixpkgs";
     zls.inputs.zig-overlay.follows = "zig";
+
+    nix-colors.url = "github:misterio77/nix-colors";
   };
 
-  outputs = { self, nixpkgs, home-manager, nixpkgs-unstable, nc-emacs, zig, zls }:
-    let
-      system = "x86_64-linux";
-
-      pkgs = import nixpkgs {
-        inherit system;
-        config.allowUnfree = true;
-      };
-
-      overlay-unstable = final: prev: {
-        unstable = nixpkgs-unstable.legacyPackages.${prev.system};
-        zig-overlay = zig.packages.${system}.master;
-        zls-overlay = zls.packages.${system}.zls;
-      };
-
-    in {
-      homeConfigurations = {
-        desttinghim = home-manager.lib.homeManagerConfiguration {
-          inherit pkgs;
-          modules = [
-            ./home.nix
-            ({ config, pkgs, ... }: { nixpkgs.overlays = [ overlay-unstable (import nc-emacs) ]; })
-          ];
-        };
-      };
-      nixosConfigurations = {
-        framework = nixpkgs.lib.nixosSystem {
-          inherit system;
-          modules = [
-            ./configuration.nix
-            ({ config, pkgs, ... }: { nixpkgs.overlays = [ overlay-unstable ]; })
-          ];
-        };
+  outputs = { nixpkgs, home-manager, ...}@inputs: {
+    # Standalone home-manager configuration entrypoint
+    # Available through `home-manager --flake .#your-username@your-hostname`
+    homeConfigurations = {
+      "desttinghim@framework" = home-manager.lib.homeManagerConfiguration {
+        modules = [
+          ./home.nix
+          ({ config, pkgs, ... }: { nixpkgs.overlays = [ overlay-unstable (import nc-emacs) ]; })
+        ];
       };
     };
+
+    # NixOS configuration entrypoint
+    # Available through `nixos-rebuild --flake .#your-hostname`
+    nixosConfigurations = {
+      framework = nixpkgs.lib.nixosSystem {
+        specialArgs = { inherit inputs; }; # pass flake inputs to our config
+        # Our main nixos configuration file
+        modules = [ ./nixos/configuration.nix ];
+      };
+    };
+  };
 }
