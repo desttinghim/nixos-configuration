@@ -54,6 +54,8 @@
 
   # Apps I don't care to configure
   home.packages = with pkgs; [ 
+    libsForQt5.bismuth
+
     # Terminal
     btop
     ranger
