@@ -98,6 +98,7 @@
     exercism
     wxformbuilder
     python310Packages.wxPython_4_2
+    python310Full
 
     # Editors
     emacsPgtk
