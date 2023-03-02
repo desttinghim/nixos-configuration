@@ -92,6 +92,12 @@
     nodePackages.prettier
     nodejs
     python
+    erlang
+    kotlin
+    gradle
+    exercism
+    wxformbuilder
+    python310Packages.wxPython_4_2
 
     # Editors
     emacsPgtk
