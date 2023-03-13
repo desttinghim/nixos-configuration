@@ -96,9 +96,13 @@
     kotlin
     gradle
     exercism
+
+    # Windows UI development
     wxformbuilder
     python310Packages.wxPython_4_2
     python310Full
+    wineWowPackages.waylandFull
+    winetricks
 
     # Editors
     emacsPgtk
