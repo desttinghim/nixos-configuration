@@ -103,6 +103,7 @@
     python310Full
     wineWowPackages.waylandFull
     winetricks
+    skypeforlinux
 
     # Editors
     emacsPgtk
