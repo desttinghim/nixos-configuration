@@ -42,6 +42,10 @@
   # Add ~/.local/bin to my PATH
   home.sessionPath = [ "$HOME/.local/bin" "$HOME/.config/emacs/bin" "$HOME/.cargo/bin" "$HOME/.bun/bin" ];
 
+  home.sessionVariables = {
+    GDK_BACKEND="wayland";
+  };
+
   # Required to allow Home Manager to manage shell configuration
   programs.bash = {
     enable = true;
