@@ -176,6 +176,7 @@
     sqlitebrowser
     samba
     qbittorrent
+    appimage-run
       
     # File Management
     zip
