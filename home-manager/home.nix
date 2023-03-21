@@ -177,6 +177,11 @@
     samba
     qbittorrent
     appimage-run
+
+    # CLI Spreadsheet
+    visidata
+    sc-im
+
       
     # File Management
     zip
