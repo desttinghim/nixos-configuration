@@ -92,6 +92,7 @@
     openjdk
     inputs.zig.packages.${system}.master
     inputs.zls.packages.${system}.default
+    inputs.roc.packages.${system}.default
     git-bug
     nodePackages.prettier
     nodejs

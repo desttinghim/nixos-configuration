@@ -1,7 +1,7 @@
 {
   main = {
     dpi-aware = "yes";
-    font = "monospace:size=12";
+    font = "monospace:size=8";
   };
   colors = {
     # Normal/regular colors (color palette 0-7

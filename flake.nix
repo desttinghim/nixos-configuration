@@ -22,6 +22,8 @@
     zls.inputs.zig-overlay.follows = "zig";
 
     nix-colors.url = "github:misterio77/nix-colors";
+
+    roc.url = github:roc-lang/roc;
   };
 
   outputs = { nixpkgs, home-manager, ...}@inputs: {
