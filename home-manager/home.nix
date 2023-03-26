@@ -162,8 +162,7 @@
 
     # Misc.
     bitwarden
-    godot
-    godot-export-templates
+    godot_4
     okular
     pdftk
     solaar
