@@ -109,6 +109,7 @@
     wineWowPackages.waylandFull
     winetricks
     skypeforlinux
+    q4wine
 
     # Editors
     emacsPgtk
