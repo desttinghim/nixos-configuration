@@ -101,6 +101,11 @@
     kotlin
     gradle
     exercism
+    julia-bin
+    python310Packages.pytest
+    python310Packages.pytest-cache
+    python310Packages.pytest-subtests
+    R
 
     # Windows UI development
     wxformbuilder
