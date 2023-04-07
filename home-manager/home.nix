@@ -8,7 +8,6 @@
     # Add overlays here
     overlays = [
       inputs.zig.overlays.default
-      inputs.nc-emacs.overlays.default
     ];
     # Configure nixpkgs instance
     config = {
@@ -117,11 +116,12 @@
     q4wine
 
     # Editors
-    emacsPgtk
+    emacs28-gtk
     vim
     neovim
     helix
     hicolor-icon-theme
+    wl-clipboard
 
     # Media
     feh
@@ -299,4 +299,14 @@
     };
     extraConfig = builtins.readFile ./qutebrowser/extraConfig.py;
   };
+
+  # programs.vscode = {
+  #   enable = true;
+  #   package = pkgs.vscodium;
+  #   extensions = with pkgs.vscode-extensions; [
+  #     dracula-theme.theme-dracula
+  #     vscodevim.vim
+  #     tiehuis.zig
+  #   ];
+  # };
 }
