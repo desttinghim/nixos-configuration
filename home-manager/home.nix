@@ -203,6 +203,7 @@
     xfce.thunar-archive-plugin
     xfce.thunar-media-tags-plugin
     xfce.tumbler
+    paperwork
   ];
 
   services.mopidy = {
