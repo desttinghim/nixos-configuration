@@ -159,7 +159,6 @@
     polyphone
     reaper
     sonic-visualiser
-    sunvox
     soundfont-fluid
     soundfont-generaluser
     x42-gmsynth
