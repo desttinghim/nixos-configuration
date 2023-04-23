@@ -58,6 +58,7 @@
     libsForQt5.bismuth
 
     # Terminal
+    alacritty
     btop
     ranger
     zellij
