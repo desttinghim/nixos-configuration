@@ -71,6 +71,8 @@
     extraGroups = [ "networkmanager" "wheel" "input" "video" "audio" "dialout" "vboxusers" "plugdev" "adbusers" "docker" ];
   };
 
+  users.extraGroups.vboxusers.members = [ "desttinghim" ];
+
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment = {
@@ -277,5 +279,10 @@
   #   xorg.libxshmfence
   #   zlib
   # ];
+
+  virtualisation.virtualbox.host = {
+    enable = true;
+    enableExtensionPack = true;
+  };
 
 }
