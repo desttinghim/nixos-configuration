@@ -68,7 +68,7 @@
   users.users.desttinghim = {
     isNormalUser = true;
     description = "Louis Pearson";
-    extraGroups = [ "networkmanager" "wheel" "input" "video" "audio" "dialout" "vboxusers" "plugdev" "adbusers" "docker" ];
+    extraGroups = [ "networkmanager" "wheel" "input" "video" "audio" "dialout" "vboxusers" "plugdev" "adbusers" "docker" "libvirtd" ];
   };
 
   users.extraGroups.vboxusers.members = [ "desttinghim" ];
@@ -94,6 +94,9 @@
 
       home-manager
       lxqt.lxqt-policykit
+
+      virt-manager
+      spice
     ];
   };
 
@@ -103,6 +106,58 @@
     enable = true;
     package = pkgs.lib.mkForce pkgs.gnome3.gvfs;
   };
+
+  # Samba, network file storage with windows
+  services.samba-wsdd.enable = true;
+  networking.firewall.allowedTCPPorts = [
+    5357 # wsdd
+  ];
+  networking.firewall.allowedUDPPorts = [
+    3702 # wsdd
+  ];
+  services.samba = {
+    enable = true;
+    securityType = "user";
+    extraConfig = ''
+      workgroup = WORKGROUP
+      server string = smbnix
+      netbios name = smbnix
+      security = user
+      #use sendfile = yes
+      #max protocol = smb2
+      # note: localhost is the ipv6 localhost ::1
+      hosts allow = 192.168.0. 127.0.0.1 localhost
+      hosts deny = 0.0.0.0/0
+      guest account = nobody
+      map to guest = bad user
+    '';
+    shares = {
+      public =  {
+        path = "/mnt/Shares/Public";
+        browseable = "yes";
+        "read only" = "no";
+        "guest ok" = "yes";
+        "create mask" = "0644";
+        "directory mask" = "0755";
+        "force user" = "username";
+        "force group" = "groupname";
+      };
+      private = {
+        path = "/mnt/Shares/Private";
+        browseable = "yes";
+        "read only" = "no";
+        "guest ok" = "no";
+        "create mask" = " 0644";
+        "directory mask" = "0755";
+        "force user" = "username";
+        "force group" = "groupname";
+      };
+    };
+  };
+
+  # networking.firewall.enable = true;
+  # networking.firewall.allowPing = true;
+  # services.samba.openFirewall = true;
 
   hardware.bluetooth.enable = true;
 
@@ -285,4 +340,5 @@
     enableExtensionPack = true;
   };
 
+  virtualisation.libvirtd.enable = true;
 }
