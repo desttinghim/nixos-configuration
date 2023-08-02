@@ -78,10 +78,11 @@
   environment = {
     variables = {
       TERMINAL = "foot";
-      EDITOR = "nvim";
-      VISUAL = "nvim";
+      EDITOR = "vim";
+      VISUAL = "vim";
     };
     systemPackages = with pkgs; [     # Default packages installed system-wide
+      vim
       git
       usbutils
       pciutils

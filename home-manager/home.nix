@@ -87,39 +87,23 @@
     cargo
     rustfmt
     clang
-    lua53Packages.luacheck
-    sumneko-lua-language-server
     openjdk
     inputs.zig.packages.${system}.master
     inputs.zls.packages.${system}.default
-    inputs.roc.packages.${system}.default
     git-bug
     nodePackages.prettier
     nodejs
     python
-    erlang
-    kotlin
-    gradle
     exercism
-    julia-bin
-    python310Packages.pytest
-    python310Packages.pytest-cache
-    python310Packages.pytest-subtests
-    R
 
     # Windows UI development
-    wxformbuilder
-    python310Packages.wxPython_4_2
-    python310Full
     wineWowPackages.waylandFull
     winetricks
-    skypeforlinux
     q4wine
 
     # Editors
     emacs28-gtk
     vim
-    neovim
     helix
     hicolor-icon-theme
     wl-clipboard
@@ -139,8 +123,6 @@
     libappindicator-gtk3
     light
     mpris-scrobbler
-    nodejs
-    nodePackages.npm
     xdg-utils
     bluez
 
@@ -183,11 +165,6 @@
     qbittorrent
     appimage-run
 
-    # CLI Spreadsheet
-    visidata
-    sc-im
-
-      
     # File Management
     zip
     unzip
@@ -197,11 +174,6 @@
     picard
     uget
     uget-integrator
-    xfce.thunar
-    xfce.thunar-volman
-    xfce.thunar-archive-plugin
-    xfce.thunar-media-tags-plugin
-    xfce.tumbler
     paperwork
   ];
 
@@ -247,7 +219,6 @@
   };
 
   services.mpris-proxy.enable = true;
-  services.swayidle.enable = true;
   services.syncthing.enable = true;
 
   # Programs, sorted alphabetically
@@ -286,10 +257,6 @@
     };
   };
 
-  programs.gitui = {
-    enable = true;
-  };
-
   programs.qutebrowser = {
     enable = true;
     settings = {
@@ -299,14 +266,4 @@
     };
     extraConfig = builtins.readFile ./qutebrowser/extraConfig.py;
   };
-
-  # programs.vscode = {
-  #   enable = true;
-  #   package = pkgs.vscodium;
-  #   extensions = with pkgs.vscode-extensions; [
-  #     dracula-theme.theme-dracula
-  #     vscodevim.vim
-  #     tiehuis.zig
-  #   ];
-  # };
 }
