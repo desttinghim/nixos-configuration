@@ -145,7 +145,6 @@
     bluez
 
     # Chat
-    armcord
     discord
     element-desktop
     zoom-us
