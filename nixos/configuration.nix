@@ -174,6 +174,17 @@
   # Services
   services.dbus.enable = true;
   services.flatpak.enable = true;
+  services.printing.enable = true;  # Printing
+  services.printing.drivers = [
+    pkgs.gutenprint
+    pkgs.gutenprintBin
+    pkgs.brlaser
+    pkgs.brgenml1lpr
+    pkgs.brgenml1cupswrapper
+  ];
+  services.avahi.enable = true;     # Also printing
+  services.avahi.nssmdns = true;
+  services.avahi.openFirewall = true;
 
   services.udev = {
     packages = [ pkgs.android-udev-rules ];
