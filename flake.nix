@@ -3,11 +3,11 @@
 
   inputs = {
     # Use both 22.11 and unstable nixpkgs
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-22.11";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-23.05";
 
     # Setup home manager as a module
     home-manager = {
-      url = "github:nix-community/home-manager/release-22.11";
+      url = "github:nix-community/home-manager/release-23.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -19,8 +19,6 @@
     zls.inputs.zig-overlay.follows = "zig";
 
     nix-colors.url = "github:misterio77/nix-colors";
-
-    roc.url = github:roc-lang/roc;
   };
 
   outputs = { nixpkgs, home-manager, ...}@inputs: {
