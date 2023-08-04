@@ -88,7 +88,7 @@
     rustfmt
     clang
     openjdk
-    inputs.zig.packages.${system}.master
+    inputs.zig.packages.${system}."0.11.0"
     inputs.zls.packages.${system}.default
     git-bug
     nodePackages.prettier
