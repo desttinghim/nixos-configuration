@@ -221,6 +221,14 @@
   services.syncthing.enable = true;
 
   # Programs, sorted alphabetically
+  programs.atuin = {
+    enable = true;
+    enableBashIntegration = true;    
+    flags = [
+      "--disable-up-arrow"
+    ];
+  };
+
   programs.chromium = {
     enable = true;
   };
