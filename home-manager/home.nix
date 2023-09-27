@@ -174,6 +174,10 @@
     uget
     uget-integrator
     paperwork
+
+    #Engineering
+    kicad
+    freecad
   ];
 
   services.mopidy = {
