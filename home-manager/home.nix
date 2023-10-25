@@ -57,6 +57,8 @@
   home.packages = with pkgs; [ 
     libsForQt5.bismuth
     plasma5Packages.kio-extras
+    gnome.nautilus
+    gnome.file-roller
 
     # Terminal
     alacritty
