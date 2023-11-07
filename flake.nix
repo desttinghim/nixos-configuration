@@ -2,7 +2,7 @@
   description = "Desttinghim's NixOS Configuration";
 
   inputs = {
-    # Use both 22.11 and unstable nixpkgs
+    # Use both 23.05 and unstable nixpkgs
     nixpkgs.url = "github:nixos/nixpkgs/nixos-23.05";
 
     # Setup home manager as a module

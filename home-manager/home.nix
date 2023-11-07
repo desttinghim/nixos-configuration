@@ -147,6 +147,7 @@
     soundfont-generaluser
     x42-gmsynth
     geonkick
+    musescore
 
     # Misc.
     bitwarden
