@@ -165,6 +165,9 @@
       };
     };
   };
+  services.fprintd = {
+    enable = true;
+  };
 
   # networking.firewall.enable = true;
   # networking.firewall.allowPing = true;
