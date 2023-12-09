@@ -257,7 +257,7 @@
     extraPortals = [ pkgs.xdg-desktop-portal-gtk pkgs.xdg-desktop-portal-wlr pkgs.xdg-desktop-portal ];
   };
 
-  fonts.fonts = with pkgs; [
+  fonts.packages = with pkgs; [
     source-code-pro
     font-awesome
     font-awesome_5
