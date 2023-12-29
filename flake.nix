@@ -40,7 +40,12 @@
       framework = nixpkgs.lib.nixosSystem {
         specialArgs = { inherit inputs; }; # pass flake inputs to our config
         # Our main nixos configuration file
-        modules = [ ./nixos/configuration.nix ];
+        modules = [ ./nixos/framework.nix ];
+      }; 
+      desktop = nixpkgs.lib.nixosSystem {
+        specialArgs = { inherit inputs; }; # pass flake inputs to our config
+        # Our main nixos configuration file
+        modules = [ ./nixos/desktop.nix ];
       };
     };
   };

@@ -8,7 +8,6 @@
   # Other NixOS modules to import
   imports =
     [ # Include the results of the hardware scan.
-      ./framework/hardware-configuration.nix
       ./cachix.nix
     ];
 
