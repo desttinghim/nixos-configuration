@@ -4,13 +4,7 @@
 
 { inputs, lib, config, pkgs, ... }:
 
-{
-  # Other NixOS modules to import
-  imports =
-    [ # Include the results of the hardware scan.
-      ./cachix.nix
-    ];
-
+{ 
   nixpkgs = {
     # Add overlays here
     overlays = [ ];
@@ -62,10 +56,7 @@
   };
 
   # Configure networking. I'm using network manager
-  networking = {
-    hostName = "framework";
-    networkmanager.enable = true;
-  };
+  networking.networkmanager.enable = true;
 
   # Set your time zone.
   time.timeZone = "America/Denver";

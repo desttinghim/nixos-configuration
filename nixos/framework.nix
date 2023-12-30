@@ -10,5 +10,8 @@
     [ # Include the results of the hardware scan.
       ./framework/hardware-configuration.nix
       ./configuration.nix
+      ./cachix.nix
     ];
+
+  networking.hostName = "framework";
 }

@@ -10,5 +10,8 @@
     [ # Include the results of the hardware scan.
       ./desktop/hardware-configuration.nix
       ./configuration.nix
+      ./cachix.nix
     ];
+
+  networking.hostName = "desttop";
 }
