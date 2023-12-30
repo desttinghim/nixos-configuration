@@ -39,11 +39,8 @@
   };
 
   # Bootloader
-  boot.loader = {
-    systemd-boot.enable = true;
-    efi.canTouchEfiVariables = true;
-    efi.efiSysMountPoint = "/boot/efi";
-  };
+  boot.loader.systemd-boot.enable = true;
+  boot.loader.efi.canTouchEfiVariables = true;
 
   # Register AppImage as a misc binary type
   boot.binfmt.registrations.appimage = {
@@ -159,6 +156,10 @@
     enable = true;
   };
 
+  # Enable mDNS
+  services.resolved.enable = true;
+  networking.networkmanager.connectionConfig."connection.mdns" = 2; # 2 == yes
+
   # networking.firewall.enable = true;
   # networking.firewall.allowPing = true;
   # services.samba.openFirewall = true;
@@ -205,9 +206,10 @@
   services.xserver = {
     enable = true;
     desktopManager.plasma5.enable = true;
-    displayManager.sddm = {
-      enable = true;
-    };
+    desktopManager.pantheon.enable = true;
+    # displayManager.sddm = {
+    #   enable = true;
+    # };
   };
 
   services.logind = {

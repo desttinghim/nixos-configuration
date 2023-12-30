@@ -14,4 +14,5 @@
     ];
 
   networking.hostName = "framework";
+  boot.loader.efi.efiSysMountPoint = "/boot/efi";
 }
