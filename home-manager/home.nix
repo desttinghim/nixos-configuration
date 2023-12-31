@@ -182,6 +182,10 @@
     #Engineering
     kicad
     freecad
+
+    # N64 dev 
+    milkytracker
+    cen64
   ];
 
   services.mopidy = {

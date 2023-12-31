@@ -75,11 +75,11 @@
   environment = {
     variables = {
       TERMINAL = "foot";
-      EDITOR = "vim";
-      VISUAL = "vim";
+      EDITOR = "helix";
+      VISUAL = "helix";
     };
     systemPackages = with pkgs; [     # Default packages installed system-wide
-      vim
+      helix
       git
       usbutils
       pciutils
@@ -105,53 +105,6 @@
     package = pkgs.lib.mkForce pkgs.gnome3.gvfs;
   };
 
-  # Samba, network file storage with windows
-  services.samba-wsdd.enable = true;
-  networking.firewall.allowedTCPPorts = [
-    5357 # wsdd
-  ];
-  networking.firewall.allowedUDPPorts = [
-    3702 # wsdd
-  ];
-  services.samba = {
-    enable = true;
-    securityType = "user";
-    extraConfig = ''
-      workgroup = WORKGROUP
-      server string = smbnix
-      netbios name = smbnix
-      security = user
-      #use sendfile = yes
-      #max protocol = smb2
-      # note: localhost is the ipv6 localhost ::1
-      hosts allow = 192.168.0. 127.0.0.1 localhost
-      hosts deny = 0.0.0.0/0
-      guest account = nobody
-      map to guest = bad user
-    '';
-    shares = {
-      public =  {
-        path = "/mnt/Shares/Public";
-        browseable = "yes";
-        "read only" = "no";
-        "guest ok" = "yes";
-        "create mask" = "0644";
-        "directory mask" = "0755";
-        "force user" = "username";
-        "force group" = "groupname";
-      };
-      private = {
-        path = "/mnt/Shares/Private";
-        browseable = "yes";
-        "read only" = "no";
-        "guest ok" = "no";
-        "create mask" = " 0644";
-        "directory mask" = "0755";
-        "force user" = "username";
-        "force group" = "groupname";
-      };
-    };
-  };
   services.fprintd = {
     enable = true;
   };
@@ -206,10 +159,9 @@
   services.xserver = {
     enable = true;
     desktopManager.plasma5.enable = true;
-    desktopManager.pantheon.enable = true;
-    # displayManager.sddm = {
-    #   enable = true;
-    # };
+    displayManager.sddm = {
+      enable = true;
+    };
   };
 
   services.logind = {
@@ -278,7 +230,7 @@
   # this value at the release version of the first install of this system.
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  system.stateVersion = "23.05"; # Did you read the comment?
+  system.stateVersion = "23.11"; # Did you read the comment?
 
   # Allow non-nix binaries to run without patching
   programs.nix-ld.enable = true;
@@ -337,4 +289,5 @@
   # };
 
   virtualisation.libvirtd.enable = true;
+  virtualisation.docker.enable = true;
 }
