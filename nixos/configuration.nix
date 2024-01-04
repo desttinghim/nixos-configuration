@@ -182,6 +182,8 @@
     wireplumber.enable = true;
   };
 
+  services.tailscale.enable = true;
+
   # services.tlp = {
   #   enable = true;
   #   settings = {
