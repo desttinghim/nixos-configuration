@@ -186,6 +186,13 @@
     # N64 dev 
     milkytracker
     cen64
+
+    furnace # deflemask compatible, sound chip emulation, tracker
+
+    tig
+    vifm
+    steam
+    plasma5Packages.plasma-browser-integration
   ];
 
   services.mopidy = {
@@ -248,11 +255,7 @@
   programs.firefox = {
     enable = true;
     # TODO: Add nur so addons can be managed by nix
-    package = pkgs.wrapFirefox pkgs.firefox-unwrapped {
-      extraPolicies = {
-        ExtensionSettings = {};
-      };
-    };
+    package = pkgs.firefox-devedition;
   };
 
   programs.foot = {
