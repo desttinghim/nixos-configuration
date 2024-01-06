@@ -193,6 +193,9 @@
     vifm
     steam
     plasma5Packages.plasma-browser-integration
+    nextcloud-client
+    tailscale
+    ktailctl
   ];
 
   services.mopidy = {

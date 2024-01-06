@@ -75,8 +75,8 @@
   environment = {
     variables = {
       TERMINAL = "foot";
-      EDITOR = "helix";
-      VISUAL = "helix";
+      EDITOR = "hx";
+      VISUAL = "hx";
     };
     systemPackages = with pkgs; [     # Default packages installed system-wide
       helix
