@@ -196,6 +196,7 @@
     nextcloud-client
     tailscale
     ktailctl
+    plasma5Packages.kasts
   ];
 
   services.mopidy = {
