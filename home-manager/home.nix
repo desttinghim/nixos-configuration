@@ -259,7 +259,7 @@
   programs.firefox = {
     enable = true;
     # TODO: Add nur so addons can be managed by nix
-    package = pkgs.firefox-devedition;
+    package = pkgs.firefox-wayland;
   };
 
   programs.foot = {
