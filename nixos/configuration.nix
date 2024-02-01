@@ -1,6 +1,9 @@
-# Edit this configuration file to define what should be installed on
-# your system.  Help is available in the configuration.nix(5) man page
-# and in the NixOS manual (accessible by running ‘nixos-help’).
+# This file contains configuration that is *not* unique between devices.
+# Only global settings should be configured here; configuration that can
+# be done with superuser permissions should go in home-manager/home.nix
+
+# Help is available in the configuration.nix(5) man page and in the NixOS
+# manual (accessible by running ‘nixos-help’).
 
 { inputs, lib, config, pkgs, ... }:
 
@@ -54,47 +57,52 @@
 
   # Configure networking. I'm using network manager
   networking.networkmanager.enable = true;
-
-  # Set your time zone.
-  time.timeZone = "America/Denver";
-
-  # Select internationalisation properties.
+ 
   i18n.defaultLocale = "en_US.utf8";
 
-  # Define a user account. Don't forget to set a password with ‘passwd’.
+  # My user account
   users.users.desttinghim = {
     isNormalUser = true;
     description = "Louis Pearson";
-    extraGroups = [ "networkmanager" "wheel" "input" "video" "audio" "dialout" "vboxusers" "plugdev" "adbusers" "docker" "libvirtd" ];
+    # A bunch of extra groups, typically to allow
+    # access to certain hardware features.
+    extraGroups = [ 
+      "networkmanager" 
+      "wheel" 
+      "input" 
+      "video" 
+      "audio" 
+      "dialout" 
+      "vboxusers" 
+      "plugdev" 
+      "adbusers" 
+      "docker" 
+      "libvirtd" 
+    ];
   };
 
-  users.extraGroups.vboxusers.members = [ "desttinghim" ];
-
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
+  # System wide enviroment
   environment = {
     variables = {
-      TERMINAL = "foot";
       EDITOR = "hx";
       VISUAL = "hx";
     };
-    systemPackages = with pkgs; [     # Default packages installed system-wide
+    # Default packages installed system-wide    
+    systemPackages = with pkgs; [     
       helix
       git
       usbutils
       pciutils
-      wget
-
-      gnome3.adwaita-icon-theme # Default gnome cursors
+      wget 
       pipewire
       acpi
-      arduino
-
-      home-manager
+      arduino 
       lxqt.lxqt-policykit
+      light # controls backlight brightness
+      nix-ld # runs linux binaries without patching
 
-      virt-manager
-      spice
+      # For managing non-globally installed apps
+      home-manager
     ];
   };
 
@@ -105,28 +113,26 @@
     package = pkgs.lib.mkForce pkgs.gnome3.gvfs;
   };
 
-  services.fprintd = {
-    enable = true;
-  };
+  # fprintd; disabled for the time being, see the following link for context:
+  # https://github.com/NixOS/nixpkgs/issues/171136  
+  # 
+  # My experience with KDE has been that I have to use the fingerprint reader
+  # to authenticate when logging in or using sudo. What I'd like is the
+  # ability to optionally unlock my device via fingerprint, but still
+  # require a password for admin actions.
+  # services.fprintd = {
+  #   enable = true;
+  # };
 
   # Enable mDNS
   services.resolved.enable = true;
   networking.networkmanager.connectionConfig."connection.mdns" = 2; # 2 == yes
 
-  # networking.firewall.enable = true;
-  # networking.firewall.allowPing = true;
-  # services.samba.openFirewall = true;
-
   hardware.bluetooth.enable = true;
 
   # Optional but recommended for pipewire
+  # Allows pipewire to guarantee real time execution
   security.rtkit.enable = true;
-
-  # Programs
-  programs.light.enable = true;
-
-  # Gnome configuration manager
-  programs.dconf.enable = true;
 
   # Services
   services.dbus.enable = true;
@@ -143,6 +149,9 @@
   services.avahi.nssmdns = true;
   services.avahi.openFirewall = true;
 
+  # udev manages kernel events and handles permissions for
+  # non-root users
+  # https://wiki.archlinux.org/title/udev  
   services.udev = {
     packages = [ pkgs.android-udev-rules ];
     extraRules = let set-mem = pkgs.writeShellScript "set-mem" ''
@@ -156,21 +165,15 @@
       '';
   };
 
+  # Even though I use wayland, nixos does not have a clean seperation
+  # between wayland and x which results with x configuration being 
+  # necessary even for wayland users.
   services.xserver = {
     enable = true;
     desktopManager.plasma5.enable = true;
     displayManager.sddm = {
       enable = true;
     };
-  };
-
-  services.logind = {
-    lidSwitch = "suspend-then-hibernate";
-    extraConfig = ''
-      HandlePowerKey=suspend-then-hibernate
-      IdleAction=suspend-then-hibernate
-      IdleActionSec=10m
-    '';
   };
 
   services.pipewire = {
@@ -182,25 +185,22 @@
     wireplumber.enable = true;
   };
 
+  # Tailscale for home VPN
   services.tailscale.enable = true;
 
-  # services.tlp = {
-  #   enable = true;
-  #   settings = {
-  #     CPU_BOOST_ON_BAT = 0;
-  #     CPU_SCALING_GOVERNOR_ON_BATTERY = "powersave";
-  #     START_CHARGE_THRESH_BAT0 = 90;
-  #     STOP_CHARGE_THRESH_BAT0 = 97;
-  #     RUNTIME_PM_ON_BAT = "auto";
-  #   };
-  # };
-
-  systemd.sleep.extraConfig = "HibernateDelaySec=1h";
-
+  # Desktop portals! Allows sandboxed applications to request access to 
+  # resources. Not yet widely used, except for Flatpak I think.
   xdg.portal = {
     enable = true;
     wlr.enable = true;
-    extraPortals = [ pkgs.xdg-desktop-portal-gtk pkgs.xdg-desktop-portal-wlr pkgs.xdg-desktop-portal ];
+    extraPortals = [ 
+      pkgs.xdg-desktop-portal-kde
+      # The following are disabled because I'm pretty sure I *only* need one,
+      # and I'd like it to match with my desktop
+      # pkgs.xdg-desktop-portal-gtk 
+      # pkgs.xdg-desktop-portal-wlr 
+      # pkgs.xdg-desktop-portal 
+    ];
   };
 
   fonts.packages = with pkgs; [
@@ -217,79 +217,10 @@
     })
   ];
 
-  # Enable the OpenSSH daemon.
-  # services.openssh.enable = true;
+  # TODO: should I use nix-ld or just virtualize my dev environments?
+  # No nix-ld makes my setups more reproducible, but disallows running
+  # unpatched binaries. Using VMs makes the mutable state contained and
+  # could allows taking snapshots.
 
-  # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
-  # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
-
-  # This value determines the NixOS release from which the default
-  # settings for stateful data, like file locations and database versions
-  # on your system were taken. It‘s perfectly fine and recommended to leave
-  # this value at the release version of the first install of this system.
-  # Before changing this value read the documentation for this option
-  # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  system.stateVersion = "23.11"; # Did you read the comment?
-
-  # Allow non-nix binaries to run without patching
-  programs.nix-ld.enable = true;
-  # programs.nix-ld.libraries = with pkgs; [
-  #   stdenv.cc.cc
-  #   fuse3
-  #   alsa-lib
-  #   at-spi2-atk
-  #   at-spi2-core
-  #   atk
-  #   cairo
-  #   cups
-  #   curl
-  #   dbus
-  #   expat
-  #   fontconfig
-  #   freetype
-  #   gdk-pixbuf
-  #   glib
-  #   gtk3
-  #   libGL
-  #   libappindicator-gtk3
-  #   libdrm
-  #   libnotify
-  #   libpulseaudio
-  #   libuuid
-  #   xorg.libxcb
-  #   libxkbcommon
-  #   mesa
-  #   nspr
-  #   nss
-  #   pango
-  #   pipewire
-  #   systemd
-  #   icu
-  #   openssl
-  #   xorg.libX11
-  #   xorg.libXScrnSaver
-  #   xorg.libXcomposite
-  #   xorg.libXcursor
-  #   xorg.libXdamage
-  #   xorg.libXext
-  #   xorg.libXfixes
-  #   xorg.libXi
-  #   xorg.libXrandr
-  #   xorg.libXrender
-  #   xorg.libXtst
-  #   xorg.libxkbfile
-  #   xorg.libxshmfence
-  #   zlib
-  # ];
-
-  # virtualisation.virtualbox.host = {
-  #   enable = true;
-  #   enableExtensionPack = true;
-  # };
-
-  virtualisation.libvirtd.enable = true;
   virtualisation.docker.enable = true;
 }

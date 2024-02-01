@@ -1,6 +1,8 @@
-# Edit this configuration file to define what should be installed on
-# your system.  Help is available in the configuration.nix(5) man page
-# and in the NixOS manual (accessible by running ‘nixos-help’).
+# Desktop specific configuration
+# - System specific variables
+# - Globally installed packages
+# - System services
+# - Networking configuration
 
 { inputs, lib, config, pkgs, ... }:
 
@@ -11,7 +13,18 @@
       ./desktop/hardware-configuration.nix
       ./configuration.nix
       ./cachix.nix
+      ./dev-vms.nix
     ];
 
+  # Should be left at the version that was used when first installing
+  # the system, allows stateful configuration to upgrade properly.
+  system.stateVersion = "23.11"; 
+
   networking.hostName = "desttop";
+  time.timeZone = "America/Denver"; 
+
+  # TODO: research setting up a self-hosted remote development environment and 
+  # implement it here.
+
+  # TODO: configure sleep/power management
 }
