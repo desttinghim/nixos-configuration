@@ -214,14 +214,9 @@
     workspace = {
       clickItemTo = "select";
       lookAndFeel = "org.kde.breezedark.desktop";
-      cursorTheme = "Bibata-Modern-Ice";
-      iconTheme = "Papirus-Dark"; 
+      cursorTheme = "Dracula-cursors";
+      iconTheme = "dracula-icons-main"; 
       wallpaper = "${pkgs.libsForQt5.plasma-workspace-wallpapers}/share/wallpapers/Patak/contents/images/1080x1920.png";    
-    };
-
-    hotkeys.commands."Launch Konsole" = {
-      key = "Meta+Alt+K";
-      command = "konsole";
     };
 
     panels = [
@@ -245,7 +240,7 @@
 
       kwin = {
         # Polonium items (kwin tiling script)
-        # "PoloniumCycleLayouts" = [ ];
+        "PoloniumCycleLayouts" = "Meta+|";
         # "PoloniumEngineBTree" = [ ];
         # "PoloniumEngineHalf" = [ ];
         # "PoloniumEngineKWin" = [ ];
@@ -265,7 +260,7 @@
         # "PoloniumResizeTileRight" = [ ];
         "PoloniumResizeTileUp" = "Meta+Shift+Up";
         "PoloniumRetileWindow" = "Meta+Shift+Space";
-        # "PoloniumShowSettings" = [ ];
+        "PoloniumShowSettings" = "Meta+?";
         "PoloniumSwapAbove" = "Meta+Shift+K";
         "PoloniumSwapBelow" = "Meta+Shift+J";
         "PoloniumSwapLeft" = "Meta+Shift+H";
@@ -316,8 +311,14 @@
 
       kwinrc = { 
         ModifierOnlyShortcuts.Meta = "";
-        Plugins.poloniumEnabled = true;
-        Xwayland.Scale = 1.5;
+        Xwayland.Scale = 1.5; 
+        Compositing.LatencyPolicy = "Low";
+
+        Plugins = {
+          bismuthEnabled = false;
+          poloniumEnabled = true;
+        };
+
         Desktops = { 
           "Name_1" = "Desktop 1";
           "Name_2" = "Desktop 2";
@@ -334,8 +335,10 @@
         };
       };
 
+      ksplashrc.KSplash.Engine = "KSplashQML";
+
       kdeglobals = {
-        KScreen.ScaleFactor = 1.5;
+        KScreen.ScaleFactor = 1.25;
 
         Shortcuts = {
           Quit = "Meta+Shift+Q";
@@ -344,16 +347,13 @@
         General = {
           BrowserApplication = "firefox.desktop";
           TerminalApplication = "alacritty";
-          TerminalService = "Alacritty.desktop";
-          XftHintStyle = "hintslight";
-          XftSubPixel = "none";
-          fixed = "Hack,12,-1,5,50,0,0,0,0,0";
-          font = "Noto Sans,12,-1,5,50,0,0,0,0,0";
-          menuFont = "Noto Sans,12,-1,5,50,0,0,0,0,0";
-          smallestReadableFont = "Noto Sans,10,-1,5,50,0,0,0,0,0";
-          toolBarFont = "Noto Sans,12,-1,5,50,0,0,0,0,0";       
-        }; 
-      };  
+          TerminalService = "Alacritty.desktop"; 
+          ColorScheme = "DraculaPurple";
+          ColorSchemeHash = "01662607e36cd33eacc7d7d7189f69c26b9a2cc8";
+        };
+
+        KDE.widgetStyle = "Fusion";
+      };
     };
   };
 
