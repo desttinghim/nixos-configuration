@@ -97,9 +97,7 @@
       pipewire
       acpi
       arduino 
-      lxqt.lxqt-policykit
       light # controls backlight brightness
-      nix-ld # runs linux binaries without patching
 
       # For managing non-globally installed apps
       home-manager
@@ -112,17 +110,6 @@
     enable = true;
     package = pkgs.lib.mkForce pkgs.gnome3.gvfs;
   };
-
-  # fprintd; disabled for the time being, see the following link for context:
-  # https://github.com/NixOS/nixpkgs/issues/171136  
-  # 
-  # My experience with KDE has been that I have to use the fingerprint reader
-  # to authenticate when logging in or using sudo. What I'd like is the
-  # ability to optionally unlock my device via fingerprint, but still
-  # require a password for admin actions.
-  # services.fprintd = {
-  #   enable = true;
-  # };
 
   # Enable mDNS
   services.resolved.enable = true;
@@ -168,13 +155,10 @@
   # Even though I use wayland, nixos does not have a clean seperation
   # between wayland and x which results with x configuration being 
   # necessary even for wayland users.
-  services.xserver = {
-    enable = true;
-    desktopManager.plasma5.enable = true;
-    displayManager.sddm = {
-      enable = true;
-    };
-  };
+  services.xserver.enable = true;
+  services.xserver.desktopManager.plasma5.enable = true;
+  services.xserver.displayManager.sddm.enable = true;
+  services.xserver.displayManager.defaultSession = "plasmawayland";
 
   services.pipewire = {
     enable = true;

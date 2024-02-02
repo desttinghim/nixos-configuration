@@ -1,7 +1,8 @@
 { inputs, lib, config, pkgs, ...}: {
   # Import home-manager modules here
   imports = [
-    inputs.nix-colors.homeManagerModule
+    # inputs.nix-colors.homeManagerModule
+    inputs.plasma-manager.homeManagerModules.plasma-manager
   ];
 
   nixpkgs = {
@@ -22,7 +23,7 @@
     homeDirectory = "/home/desttinghim";
   };
 
-  colorScheme = inputs.nix-colors.colorSchemes.dracula;
+  # colorScheme = inputs.nix-colors.colorSchemes.dracula;
 
   # This value determines the Home Manager release that your
   # configuration is compatible with. This helps avoid breakage
@@ -39,7 +40,7 @@
   systemd.user.startServices = "sd-switch";
 
   # Add ~/.local/bin to my PATH
-  home.sessionPath = [ "$HOME/.local/bin" "$HOME/.config/emacs/bin" "$HOME/.cargo/bin" "$HOME/.bun/bin" ];
+  home.sessionPath = [ "$HOME/.local/bin" ];
 
   home.sessionVariables = {
     GDK_BACKEND="wayland";
@@ -55,45 +56,28 @@
 
   # Apps I don't care to configure
   home.packages = with pkgs; [ 
-    libsForQt5.bismuth
     plasma5Packages.kio-extras
-    gnome.nautilus
-    gnome.file-roller
 
     # Terminal
     alacritty
     btop
-    ranger
-    zellij
-    entr # re run commands when files change
     tldr
-    silver-searcher
     bashmount
+    helix
+    wl-clipboard
 
-    # Doom emacs
+    # Programming
     ripgrep
-    sqlite
-    wordnet
-    mu
-    isync
-    gnupg
-    gnumake
-    cmake # vterm, c/c++
     editorconfig-core-c
     irony-server
     glslang
-    rtags
-    fd
-
-    # Programming
+    fd 
     clang-tools
     cargo
     rustfmt
     clang
-    openjdk
     inputs.zig.packages.${system}.master-2024-01-07
     inputs.zls.packages.${system}.default
-    git-bug
     nodePackages.prettier
     nodejs
     python3
@@ -104,20 +88,12 @@
     winetricks
     q4wine
 
-    # Editors
-    vim
-    helix
-    hicolor-icon-theme
-    wl-clipboard
-
     # Media
     feh
-    flameshot
     mpv
+    imv
     pavucontrol
     vlc
-    mopidy
-    qjackctl
     obs-studio
 
     # Dependencies
@@ -128,20 +104,12 @@
     xdg-utils
     bluez
 
-    # Chat
-    discord
-    element-desktop
-    zoom-us
-    zulip
-
     # Graphics
     libresprite
     inkscape
 
     # Audio
     ardour
-    polyphone
-    reaper
     sonic-visualiser
     soundfont-fluid
     soundfont-generaluser
@@ -151,22 +119,15 @@
 
     # Misc.
     bitwarden
-    godot_4
     okular
-    pdftk
-    solaar
-    torrential
     zathura
     libreoffice
     zeal
-    imv
     qalculate-gtk
-    okteta
-    dbeaver
-    sqlitebrowser
     samba
     qbittorrent
     appimage-run
+    thunderbird
 
     # File Management
     zip
@@ -174,13 +135,12 @@
     unrar
     unar
     soundconverter
-    picard
     uget
     uget-integrator
     paperwork
 
     #Engineering
-    kicad
+    # kicad # disabled b/c it takes forever to build
     freecad
 
     # N64 dev 
@@ -189,56 +149,12 @@
 
     furnace # deflemask compatible, sound chip emulation, tracker
 
-    tig
-    vifm
-    steam
     plasma5Packages.plasma-browser-integration
     nextcloud-client
     tailscale
     ktailctl
     plasma5Packages.kasts
   ];
-
-  services.mopidy = {
-    enable = true;
-    # This adds the file mopidy-secrets.conf to the config search path.
-    # The files are combined, with later files overriding earlier ones
-    # extraConfigFiles = [ "${config.xdg.configHome}/mopidy/mopidy-secrets.conf" ];
-    extensionPackages = with pkgs; [
-      mopidy-bandcamp
-      mopidy-mpris
-      mopidy-ytmusic
-      mopidy-iris
-      mopidy-local
-      mopidy-scrobbler
-    ];
-    settings = {
-      iris = {
-        country = "us";
-        locale = "en_US";
-      };
-      # See here for process to get ytmusic auth info:
-      # https://ytmusicapi.readthedocs.io/en/latest/setup.html
-      # See here for info on brand accounts (apparently I use one?):
-      # https://ytmusicapi.readthedocs.io/en/latest/faq.html
-      # Finally, add "X-Goog-PageId" from the request header. This is
-      # the same as the brand id.
-      ytmusic = {
-        enabled = true;
-        enable_history = true;
-        enable_scrobbling = true;
-        auth_json = "/home/desttinghim/.config/mopidy/ytmusic/auth.json";
-      };
-      scrobbler.enabled = true;
-      # NOTE: Local has a mopidy-scan.service file that needs to be run to
-      # update. The local scan button in Iris can't be used. Rerun with the following command:
-      # systemctl --user start mopidy-scan
-      # TODO: automate this
-      local = {
-        media_dir = "~/Music";
-      };
-    };
-  };
 
   services.mpris-proxy.enable = true;
   services.syncthing.enable = true;
@@ -252,19 +168,10 @@
     ];
   };
 
-  programs.chromium = {
-    enable = true;
-  };
-
   programs.firefox = {
     enable = true;
     # TODO: Add nur so addons can be managed by nix
     package = pkgs.firefox-wayland;
-  };
-
-  programs.foot = {
-    enable = true;
-    settings = import ./foot.nix;
   };
 
   programs.gh = {
@@ -291,5 +198,164 @@
       colors.webpage.preferred_color_scheme = "dark";
     };
     extraConfig = builtins.readFile ./qutebrowser/extraConfig.py;
+  };
+
+  # KDE configuration, depends on plasma-manager
+  programs.plasma = {
+    enable = true;
+
+    # High-level plasma settings
+    
+    workspace = {
+      clickItemTo = "select";
+      lookAndFeel = "org.kde.breezedark.desktop";
+      cursorTheme = "Bibata-Modern-Ice";
+      iconTheme = "Papirus-Dark"; 
+      wallpaper = "${pkgs.libsForQt5.plasma-workspace-wallpapers}/share/wallpapers/Patak/contents/images/1080x1920.png";    
+    };
+
+    hotkeys.commands."Launch Konsole" = {
+      key = "Meta+Alt+K";
+      command = "konsole";
+    };
+
+    panels = [
+      # Windows-like panel at bottom of screen
+      {
+        location = "bottom";
+        widgets = [
+          "org.kde.plasma.kickoff"
+          "org.kde.plasma.pager"
+          "org.kde.plasma.icontasks"
+          "org.kde.plasma.marginsseperator"
+          "org.kde.plasma.systemtray"
+          "org.kde.plasma.digitalclock"
+        ];
+      }
+    ];
+
+    # Mid-level plasma settings 
+    shortcuts = {
+      "Alacritty.desktop"."New" = "Meta+Return";
+
+      kwin = {
+        # Polonium items (kwin tiling script)
+        # "PoloniumCycleLayouts" = [ ];
+        # "PoloniumEngineBTree" = [ ];
+        # "PoloniumEngineHalf" = [ ];
+        # "PoloniumEngineKWin" = [ ];
+        # "PoloniumEngineMonocle" = [ ];
+        # "PoloniumEngineThreeColumn" = [ ];
+        "PoloniumFocusAbove" = "Meta+K";
+        "PoloniumFocusBelow" = "Meta+J";
+        "PoloniumFocusLeft" = "Meta+H";
+        "PoloniumFocusRight" = "Meta+L";
+        "PoloniumInsertAbove" = "Meta+Shift+O";
+        "PoloniumInsertBelow" = "Meta+O";
+        "PoloniumInsertLeft" = "Meta+I";
+        "PoloniumInsertRight" = "Meta+A";
+        "PoloniumRebuildLayout" = "Meta+Ctrl+Space";
+        "PoloniumResizeTileDown" = "Meta+Shift+Down";
+        # "PoloniumResizeTileLeft" = [ ];
+        # "PoloniumResizeTileRight" = [ ];
+        "PoloniumResizeTileUp" = "Meta+Shift+Up";
+        "PoloniumRetileWindow" = "Meta+Shift+Space";
+        # "PoloniumShowSettings" = [ ];
+        "PoloniumSwapAbove" = "Meta+Shift+K";
+        "PoloniumSwapBelow" = "Meta+Shift+J";
+        "PoloniumSwapLeft" = "Meta+Shift+H";
+        "PoloniumSwapRight" = "Meta+Shift+L"; 
+
+        # Default plasma items
+        "Switch to Desktop 1" = "Meta+1";
+        "Switch to Desktop 2" = "Meta+2";
+        "Switch to Desktop 3" = "Meta+3";
+        "Switch to Desktop 4" = "Meta+4";
+        "Switch to Desktop 5" = "Meta+5";
+        "Switch to Desktop 6" = "Meta+6";
+        "Switch to Desktop 7" = "Meta+7";
+        "Switch to Desktop 8" = "Meta+8";
+        "Switch to Desktop 9" = "Meta+9";
+        "Switch to Desktop 10" = "Meta+0";
+
+        "Window to Desktop 1" = "Meta+!";
+        "Window to Desktop 2" = "Meta+@";
+        "Window to Desktop 3" = "Meta+#";
+        "Window to Desktop 4" = "Meta+$";
+        "Window to Desktop 5" = "Meta+%";
+        "Window to Desktop 6" = "Meta+^";
+        "Window to Desktop 7" = "Meta+&";
+        "Window to Desktop 8" = "Meta+*";
+        "Window to Desktop 9" = "Meta+(";
+        "Window to Desktop 10" = "Meta+)";
+
+        # "Switch Window Left" = "Meta+H"; 
+        # "Switch Window Down" = "Meta+J"; 
+        # "Switch Window Up" = "Meta+K"; 
+        # "Switch Window Right" = "Meta+L"; 
+
+        "Window Fullscreen" = "Meta+F";
+        "Window Maximize" = "Meta+M";
+        "Window Minimize" = "Meta+N";
+      };          
+
+      "org\\.kde\\.plasma\\.emojier\\.desktop"."_launch" = "Meta+."; 
+      plasmashell = {
+        cycle-panels = "Meta+Alt+P";
+      };
+    };
+
+    # Low-level plasma settings
+    configFile = {
+      baloofilerc."Basic Settings".Indexing-Enabled = false;
+
+      kwinrc = { 
+        ModifierOnlyShortcuts.Meta = "";
+        Plugins.poloniumEnabled = true;
+        Xwayland.Scale = 1.5;
+        Desktops = { 
+          "Name_1" = "Desktop 1";
+          "Name_2" = "Desktop 2";
+          "Name_3" = "Desktop 3";
+          "Name_4" = "Desktop 4";
+          "Name_5" = "Desktop 5";
+          "Name_6" = "Desktop 6";
+          "Name_7" = "Desktop 7";
+          "Name_8" = "Desktop 8";
+          "Name_9" = "Desktop 9";
+          "Name_10" = "Desktop 10";
+          "Number" = 10;
+          "Rows" = 1;
+        };
+      };
+
+      kdeglobals = {
+        KScreen.ScaleFactor = 1.5;
+
+        Shortcuts = {
+          Quit = "Meta+Shift+Q";
+        };
+
+        General = {
+          BrowserApplication = "firefox.desktop";
+          TerminalApplication = "alacritty";
+          TerminalService = "Alacritty.desktop";
+          XftHintStyle = "hintslight";
+          XftSubPixel = "none";
+          fixed = "Hack,12,-1,5,50,0,0,0,0,0";
+          font = "Noto Sans,12,-1,5,50,0,0,0,0,0";
+          menuFont = "Noto Sans,12,-1,5,50,0,0,0,0,0";
+          smallestReadableFont = "Noto Sans,10,-1,5,50,0,0,0,0,0";
+          toolBarFont = "Noto Sans,12,-1,5,50,0,0,0,0,0";       
+        }; 
+      };  
+    };
+  };
+
+  # direnv - automatically load project environment from shell.nix
+  programs.direnv = {
+    enable = true;
+    enableBashIntegration = true;
+    nix-direnv.enable = true;
   };
 }
