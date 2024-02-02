@@ -154,6 +154,11 @@
     tailscale
     ktailctl
     plasma5Packages.kasts
+
+    # Allows gtk apps (like firefox) to integrate with KDE theming;
+    # meaning it will actually follow light/dark theming
+    kde-gtk-config
+    breeze-gtk
   ];
 
   services.mpris-proxy.enable = true;
