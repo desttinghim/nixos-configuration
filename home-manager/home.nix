@@ -297,6 +297,7 @@
         "Window Fullscreen" = "Meta+F";
         "Window Maximize" = "Meta+M";
         "Window Minimize" = "Meta+N";
+        "Close Window" = [ "Meta+Shift+Q" "Meta+F4" ];
       };          
 
       "org\\.kde\\.plasma\\.emojier\\.desktop"."_launch" = "Meta+."; 
@@ -341,7 +342,7 @@
         KScreen.ScaleFactor = 1.25;
 
         Shortcuts = {
-          Quit = "Meta+Shift+Q";
+          Quit = "Ctrl+Q";
         };
 
         General = {
