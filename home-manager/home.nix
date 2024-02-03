@@ -297,10 +297,17 @@
         "Window Fullscreen" = "Meta+F";
         "Window Maximize" = "Meta+M";
         "Window Minimize" = "Meta+N";
-        "Close Window" = [ "Meta+Shift+Q" "Meta+F4" ];
+        "Close Window" = "Meta+Shift+Q";
       };          
 
-      "org\\.kde\\.plasma\\.emojier\\.desktop"."_launch" = "Meta+."; 
+      "org\.kde\.plasma\.emojier\.desktop" = {
+        "_k_friendly_name" = "Emoji Selector";
+        "_launch" = "Meta+."; 
+      };
+      "org\.kde\.krunner\.desktop" = {  
+        "_k_friendly_name" = "KRunner";
+        "_launch" = "Meta+D";
+      };
       plasmashell = {
         cycle-panels = "Meta+Alt+P";
       };
