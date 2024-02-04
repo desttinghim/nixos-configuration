@@ -54,7 +54,7 @@ in
   home.file.alacritty = {
     enable = true;
     source = ./alacritty.yml;
-    target = "${homeDirectory}/.config/alacritty/alacritty.yml";
+    target = ".config/alacritty/alacritty.yml";
   };
 
   # Required to allow Home Manager to manage shell configuration
