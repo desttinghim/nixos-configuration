@@ -46,6 +46,11 @@
     GDK_BACKEND="wayland";
   };
 
+  home.file.alacritty = {
+    source = ./alacritty.yml;
+    target = "$HOME/.config/alacritty";
+  };
+
   # Required to allow Home Manager to manage shell configuration
   programs.bash = {
     enable = true;
