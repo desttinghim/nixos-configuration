@@ -207,4 +207,11 @@
   # could allows taking snapshots.
 
   virtualisation.docker.enable = true;
+
+  documentation = {
+    man.enable = true;
+    info.enable = true;
+    doc.enable = true;
+    dev.enable = true;
+  };
 }
