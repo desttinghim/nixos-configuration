@@ -243,8 +243,8 @@ in
             config = {
               General = {
                 favoritesDisplay = "1"; # Use list display
-                primaryActions = "3";
-                showActionButtonCaptions = "false"; 
+                primaryActions = "1";
+                showActionButtonCaptions = "false";
               };
             };
           }
@@ -254,20 +254,16 @@ in
           "org.kde.plasma.systemtray"
           "org.kde.plasma.digitalclock"
         ];
-        extraSettings = builtins.readFile ./taskbarExtraSettings.js;
+        extraSettings = builtins.readFile ./taskbarExtraSettings.js; # Meta+Shift+D set to activate kickoff here
       }
     ];
 
     # Mid-level plasma settings 
     shortcuts = {
-      "Alacritty.desktop"."New" = "Meta+Return";
-      "org.kde.plasma.emojier.desktop".Launch = "Meta+.";
-      "org.kde.krunner.desktop"."Launch" = "Meta+D";
-
-      plasmashell = {
-        "Activate Application Launcher Widget" = "Meta+Shift+D";
-        cycle-panels = "Meta+Alt+P";
-      };
+      "Alacritty.desktop"._launch = "Meta+Return";
+      "org.kde.plasma.emojier.desktop"._launch = "Meta+.";
+      "org.kde.krunner.desktop"._launch = "Meta+D"; 
+      plasmashell.cycle-panels = "Meta+Alt+P";
 
       kwin = {
         # Polonium items (kwin tiling script)
@@ -328,7 +324,7 @@ in
         "Window Fullscreen" = "Meta+F";
         "Window Maximize" = "Meta+M";
         "Window Minimize" = "Meta+N";
-        "Window Close" = "Meta+Shift+Q";
+        "Window Close" = [ "Alt+F4" "Meta+Shift+Q"];
       };           
     };
 
