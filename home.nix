@@ -1,4 +1,9 @@
-{ inputs, lib, config, pkgs, ...}: {
+{ inputs, lib, config, pkgs, ...}: 
+let
+  username = "desttinghim";
+  homeDirectory = "/home/${username}";
+in
+{
   # Import home-manager modules here
   imports = [
     # inputs.nix-colors.homeManagerModule
@@ -19,8 +24,8 @@
   };
 
   home = {
-    username = "desttinghim";
-    homeDirectory = "/home/desttinghim";
+    username = username;
+    homeDirectory = homeDirectory;
   };
 
   # colorScheme = inputs.nix-colors.colorSchemes.dracula;
@@ -40,15 +45,16 @@
   systemd.user.startServices = "sd-switch";
 
   # Add ~/.local/bin to my PATH
-  home.sessionPath = [ "$HOME/.local/bin" ];
+  home.sessionPath = [ "${homeDirectory}/.local/bin" ];
 
   home.sessionVariables = {
     GDK_BACKEND="wayland";
   };
 
   home.file.alacritty = {
+    enable = true;
     source = ./alacritty.yml;
-    target = "$HOME/.config/alacritty";
+    target = "${homeDirectory}/.config/alacritty/alacritty.yml";
   };
 
   # Required to allow Home Manager to manage shell configuration
