@@ -223,6 +223,7 @@ in
     # High-level plasma settings
     
     workspace = {
+      colorScheme = "DraculaPurple";
       clickItemTo = "select";
       lookAndFeel = "org.kde.breezedark.desktop";
       cursorTheme = "Dracula-cursors";
@@ -230,11 +231,23 @@ in
       wallpaper = "${pkgs.libsForQt5.plasma-workspace-wallpapers}/share/wallpapers/Patak/contents/images/1080x1920.png";    
     };
 
+    # To find the configuration options available for widgets,
+    # look here: https://develop.kde.org/docs/plasma/scripting/keys/
     panels = [
       # Windows-like panel at bottom of screen
       {
         location = "bottom";
         widgets = [
+          {
+            name = "org.kde.plasma.kickoff";
+            config = {
+              General = {
+                favoritesDisplay = "1"; # Use list display
+                primaryActions = "3";
+                showActionButtonCaptions = "false"; 
+              };
+            };
+          }
           "org.kde.plasma.kickoff"
           "org.kde.plasma.pager"
           "org.kde.plasma.icontasks"
@@ -242,16 +255,24 @@ in
           "org.kde.plasma.systemtray"
           "org.kde.plasma.digitalclock"
         ];
+        extraSettings = builtins.readFile ./taskbarExtraSettings.js;
       }
     ];
 
     # Mid-level plasma settings 
     shortcuts = {
       "Alacritty.desktop"."New" = "Meta+Return";
+      "org.kde.plasma.emojier.desktop".Launch = "Meta+.";
+      "org.kde.krunner.desktop"."Launch" = "Meta+D";
+
+      plasmashell = {
+        "Activate Application Launcher Widget" = "Meta+Shift+D";
+        cycle-panels = "Meta+Alt+P";
+      };
 
       kwin = {
         # Polonium items (kwin tiling script)
-        "PoloniumCycleLayouts" = "Meta+|";
+        "PoloniumCycleLayouts" = "Meta+/";
         # "PoloniumEngineBTree" = [ ];
         # "PoloniumEngineHalf" = [ ];
         # "PoloniumEngineKWin" = [ ];
@@ -308,20 +329,8 @@ in
         "Window Fullscreen" = "Meta+F";
         "Window Maximize" = "Meta+M";
         "Window Minimize" = "Meta+N";
-        "Close Window" = "Meta+Shift+Q";
-      };          
-
-      "org\.kde\.plasma\.emojier\.desktop" = {
-        "_k_friendly_name" = "Emoji Selector";
-        "_launch" = "Meta+."; 
-      };
-      "org\.kde\.krunner\.desktop" = {  
-        "_k_friendly_name" = "KRunner";
-        "_launch" = "Meta+D";
-      };
-      plasmashell = {
-        cycle-panels = "Meta+Alt+P";
-      };
+        "Window Close" = "Meta+Shift+Q";
+      };           
     };
 
     # Low-level plasma settings
@@ -354,20 +363,15 @@ in
         };
       };
 
-      ksplashrc.KSplash.Engine = "KSplashQML";
+      ksmserverrc.General.confirmLogout = false;
 
       kdeglobals = {
         KScreen.ScaleFactor = 1.25;
-
-        Shortcuts = {
-          Quit = "Ctrl+Q";
-        };
 
         General = {
           BrowserApplication = "firefox.desktop";
           TerminalApplication = "alacritty";
           TerminalService = "Alacritty.desktop"; 
-          ColorScheme = "DraculaPurple";
           ColorSchemeHash = "01662607e36cd33eacc7d7d7189f69c26b9a2cc8";
         };
 

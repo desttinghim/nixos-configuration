@@ -209,6 +209,8 @@
   virtualisation.docker.enable = true;
 
   documentation = {
+    enable = true;
+    nixos.enable = true;
     man.enable = true;
     info.enable = true;
     doc.enable = true;
