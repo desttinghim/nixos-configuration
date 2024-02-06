@@ -116,6 +116,8 @@
   networking.networkmanager.connectionConfig."connection.mdns" = 2; # 2 == yes
 
   hardware.bluetooth.enable = true;
+  hardware.opengl.enable = true;
+  hardware.vulkan.enable = true;
 
   # Optional but recommended for pipewire
   # Allows pipewire to guarantee real time execution
