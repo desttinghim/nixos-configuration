@@ -23,6 +23,8 @@
   networking.hostName = "desttop";
   time.timeZone = "America/Denver"; 
 
+  hardware.vulkan.enable = true;
+
   # TODO: research setting up a self-hosted remote development environment and 
   # implement it here.
 
