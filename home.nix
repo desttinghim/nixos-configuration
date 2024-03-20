@@ -138,7 +138,7 @@ in
     samba
     qbittorrent
     appimage-run
-    thunderbird
+    # thunderbird
 
     # File Management
     zip
@@ -177,6 +177,7 @@ in
 
   # Programs, sorted alphabetically
   programs.atuin = {
+    package = inputs.atuin.packages.${pkgs.system}.default;
     enable = true;
     enableBashIntegration = true;    
     flags = [
