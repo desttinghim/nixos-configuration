@@ -188,7 +188,6 @@ in
   programs.firefox = {
     enable = true;
     # TODO: Add nur so addons can be managed by nix
-    package = pkgs.firefox-wayland;
   };
 
   programs.gh = {
