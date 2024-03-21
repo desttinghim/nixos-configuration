@@ -170,6 +170,8 @@ in
     # meaning it will actually follow light/dark theming
     kde-gtk-config
     breeze-gtk
+
+    firefox-bin
   ];
 
   services.mpris-proxy.enable = true;
@@ -183,11 +185,6 @@ in
     flags = [
       "--disable-up-arrow"
     ];
-  };
-
-  programs.firefox = {
-    enable = true;
-    # TODO: Add nur so addons can be managed by nix
   };
 
   programs.gh = {
