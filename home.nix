@@ -172,6 +172,7 @@ in
     breeze-gtk
 
     firefox-bin
+    partition-manager
   ];
 
   services.mpris-proxy.enable = true;
