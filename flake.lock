@@ -145,28 +145,6 @@
         "type": "github"
       }
     },
-    "home-manager_2": {
-      "inputs": {
-        "nixpkgs": [
-          "plasma-manager",
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1706981411,
-        "narHash": "sha256-cLbLPTL1CDmETVh4p0nQtvoF+FSEjsnJTFpTxhXywhQ=",
-        "owner": "nix-community",
-        "repo": "home-manager",
-        "rev": "652fda4ca6dafeb090943422c34ae9145787af37",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nix-community",
-        "ref": "release-23.11",
-        "repo": "home-manager",
-        "type": "github"
-      }
-    },
     "langref": {
       "flake": false,
       "locked": {
@@ -243,33 +221,11 @@
         "type": "github"
       }
     },
-    "plasma-manager": {
-      "inputs": {
-        "home-manager": "home-manager_2",
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1709982472,
-        "narHash": "sha256-cMPHIV7yWbve+nwiQDhVt7BBkxrGTLzSTAslv7u6HZo=",
-        "owner": "pjones",
-        "repo": "plasma-manager",
-        "rev": "26acf8f5880ae7d6e5de4ca953c8ad161b7903eb",
-        "type": "github"
-      },
-      "original": {
-        "owner": "pjones",
-        "repo": "plasma-manager",
-        "type": "github"
-      }
-    },
     "root": {
       "inputs": {
         "atuin": "atuin",
         "home-manager": "home-manager",
         "nixpkgs": "nixpkgs_2",
-        "plasma-manager": "plasma-manager",
         "zig": "zig",
         "zls": "zls"
       }

@@ -9,11 +9,6 @@
     home-manager.url = "github:nix-community/home-manager/release-23.11";   
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
-    # stylix.url = "github:danth/stylix/release-23.11";
-    # stylix.inputs.nixpkgs.follows = "nixpkgs";
-    plasma-manager.url = "github:pjones/plasma-manager"; # home-manager module for configuring KDE
-    plasma-manager.inputs.nixpkgs.follows = "nixpkgs";
-
     zig.url = "github:mitchellh/zig-overlay"; 
     zls.url = "github:zigtools/zls";
     zls.inputs.zig-overlay.follows = "zig";
