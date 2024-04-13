@@ -104,6 +104,8 @@
     ];
   };
 
+  programs.partition-manager.enable = true;
+
   # Gnome Virtual File System
   # Allows browsing network directories in nautilus
   services.gvfs = {
