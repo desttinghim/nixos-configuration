@@ -202,11 +202,6 @@ in
     };
   };
 
-  # NOTE: partition-manager can't be installed through
-  # the packages field. Some setup is needed for it to be
-  # able to request permissions properly.
-  programs.partition-manager.enable = true;
-
   programs.qutebrowser = {
     enable = true;
     settings = {
