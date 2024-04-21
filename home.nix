@@ -171,6 +171,7 @@ in
     breeze-gtk
 
     firefox-bin
+    discover
   ];
 
   services.mpris-proxy.enable = true;
