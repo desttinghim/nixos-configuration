@@ -86,7 +86,7 @@ in
     cargo
     rustfmt
     clang
-    inputs.zig.packages.${system}.master-2024-03-08
+    inputs.zig.packages.${system}."0.12.0"
     inputs.zls.packages.${system}.default
     nodePackages.prettier
     nodejs
