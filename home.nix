@@ -123,9 +123,16 @@ in
     sonic-visualiser
     soundfont-fluid
     soundfont-generaluser
-    x42-gmsynth
+    x42-plugins
     geonkick
     musescore
+    drumgizmo
+    lsp-plugins
+    cardinal
+    dexed
+    odin2
+    surge-XT
+    vital
 
     # Misc.
     bitwarden
