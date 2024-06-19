@@ -18,7 +18,7 @@
 
   # Should be left at the version that was used when first installing
   # the system, allows stateful configuration to upgrade properly.
-  system.stateVersion = "23.11"; 
+  system.stateVersion = "24.05"; 
 
   networking.hostName = "framework";
   time.timeZone = "America/Denver"; 

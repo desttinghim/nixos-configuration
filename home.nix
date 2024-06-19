@@ -171,6 +171,9 @@ in
     tailscale
     ktailctl
     plasma5Packages.kasts
+    elisa
+    kdePackages.audiocd-kio
+    libcdio
 
     # Allows gtk apps (like firefox) to integrate with KDE theming;
     # meaning it will actually follow light/dark theming

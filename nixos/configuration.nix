@@ -136,7 +136,7 @@
     pkgs.brgenml1cupswrapper
   ];
   services.avahi.enable = true;     # Also printing
-  services.avahi.nssmdns = true;
+  services.avahi.nssmdns4 = true;
   services.avahi.openFirewall = true;
 
   # udev manages kernel events and handles permissions for
@@ -160,8 +160,8 @@
   # necessary even for wayland users.
   services.xserver.enable = true;
   services.xserver.desktopManager.plasma5.enable = true;
-  services.xserver.displayManager.sddm.enable = true;
-  services.xserver.displayManager.defaultSession = "plasmawayland";
+  services.displayManager.sddm.enable = true;
+  services.displayManager.defaultSession = "plasmawayland";
 
   services.pipewire = {
     enable = true;

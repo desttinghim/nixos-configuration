@@ -2,11 +2,11 @@
   description = "Desttinghim's NixOS Configuration";
 
   inputs = {
-    # Use nixpkgs 23.11
-    nixpkgs.url = "github:NixOS/nixpkgs/release-23.11";
+    # Use nixpkgs 24.05
+    nixpkgs.url = "github:NixOS/nixpkgs/release-24.05";
 
     # Setup home manager as a module
-    home-manager.url = "github:nix-community/home-manager/release-23.11";   
+    home-manager.url = "github:nix-community/home-manager/release-24.05";   
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
     zig.url = "github:mitchellh/zig-overlay"; 
