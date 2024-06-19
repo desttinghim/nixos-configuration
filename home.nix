@@ -182,6 +182,12 @@ in
 
     firefox-bin
     discover
+
+    sqlitebrowser
+    k3b
+    brasero
+    xfce.xfburn
+    steam
   ];
 
   services.mpris-proxy.enable = true;

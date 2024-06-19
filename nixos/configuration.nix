@@ -78,6 +78,7 @@
       "adbusers" 
       "docker" 
       "libvirtd" 
+      "cdrom"
     ];
   };
 
