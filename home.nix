@@ -86,7 +86,7 @@ in
     cargo
     rustfmt
     clang
-    inputs.zig.packages.${system}."0.12.0"
+    inputs.zig.packages.${system}."0.13.0"
     inputs.zls.packages.${system}.default
     nodePackages.prettier
     nodejs
@@ -187,7 +187,7 @@ in
     k3b
     brasero
     xfce.xfburn
-    steam
+    amarok
   ];
 
   services.mpris-proxy.enable = true;
@@ -228,7 +228,7 @@ in
     };
     extraConfig = builtins.readFile ./qutebrowser/extraConfig.py;
   };
- 
+
   # direnv - automatically load project environment from shell.nix
   programs.direnv = {
     enable = true;

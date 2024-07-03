@@ -106,6 +106,7 @@
   };
 
   programs.partition-manager.enable = true;
+  programs.steam.enable = true;
 
   # Gnome Virtual File System
   # Allows browsing network directories in nautilus
