@@ -97,6 +97,7 @@ in
     wineWowPackages.waylandFull
     winetricks
     q4wine
+    icoutils
 
     # Media
     feh
