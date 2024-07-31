@@ -189,6 +189,7 @@ in
     brasero
     xfce.xfburn
     amarok
+    signal-desktop
   ];
 
   services.mpris-proxy.enable = true;
