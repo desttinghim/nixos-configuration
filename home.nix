@@ -190,6 +190,7 @@ in
     xfce.xfburn
     amarok
     signal-desktop
+    kdeconnect
   ];
 
   services.mpris-proxy.enable = true;
