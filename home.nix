@@ -191,6 +191,7 @@ in
     amarok
     signal-desktop
     kdeconnect
+    krita
   ];
 
   services.mpris-proxy.enable = true;
