@@ -12,8 +12,6 @@
     zig.url = "github:mitchellh/zig-overlay"; 
     zls.url = "github:zigtools/zls";
     zls.inputs.zig-overlay.follows = "zig";
-
-    atuin.url = "github:atuinsh/atuin";
   };
 
   outputs = { nixpkgs, home-manager, ...}@inputs: {

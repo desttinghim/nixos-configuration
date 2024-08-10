@@ -192,6 +192,7 @@ in
     signal-desktop
     kdeconnect
     krita
+    tarsnap
   ];
 
   services.mpris-proxy.enable = true;
@@ -199,7 +200,6 @@ in
 
   # Programs, sorted alphabetically
   programs.atuin = {
-    package = inputs.atuin.packages.${pkgs.system}.default;
     enable = true;
     enableBashIntegration = true;    
     flags = [
