@@ -193,6 +193,8 @@ in
     kdeconnect
     krita
     tarsnap
+    typst
+    mullvad-vpn
   ];
 
   services.mpris-proxy.enable = true;

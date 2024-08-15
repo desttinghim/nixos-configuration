@@ -115,6 +115,9 @@
     package = pkgs.lib.mkForce pkgs.gnome3.gvfs;
   };
 
+  # Enable mullvad
+  services.mullvad-vpn.enable = true;
+
   # Enable mDNS
   services.resolved.enable = true;
   networking.networkmanager.connectionConfig."connection.mdns" = 2; # 2 == yes
