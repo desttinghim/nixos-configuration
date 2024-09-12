@@ -218,6 +218,8 @@ in
     mullvad-vpn
     zoom-us
     chromium
+
+    gnumake # Needed for ECE1410
   ];
 
   services.mpris-proxy.enable = true;
