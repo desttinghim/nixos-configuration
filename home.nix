@@ -220,6 +220,8 @@ in
     chromium
 
     gnumake # Needed for ECE1410
+    gtest # Needed for ECE1410
+    gmock # Needed for ECE1410
   ];
 
   services.mpris-proxy.enable = true;
