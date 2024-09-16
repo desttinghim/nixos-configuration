@@ -222,6 +222,8 @@ in
     gnumake # Needed for ECE1410
     gtest # Needed for ECE1410
     gmock # Needed for ECE1410
+
+    anki # Flash card program
   ];
 
   services.mpris-proxy.enable = true;
