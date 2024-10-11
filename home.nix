@@ -147,7 +147,6 @@ in
     soundfont-generaluser
     x42-plugins
     geonkick
-    musescore
     drumgizmo
     lsp-plugins
     cardinal
@@ -160,9 +159,9 @@ in
     bitwarden
     okular
     zathura
-    libreoffice
+    libreoffice-qt
     zeal
-    qalculate-gtk
+    qalculate-qt
     samba
     qbittorrent
     appimage-run
