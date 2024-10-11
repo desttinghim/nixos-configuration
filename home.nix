@@ -179,7 +179,6 @@ in
     kdePackages.audiocd-kio
     kdePackages.discover
     kdePackages.kdeconnect-kde
-    kdePackages.kate
 
     # Allows gtk apps (like firefox) to integrate with KDE theming;
     # meaning it will actually follow light/dark theming
