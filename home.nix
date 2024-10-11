@@ -166,8 +166,6 @@ in
     unrar
     unar
     soundconverter
-    uget
-    uget-integrator
     paperwork
     qbittorrent
     samba
