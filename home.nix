@@ -87,7 +87,6 @@ in
 
   # Apps I don't care to configure
   home.packages = with pkgs; [ 
-    plasma5Packages.kio-extras
 
     # Terminal
     alacritty
@@ -153,7 +152,6 @@ in
 
     # Misc.
     bitwarden
-    okular
     zathura
     libreoffice-qt
     zeal
@@ -170,24 +168,28 @@ in
     qbittorrent
     samba
 
-    plasma5Packages.plasma-browser-integration
     nextcloud-client
-    plasma5Packages.kasts
-    elisa
-    kdePackages.audiocd-kio
     libcdio
+
+    kdePackages.okular
+    kdePackages.elisa
+    kdePackages.kasts
+    kdePackages.plasma-browser-integration
+    kdePackages.kio-extras
+    kdePackages.audiocd-kio
+    kdePackages.discover
+    kdePackages.kdeconnect-kde
+    kdePackages.kate
 
     # Allows gtk apps (like firefox) to integrate with KDE theming;
     # meaning it will actually follow light/dark theming
-    kde-gtk-config
-    breeze-gtk
+    kdePackages.kde-gtk-config
+    kdePackages.breeze-gtk
 
     firefox-bin
-    discover
 
     sqlitebrowser
     signal-desktop
-    kdeconnect
     tarsnap
     typst
     mullvad-vpn
