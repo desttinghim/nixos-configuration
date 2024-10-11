@@ -46,13 +46,9 @@
   boot.loader.efi.canTouchEfiVariables = true;
 
   # Register AppImage as a misc binary type
-  boot.binfmt.registrations.appimage = {
-    wrapInterpreterInShell = false;
-    interpreter = "${pkgs.appimage-run}/bin/appimage-run";
-    recognitionType = "magic";
-    offset = 0;
-    mask = ''\xff\xff\xff\xff\x00\x00\x00\x00\xff\xff\xff'';
-    magicOrExtension = ''\x7fELF....AI\x02'';  
+  programs.appimage = {
+    enable = true;
+    binfmt = true;
   };
 
   # Configure networking. I'm using network manager
@@ -108,13 +104,6 @@
   programs.partition-manager.enable = true;
   programs.steam.enable = true;
 
-  # Gnome Virtual File System
-  # Allows browsing network directories in nautilus
-  services.gvfs = {
-    enable = true;
-    package = pkgs.lib.mkForce pkgs.gnome3.gvfs;
-  };
-
   # Enable mullvad
   services.mullvad-vpn.enable = true;
 
@@ -160,13 +149,10 @@
       '';
   };
 
-  # Even though I use wayland, nixos does not have a clean seperation
-  # between wayland and x which results with x configuration being 
-  # necessary even for wayland users.
-  services.xserver.enable = true;
-  services.xserver.desktopManager.plasma5.enable = true;
+  services.desktopManager.plasma6.enable = true;
   services.displayManager.sddm.enable = true;
-  services.displayManager.defaultSession = "plasmawayland";
+  services.displayManager.sddm.wayland.enable = true;
+  services.displayManager.defaultSession = "plasma";
 
   services.pipewire = {
     enable = true;
@@ -176,9 +162,6 @@
     jack.enable = true;
     wireplumber.enable = true;
   };
-
-  # Tailscale for home VPN
-  services.tailscale.enable = true;
 
   # Desktop portals! Allows sandboxed applications to request access to 
   # resources. Not yet widely used, except for Flatpak I think.
@@ -203,6 +186,7 @@
     corefonts
     roboto
     atkinson-hyperlegible
+    hack-font
     (nerdfonts.override {
       fonts = [
         "FiraCode"
@@ -220,7 +204,10 @@
   documentation = {
     enable = true;
     nixos.enable = true;
-    man.enable = true;
+    man = {
+      enable = true;
+      generateCaches = true;
+    };
     info.enable = true;
     doc.enable = true;
     dev.enable = true;
