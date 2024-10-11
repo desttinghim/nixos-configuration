@@ -93,7 +93,6 @@ in
     alacritty
     btop
     tldr
-    bashmount
     helix
     wl-clipboard
 
@@ -103,22 +102,21 @@ in
     irony-server
     glslang
     fd 
+    clang
     clang-tools
     cargo
     rustfmt
-    clang
     inputs.zig.packages.${system}."0.13.0"
     inputs.zls.packages.${system}.default
     nodePackages.prettier
     nodejs
     python3
-    exercism
+    xxd
 
     # Windows UI development
     wineWowPackages.waylandFull
     winetricks
-    q4wine
-    icoutils
+    icoutils # Needed to show exe icons in dolphin
 
     # Media
     feh
@@ -137,22 +135,20 @@ in
     bluez
 
     # Graphics
-    libresprite
     inkscape
+    gimp
+    krita
 
     # Audio
     ardour
     sonic-visualiser
     soundfont-fluid
     soundfont-generaluser
-    x42-plugins
     geonkick
     drumgizmo
-    lsp-plugins
     cardinal
     dexed
     odin2
-    surge-XT
     vital
 
     # Misc.
@@ -162,10 +158,7 @@ in
     libreoffice-qt
     zeal
     qalculate-qt
-    samba
-    qbittorrent
     appimage-run
-    # thunderbird
 
     # File Management
     zip
@@ -176,21 +169,11 @@ in
     uget
     uget-integrator
     paperwork
-
-    #Engineering
-    # kicad # disabled b/c it takes forever to build
-    freecad
-
-    # N64 dev 
-    milkytracker
-    cen64
-
-    furnace # deflemask compatible, sound chip emulation, tracker
+    qbittorrent
+    samba
 
     plasma5Packages.plasma-browser-integration
     nextcloud-client
-    tailscale
-    ktailctl
     plasma5Packages.kasts
     elisa
     kdePackages.audiocd-kio
@@ -205,22 +188,12 @@ in
     discover
 
     sqlitebrowser
-    k3b
-    brasero
-    xfce.xfburn
-    amarok
     signal-desktop
     kdeconnect
-    krita
     tarsnap
     typst
     mullvad-vpn
     zoom-us
-    chromium
-
-    gnumake # Needed for ECE1410
-    gtest # Needed for ECE1410
-    gmock # Needed for ECE1410
 
     anki # Flash card program
   ];
