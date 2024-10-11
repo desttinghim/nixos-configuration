@@ -202,6 +202,7 @@
     font-awesome_4
     corefonts
     roboto
+    atkinson-hyperlegible
     (nerdfonts.override {
       fonts = [
         "FiraCode"
