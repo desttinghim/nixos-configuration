@@ -195,6 +195,8 @@ in
     zoom-us
 
     anki # Flash card program
+
+    gnome.adwaita-icon-theme
   ];
 
   services.mpris-proxy.enable = true;
