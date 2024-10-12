@@ -90,6 +90,7 @@ in
 
     # Terminal
     alacritty
+    foot
     btop
     tldr
     helix
