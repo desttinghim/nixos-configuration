@@ -153,6 +153,7 @@ in
 
     # Misc.
     bitwarden
+    keepassxc
     zathura
     libreoffice-qt
     zeal
