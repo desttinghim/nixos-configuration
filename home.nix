@@ -159,6 +159,7 @@ in
     zeal
     qalculate-qt
     appimage-run
+    qrencode
 
     # File Management
     zip
