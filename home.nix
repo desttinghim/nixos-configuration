@@ -138,6 +138,7 @@ in
     inkscape
     gimp
     krita
+    kolourpaint
 
     # Audio
     ardour
