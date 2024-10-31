@@ -2,33 +2,10 @@
 let
   username = "desttinghim";
   homeDirectory = "/home/${username}";
-
-  # ente-auth = with pkgs; appimageTools.wrapType2 { # or wrapType1
-  #   name = "ente-auth";
-  #   src = fetchurl {
-  #     url = "https://github.com/ente-io/ente/releases/download/auth-v3.1.3/ente-auth-v3.1.3-x86_64.AppImage";
-  #     hash = "sha256-HeJQSa9kTJ4ncF2Hr1HAQ1Uo/wqJBmqRREaVzOvhNpg=";
-  #   };
-  #   extraPkgs = pkgs: with pkgs; [ 
-  #     brotli
-  #     libepoxy
-  #   ];
-  # };
-
-  # inkscape-appimage = with pkgs; appimageTools.wrapType2 { # or wrapType1
-  #   name = "inkscape";
-  #   src = fetchurl {
-  #     url = "https://inkscape.org/gallery/item/44616/Inkscape-091e20e-x86_64.AppImage";
-  #     hash = "";
-  #   };
-  #   extraPkgs = pkgs: with pkgs; [  ];
-  # };
 in
 {
   # Import home-manager modules here
-  imports = [
-    # inputs.nix-colors.homeManagerModule
-  ];
+  imports = [ ];
 
   nixpkgs = {
     # Add overlays here
@@ -47,8 +24,6 @@ in
     username = username;
     homeDirectory = homeDirectory;
   };
-
-  # colorScheme = inputs.nix-colors.colorSchemes.dracula;
 
   # This value determines the Home Manager release that your
   # configuration is compatible with. This helps avoid breakage
@@ -201,6 +176,10 @@ in
     anki # Flash card program
 
     gnome.adwaita-icon-theme
+
+    # Spell checking
+    nuspell
+    hunspellDicts.en_US
   ];
 
   services.mpris-proxy.enable = true;

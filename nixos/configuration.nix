@@ -63,17 +63,17 @@
     # A bunch of extra groups, typically to allow
     # access to certain hardware features.
     extraGroups = [ 
-      "networkmanager" 
-      "wheel" 
-      "input" 
-      "video" 
-      "audio" 
-      "dialout" 
-      "vboxusers" 
-      "plugdev" 
-      "adbusers" 
-      "docker" 
-      "libvirtd" 
+      "networkmanager"
+      "wheel"
+      "input"
+      "video"
+      "audio"
+      "dialout"
+      "vboxusers"
+      "plugdev"
+      "adbusers"
+      "docker"
+      "libvirtd"
       "cdrom"
     ];
   };
@@ -90,10 +90,10 @@
       git
       usbutils
       pciutils
-      wget 
+      wget
       pipewire
       acpi
-      arduino 
+      arduino
       light # controls backlight brightness
 
       # For managing non-globally installed apps
