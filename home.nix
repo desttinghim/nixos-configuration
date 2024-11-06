@@ -70,6 +70,7 @@ in
     tldr
     helix
     wl-clipboard
+    jujutsu
 
     # Programming
     ripgrep
@@ -94,8 +95,6 @@ in
     icoutils # Needed to show exe icons in dolphin
 
     # Media
-    feh
-    mpv
     imv
     pavucontrol
     vlc
@@ -158,6 +157,7 @@ in
     kdePackages.audiocd-kio
     kdePackages.discover
     kdePackages.kdeconnect-kde
+    kdePackages.tokodon
 
     # Allows gtk apps (like firefox) to integrate with KDE theming;
     # meaning it will actually follow light/dark theming
