@@ -158,6 +158,7 @@ in
     kdePackages.discover
     kdePackages.kdeconnect-kde
     kdePackages.tokodon
+    kdePackages.konversation
 
     # Allows gtk apps (like firefox) to integrate with KDE theming;
     # meaning it will actually follow light/dark theming
