@@ -88,6 +88,8 @@ in
     nodejs
     python3
     xxd
+    dumpasn1
+    pgpdump
 
     # Windows UI development
     wineWowPackages.waylandFull
@@ -99,6 +101,7 @@ in
     pavucontrol
     vlc
     obs-studio
+    oculante
 
     # Dependencies
     libnotify
