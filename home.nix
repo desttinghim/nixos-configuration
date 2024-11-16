@@ -90,6 +90,9 @@ in
     xxd
     dumpasn1
     pgpdump
+    asm-lsp
+    nasm
+    nasmfmt
 
     # Windows UI development
     wineWowPackages.waylandFull
