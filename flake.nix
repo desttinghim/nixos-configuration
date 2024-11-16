@@ -4,6 +4,7 @@
   inputs = {
     # Use nixpkgs 24.05
     nixpkgs.url = "github:NixOS/nixpkgs/release-24.05";
+    nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
 
     # Setup home manager as a module
     home-manager.url = "github:nix-community/home-manager/release-24.05";   

@@ -68,9 +68,9 @@ in
     foot
     btop
     tldr
-    helix
     wl-clipboard
-    jujutsu
+    inputs.nixpkgs-unstable.legacyPackages.${system}.helix
+    inputs.nixpkgs-unstable.legacyPackages.${system}.jujutsu
 
     # Programming
     ripgrep
@@ -149,7 +149,7 @@ in
     unar
     soundconverter
     paperwork
-    qbittorrent
+    inputs.nixpkgs-unstable.legacyPackages.${system}.qbittorrent
     samba
 
     nextcloud-client
