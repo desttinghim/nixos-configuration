@@ -3,60 +3,6 @@
 # to /etc/nixos/configuration.nix instead.
 { config, lib, pkgs, modulesPath, ... }:
 
-let
-  autoBrightness = pkgs.writeShellScript "framework-automatic-brightness" ''
-    #!/bin/bash
-    max=$(cat /sys/class/backlight/intel_backlight/max_brightness)
-    sensitivity=$((max/10))
-    min=$((max/10))
-    delay=6
-    while [ 1 ]
-    do
-    updated=1
-    while [ $updated -gt 0 ]
-    do
-    updated=0
-    backlight=$(cat /sys/class/backlight/intel_backlight/brightness)
-    sensor=$(cat /sys/bus/iio/devices/iio:device0/in_illuminance_raw)
-    target=$sensor
-    if [ $backlight -gt $sensor ]
-    then
-    if [ $(($backlight - $sensor)) -gt $sensitivity ]
-    then
-    updated=1
-    fi
-    fi
-    if [ $backlight -lt $sensor ]
-    then
-    if [ $(($backlight - $sensor)) -lt $sensitivity ]
-    then
-    updated=1
-    fi
-    fi
-    if [ $target -gt $max ]
-    then
-    target=$max
-    fi
-    if [ $target -lt 1 ]
-    then
-    target=$min
-    fi
-    if [ $updated -gt 0 ]
-    then
-    echo “Starting brightness: $backlight”
-    echo “Ambient light: $sensor”
-    echo “Adjusted brightness: $target”
-    echo “-------------------------------”
-    echo “Sensitivity: $sensitivity”
-    echo “Min: $min Max: $max”
-    echo
-    echo $target > /sys/class/backlight/intel_backlight/brightness
-    fi
-    done
-    sleep $delay
-    done  
-  '';
-in
 {
   imports =
     [ (modulesPath + "/installer/scan/not-detected.nix")
@@ -81,23 +27,6 @@ in
     [ { device = "/dev/disk/by-partlabel/swap"; }
     ];
 
-  systemd.services.framework-automatic-brightness = {
-    enable = true;
-    description = "Automatic brightness adjustment based on ambient sensor for Framework laptops";
-    after = ["systemd-user-sessions.service" "systemd-logind.service"];
-    wantedBy = ["multi-user.target"];
-    unitConfig = {
-      StartLimitInterval = 350;
-    };
-    serviceConfig = {
-      Type = "simple";
-      ExecStart = ''${autoBrightness} start'';
-      Restart = "on-failure";
-      RestartSec = 30;
-      StartLimitBurst = 10;
-    };
-  };
-
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
   # (the default) this is the recommended approach. When using systemd-networkd it's
   # still possible to use this option, but it's recommended to use it in conjunction
@@ -112,9 +41,9 @@ in
   nixpkgs.config.packageOverrides = pkgs: {
     vaapiIntel = pkgs.vaapiIntel.override { enableHybridCodec = true; };
   };
-  hardware.opengl = {
+  hardware.graphics = {
     enable = true;
-    driSupport32Bit = true;
+    enable32Bit = true;
     extraPackages = with pkgs; [
       intel-media-driver  # LIBVA_DRIVER_NAME=iHD
       vaapiIntel          # LIBVA_DRIVER_NAME=i965

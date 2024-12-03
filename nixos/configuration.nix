@@ -38,7 +38,7 @@
       dates = "monthly";
       options = "--delete-older-than 30d";
     };
-    package = pkgs.nixFlakes; # Enable nixFlakes on system
+    package = pkgs.nixVersions.stable; # Enable nixFlakes on system
   };
 
   # Bootloader
@@ -112,7 +112,6 @@
   networking.networkmanager.connectionConfig."connection.mdns" = 2; # 2 == yes
 
   hardware.bluetooth.enable = true;
-  hardware.opengl.enable = true;
 
   # Optional but recommended for pipewire
   # Allows pipewire to guarantee real time execution
