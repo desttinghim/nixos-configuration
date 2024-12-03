@@ -131,6 +131,7 @@ in
     dexed
     odin2
     vital
+    strawberry
 
     # Misc.
     bitwarden
