@@ -132,6 +132,7 @@ in
     odin2
     vital
     strawberry
+    picard
 
     # Misc.
     bitwarden
