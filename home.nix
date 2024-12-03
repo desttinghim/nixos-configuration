@@ -136,13 +136,13 @@ in
 
     # Misc.
     bitwarden
-    keepassxc
     zathura
     libreoffice-qt
     zeal
     qalculate-qt
     appimage-run
     qrencode
+    labplot
 
     # File Management
     zip
