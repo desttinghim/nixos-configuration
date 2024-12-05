@@ -194,6 +194,8 @@ in
     # Spell checking
     nuspell
     hunspellDicts.en_US
+
+    lutris
   ];
 
   services.mpris-proxy.enable = true;

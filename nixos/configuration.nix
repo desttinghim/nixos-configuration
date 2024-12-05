@@ -161,21 +161,6 @@
     wireplumber.enable = true;
   };
 
-  # Desktop portals! Allows sandboxed applications to request access to 
-  # resources. Not yet widely used, except for Flatpak I think.
-  xdg.portal = {
-    enable = true;
-    wlr.enable = true;
-    extraPortals = [ 
-      pkgs.xdg-desktop-portal-kde
-      # The following are disabled because I'm pretty sure I *only* need one,
-      # and I'd like it to match with my desktop
-      # pkgs.xdg-desktop-portal-gtk 
-      # pkgs.xdg-desktop-portal-wlr 
-      # pkgs.xdg-desktop-portal 
-    ];
-  };
-
   fonts.packages = with pkgs; [
     source-code-pro
     font-awesome
