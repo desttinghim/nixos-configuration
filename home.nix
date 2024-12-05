@@ -69,10 +69,10 @@ in
     foot
     tldr
     wl-clipboard
-    inputs.nixpkgs-unstable.legacyPackages.${system}.helix
-    inputs.nixpkgs-unstable.legacyPackages.${system}.jujutsu
     inputs.ghostty.packages.${system}.default
     glow
+    helix
+    jujutsu
 
     # Programming
     ripgrep
@@ -156,7 +156,7 @@ in
     unar
     soundconverter
     paperwork
-    inputs.nixpkgs-unstable.legacyPackages.${system}.qbittorrent
+    qbittorrent
     samba
 
     nextcloud-client
@@ -189,7 +189,7 @@ in
 
     anki # Flash card program
 
-    gnome.adwaita-icon-theme
+    adwaita-icon-theme
 
     # Spell checking
     nuspell
