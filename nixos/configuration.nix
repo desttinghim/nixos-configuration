@@ -54,7 +54,7 @@
   # Configure networking. I'm using network manager
   networking.networkmanager.enable = true;
  
-  i18n.defaultLocale = "en_US.UTF-8";
+  i18n.defaultLocale = "en_US.utf8";
 
   # My user account
   users.users.desttinghim = {
