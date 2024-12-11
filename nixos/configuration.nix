@@ -136,7 +136,7 @@
   # non-root users
   # https://wiki.archlinux.org/title/udev  
   services.udev = {
-    packages = [ pkgs.android-udev-rules ];
+    packages = [ pkgs.android-udev-rules pkgs.platformio-core.udev ];
     extraRules = let set-mem = pkgs.writeShellScript "set-mem" ''
       echo 200 >/sys/module/usbcore/parameters/usbfs_memory_mb
       '';
