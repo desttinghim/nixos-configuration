@@ -94,6 +94,8 @@ in
     asm-lsp
     nasm
     nasmfmt
+    platformio
+    arduino-cli
 
     # Windows UI development
     wineWowPackages.waylandFull

@@ -93,7 +93,6 @@
       wget
       pipewire
       acpi
-      arduino
       light # controls backlight brightness
 
       # For managing non-globally installed apps
