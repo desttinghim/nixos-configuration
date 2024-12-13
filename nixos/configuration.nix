@@ -72,7 +72,7 @@
       "vboxusers"
       "plugdev"
       "adbusers"
-      "docker"
+      "podman"
       "libvirtd"
       "cdrom"
     ];
@@ -197,7 +197,16 @@
   # unpatched binaries. Using VMs makes the mutable state contained and
   # could allows taking snapshots.
 
-  virtualisation.docker.enable = true;
+  virtualisation.containers.enable = true;
+  virtualisation = {
+    podman = {
+      enable = true;
+      # TODO: Remove the following? I don't particularly care about docker
+      #       compatibility...
+      # dockerCompat = true;
+      # defaultNetwork.settings.dns_enabled = true;
+    };
+  };
 
   documentation = {
     enable = true;
