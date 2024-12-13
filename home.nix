@@ -136,6 +136,7 @@ in
     vital
     strawberry
     picard
+    milkytracker
 
     # Misc.
     bitwarden
