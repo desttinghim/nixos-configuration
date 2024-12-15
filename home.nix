@@ -72,6 +72,7 @@ in
     wl-clipboard
     inputs.nixpkgs-unstable.legacyPackages.${system}.helix
     inputs.nixpkgs-unstable.legacyPackages.${system}.jujutsu
+    inputs.ghostty.packages.${system}.default
 
     # Programming
     ripgrep
