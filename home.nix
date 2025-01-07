@@ -67,7 +67,6 @@ in
     # Terminal
     alacritty
     foot
-    btop
     tldr
     wl-clipboard
     inputs.nixpkgs-unstable.legacyPackages.${system}.helix
@@ -239,5 +238,12 @@ in
     enable = true;
     enableBashIntegration = true;
     nix-direnv.enable = true;
+  };
+
+  programs.btop = {
+    enable = true;
+    settings = {
+      graph_symbol = "braille";
+    };
   };
 }
