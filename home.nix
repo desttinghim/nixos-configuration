@@ -72,6 +72,7 @@ in
     inputs.nixpkgs-unstable.legacyPackages.${system}.helix
     inputs.nixpkgs-unstable.legacyPackages.${system}.jujutsu
     inputs.ghostty.packages.${system}.default
+    glow
 
     # Programming
     ripgrep
