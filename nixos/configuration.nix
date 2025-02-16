@@ -216,6 +216,7 @@
       qrencode
       labplot
       lutris
+      sc-controller
 
       kdePackages.okular
       # kdePackages.elisa
