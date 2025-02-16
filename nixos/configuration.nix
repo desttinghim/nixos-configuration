@@ -86,6 +86,7 @@
     };
     # Default packages installed system-wide    
     systemPackages = with pkgs; [     
+      # Important utilities, I guess
       helix
       git
       usbutils
@@ -94,14 +95,151 @@
       pipewire
       acpi
       light # controls backlight brightness
+      ripgrep
+      tldr
+      fd
 
-      # For managing non-globally installed apps
-      home-manager
+      # terminal emulators
+      alacritty
+      foot
+
+      # cli tools
+      atuin
+      btop
+      gh # github cli helper thing
+      jujutsu
+      glow
+      wl-clipboard
+      xxd
+      dumpasn1
+      pgpdump
+
+      # compilers/runtimes
+      inputs.zig.packages.${system}."0.13.0"
+      cargo
+      clang
+      nodejs
+      python3
+      nasm
+      platformio
+      arduino-cli
+      iverilog
+      verilator
+      # inputs.openxc7-toolchain.packages.${system}
+
+      # programming utilities
+      clang-tools
+      nodePackages.prettier
+      nasmfmt
+
+      # language servers
+      irony-server
+      glslang
+      inputs.zls.packages.${system}.default
+      asm-lsp
+
+      # wine/windows
+      wineWowPackages.waylandFull
+      winetricks
+      icoutils
+
+      # media playback/viewing
+      # imv
+      pavucontrol
+      # vlc
+      # obs-studio
+      # oculante
+      strawberry
+      zathura
+
+      # dependencies
+      libnotify
+      libappindicator-gtk3
+      # mpris-scrobbler # strawberry has scrobbling support builtin, probably don't need?
+      xdg-utils
+      bluez
+
+      # graphics editing
+      inkscape
+      gimp
+      krita
+
+      # audio/music editing
+      # not sure if I care to use ardour? I think I prefer trackers.
+      # ardour
+      # sonic-visualiser
+      # soundfont-fluid
+      # soundfont-generaluser
+      # geonkick
+      # drumgizmo
+      # cardinal
+      # dexed
+      # odin2
+      vital
+      picard
+      milkytracker
+
+      # file management
+      zip
+      unzip
+      unrar
+      unar
+      soundconverter
+      # paperwork
+      libcdio
+      tarsnap
+
+      # file sharing
+      # qbittorrent
+      # samba
+      # nextcloud-client
+
+      # web
+      firefox-bin
+      mullvad-vpn
+
+      # chat/social
+      kdePackages.konversation
+      kdePackages.tokodon
+      zoom-us
+      signal-desktop
+
+      # misc. utlities
+      anki
+      bitwarden
+      libreoffice-qt
+      typst
+      nuspell
+      hunspellDicts.en_US
+      qalculate-qt
+      appimage-run
+      qrencode
+      labplot
+      lutris
+
+      kdePackages.okular
+      # kdePackages.elisa
+      # kdePackages.kasts
+      kdePackages.plasma-browser-integration
+      kdePackages.kio-extras
+      kdePackages.audiocd-kio
+      kdePackages.discover
+      kdePackages.kdeconnect-kde
+      kdePackages.breeze-gtk
+      # Allows gtk apps (like firefox) to integrate with KDE theming;
+      # meaning it will actually follow light/dark theming
+      kdePackages.kde-gtk-config
+      adwaita-icon-theme
     ];
   };
 
   programs.partition-manager.enable = true;
   programs.steam.enable = true;
+  programs.direnv = {
+    enable = true;
+    enableBashIntegration = true;
+    nix-direnv.enable = true;
+  };
 
   # Enable mullvad
   services.mullvad-vpn.enable = true;
@@ -110,6 +248,7 @@
   services.resolved.enable = true;
   networking.networkmanager.connectionConfig."connection.mdns" = 2; # 2 == yes
 
+  # Enable bluetooth
   hardware.bluetooth.enable = true;
 
   # Optional but recommended for pipewire
@@ -130,6 +269,8 @@
   services.avahi.enable = true;     # Also printing
   services.avahi.nssmdns4 = true;
   services.avahi.openFirewall = true;
+  # services.mpris-proxy.enable = true; # strawberry has mpris support built in, probably not needed?
+  services.syncthing.enable = true;
 
   # udev manages kernel events and handles permissions for
   # non-root users
@@ -186,10 +327,6 @@
   virtualisation = {
     podman = {
       enable = true;
-      # TODO: Remove the following? I don't particularly care about docker
-      #       compatibility...
-      # dockerCompat = true;
-      # defaultNetwork.settings.dns_enabled = true;
     };
   };
 
