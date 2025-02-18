@@ -202,7 +202,7 @@
       kdePackages.konversation
       kdePackages.tokodon
       zoom-us
-      signal-desktop
+      inputs.nixpkgs-unstable.legacyPackages.${system}.signal-desktop
 
       # misc. utlities
       anki
