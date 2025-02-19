@@ -3,7 +3,7 @@
 # - Globally installed packages
 # - System services
 # - Networking configuration
-
+flake-overlays:
 { inputs, lib, config, pkgs, ... }:
 
 {
@@ -15,6 +15,12 @@
       ./cachix.nix
       ./dev-vms.nix
     ];
+
+  nixpkgs.overlays = [
+    (final: prev: {
+      # your own overlays...
+    })
+  ] ++ flake-overlays;
 
   # Should be left at the version that was used when first installing
   # the system, allows stateful configuration to upgrade properly.

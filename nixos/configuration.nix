@@ -10,7 +10,6 @@
 { 
   nixpkgs = {
     # Add overlays here
-    overlays = [ ];
     config = {
       allowUnfree = true;
     };

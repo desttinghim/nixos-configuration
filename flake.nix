@@ -13,12 +13,20 @@
     zig.url = "github:mitchellh/zig-overlay"; 
     zls.url = "github:zigtools/zls";
     zls.inputs.zig-overlay.follows = "zig";
+
+    # Add nix-xilinx
+    nix-xilinx.url = "gitlab:doronbehar/nix-xilinx";
     
     # Add open-xc7 toolchain for working with basys3
     openxc7-toolchain.url = "github:openxc7/toolchain-nix";
   };
 
-  outputs = { nixpkgs, home-manager, ...}@inputs: {
+  outputs = { nixpkgs, home-manager, ...}@inputs: 
+  let 
+    flake-overlays = [
+      inputs.nix-xilinx.overlay
+    ];
+  in {
     # NixOS configuration entrypoint
     # Available through `nixos-rebuild --flake .#your-hostname`
     nixosConfigurations = {
@@ -26,16 +34,14 @@
         specialArgs = { inherit inputs; }; # pass flake inputs to our config
         # Our main nixos configuration file
         modules = [ 
-          # stylix.nixosModules.stylix
-          ./nixos/framework.nix 
+          (import ./nixos/framework.nix flake-overlays)
         ];
       }; 
       desttop = nixpkgs.lib.nixosSystem {
         specialArgs = { inherit inputs; }; # pass flake inputs to our config
         # Our main nixos configuration file
         modules = [ 
-          # stylix.nixosModules.stylix
-          ./nixos/desktop.nix 
+          ./nixos/desktop.nix
         ];
       };
     };
