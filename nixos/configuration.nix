@@ -98,6 +98,10 @@
       ripgrep
       tldr
       fd
+      ly
+      wofi
+      mako
+      waybar
 
       # terminal emulators
       alacritty
@@ -240,6 +244,11 @@
     enable = true;
     enableBashIntegration = true;
     nix-direnv.enable = true;
+  };
+  programs.hyprland = {
+    enable = true;
+    withUWSM = true;
+    xwayland.enable = true;
   };
 
   # Enable mullvad
