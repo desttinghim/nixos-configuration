@@ -36,4 +36,7 @@
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+
+  # Enable i2c driver to allow changing the brightness of connected monitors
+  hardware.i2c.enable = true;
 }
