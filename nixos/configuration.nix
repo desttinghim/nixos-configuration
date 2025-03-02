@@ -101,6 +101,7 @@
       wofi
       mako
       waybar
+      syncthing
 
       # terminal emulators
       alacritty
@@ -279,7 +280,6 @@
   services.avahi.nssmdns4 = true;
   services.avahi.openFirewall = true;
   # services.mpris-proxy.enable = true; # strawberry has mpris support built in, probably not needed?
-  services.syncthing.enable = true;
 
   # udev manages kernel events and handles permissions for
   # non-root users
