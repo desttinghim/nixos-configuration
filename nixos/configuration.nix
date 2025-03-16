@@ -189,17 +189,19 @@
 
       # web
       firefox-bin
-      mullvad-vpn
 
       # chat/social
       kdePackages.konversation
       kdePackages.tokodon
+
+      # Electron containment
+      # mullvad-vpn
       # zoom-us
       # inputs.nixpkgs-unstable.legacyPackages.${system}.signal-desktop
+      # bitwarden
 
       # misc. utlities
       anki
-      bitwarden
       libreoffice-qt
       typst
       nuspell
