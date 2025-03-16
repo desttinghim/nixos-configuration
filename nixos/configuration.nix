@@ -96,6 +96,7 @@
       light # controls backlight brightness
       ripgrep
       tldr
+      file # print information about files
       fd
       ly
       wofi
@@ -119,7 +120,6 @@
       pgpdump
 
       # compilers/runtimes
-      inputs.zig.packages.${system}."0.13.0"
       cargo
       clang
       nodejs
@@ -139,7 +139,6 @@
       # language servers
       irony-server
       glslang
-      inputs.zls.packages.${system}.default
       asm-lsp
 
       # wine/windows
@@ -159,7 +158,6 @@
       # dependencies
       libnotify
       libappindicator-gtk3
-      # mpris-scrobbler # strawberry has scrobbling support builtin, probably don't need?
       xdg-utils
       bluez
 
@@ -169,16 +167,6 @@
       krita
 
       # audio/music editing
-      # not sure if I care to use ardour? I think I prefer trackers.
-      # ardour
-      # sonic-visualiser
-      # soundfont-fluid
-      # soundfont-generaluser
-      # geonkick
-      # drumgizmo
-      # cardinal
-      # dexed
-      # odin2
       vital
       picard
       milkytracker
@@ -255,8 +243,8 @@
   services.mullvad-vpn.enable = true;
 
   # Enable mDNS
-  services.resolved.enable = true;
-  networking.networkmanager.connectionConfig."connection.mdns" = 2; # 2 == yes
+  # services.resolved.enable = true;
+  # networking.networkmanager.connectionConfig."connection.mdns" = 2; # 2 == yes
 
   # Enable bluetooth
   hardware.bluetooth.enable = true;
@@ -326,11 +314,6 @@
       ];
     })
   ];
-
-  # TODO: should I use nix-ld or just virtualize my dev environments?
-  # No nix-ld makes my setups more reproducible, but disallows running
-  # unpatched binaries. Using VMs makes the mutable state contained and
-  # could allows taking snapshots.
 
   virtualisation.containers.enable = true;
   virtualisation = {
