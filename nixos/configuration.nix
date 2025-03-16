@@ -86,6 +86,7 @@
     # Default packages installed system-wide    
     systemPackages = with pkgs; [     
       # Important utilities, I guess
+      fwupd
       helix
       git
       usbutils
