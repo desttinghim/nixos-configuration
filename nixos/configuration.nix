@@ -194,8 +194,8 @@
       # chat/social
       kdePackages.konversation
       kdePackages.tokodon
-      zoom-us
-      inputs.nixpkgs-unstable.legacyPackages.${system}.signal-desktop
+      # zoom-us
+      # inputs.nixpkgs-unstable.legacyPackages.${system}.signal-desktop
 
       # misc. utlities
       anki
