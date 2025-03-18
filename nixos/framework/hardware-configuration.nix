@@ -58,11 +58,7 @@
   };
   hardware.graphics = {
     enable = true;
-    enable32Bit = true;
-    extraPackages = with pkgs; [
-      intel-media-driver  # LIBVA_DRIVER_NAME=iHD
-      libvdpau-va-gl
-    ];
+    # enable32Bit = true;
   };
 
   # Enable the ambient light sensor
